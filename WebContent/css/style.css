@@ -1,0 +1,16 @@
+.search__table--margin {
+    margin-top: 20px;
+}
+
+.form__button--margin {
+    margin-top: 10px;
+}
+
+.form__button--padding {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.table__button--margin {
+    margin-right: 10px;
+}
