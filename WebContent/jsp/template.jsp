@@ -88,7 +88,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="ReturnRental" class="bar-4">
+                                <a href="InputReturn" class="bar-4">
                                     <i class="fa fa-caret-right"></i>返却
                                 </a>
                             </li>
