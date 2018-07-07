@@ -13,7 +13,7 @@
     <div class="page-content-wrapper">
         <h1>貸出</h1>
         <h1>返却</h1>
-        <form action="confirmRentalView.html" method="post">
+        <form action="ConfirmRental" method="post">
             <div class="row">
                 <div class="col-xs-2">
                     <label for="id">会員ID</label>

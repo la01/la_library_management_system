@@ -13,7 +13,7 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>資料登録</h1>
-        <form action="confirmBookView.html" method="post">
+        <form action="ConfirmBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
                     <label for="isbn">ISBN番号</label>

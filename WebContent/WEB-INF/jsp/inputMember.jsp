@@ -12,7 +12,7 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>会員登録</h1>
-        <form action="confirmMemberView.html" method="post">
+        <form action="ConfirmMember" method="post">
             <div class="row">
                 <div class="col-xs-2">
                     <label for="id">ID</label>

@@ -12,7 +12,7 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>確認</h1>
-        <form action="doneMemberView.html" method="post">
+        <form action="DoneMember" method="post">
             <table class="table">
                 <thead>
                     <tr>

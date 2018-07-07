@@ -12,7 +12,7 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>資料検索</h1>
-        <form action="confirmBookView.html" method="post">
+        <form action="SearchBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
                     <label for="isbn">ISBN番号</label>
@@ -99,10 +99,10 @@
                         <td>2018/07/06</td>
                         <td>2018/07/06</td>
                         <td>
-                            <form action="inputBookView.html" method="post" style="display: inline">
+                            <form action="InputBook" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmBookView.html" method="post" style="display: inline">
+                            <form action="ConfirmBook" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>
@@ -117,10 +117,10 @@
                         <td>2018/07/06</td>
                         <td>2018/07/06</td>
                         <td>
-                            <form action="inputBookView.html" method="post" style="display: inline">
+                            <form action="InputBook" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmBookView.html" method="post" style="display: inline">
+                            <form action="ConfirmBook" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>
@@ -135,10 +135,10 @@
                         <td>2018/07/06</td>
                         <td>2018/07/06</td>
                         <td>
-                            <form action="inputBookView.html" method="post" style="display: inline">
+                            <form action="InputBook" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmBookView.html" method="post" style="display: inline">
+                            <form action="ConfirmBook" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>

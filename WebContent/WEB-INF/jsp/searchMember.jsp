@@ -12,7 +12,7 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>会員検索</h1>
-        <form>
+        <form action="SearchMember" action="post">
             <div class="row">
                 <div class="col-xs-2">
                     <label for="id">ID</label>
@@ -70,10 +70,10 @@
                         <td>山田　太郎</td>
                         <td>my@address.com</td>
                         <td>
-                            <form action="inputMemberView.html" method="post" style="display: inline">
+                            <form action="InputMember" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmMemberView.html" method="post" style="display: inline">
+                            <form action="ConfirmMember" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>
@@ -83,10 +83,10 @@
                         <td>山田　太郎</td>
                         <td>my@address.com</td>
                         <td>
-                            <form action="inputMemberView.html" method="post" style="display: inline">
+                            <form action="InputMember" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmMemberView.html" method="post" style="display: inline">
+                            <form action="ConfirmMember" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>
@@ -96,10 +96,10 @@
                         <td>山田　太郎</td>
                         <td>my@address.com</td>
                         <td>
-                            <form action="inputMemberView.html" method="post" style="display: inline">
+                            <form action="InputMember" method="post" style="display: inline">
                                 <button class="btn btn-warning table__button--margin">更新</button>
                             </form>
-                            <form action="confirmMemberView.html" method="post" style="display: inline">
+                            <form action="ConfirmMember" method="post" style="display: inline">
                                 <button class="btn btn-danger table__button--margin">削除</button>
                             </form>
                         </td>
