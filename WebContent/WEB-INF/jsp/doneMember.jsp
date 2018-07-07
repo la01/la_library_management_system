@@ -9,11 +9,11 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
 </head>
 <body>
-	<jsp:include page="../../jsp/template.jsp" flush="true" />
+    <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h2>登録が完了しました</h2>
-            <h2>更新が完了しました</h2>
-            <h2>削除が完了しました</h2>
+        <h2>更新が完了しました</h2>
+        <h2>削除が完了しました</h2>
     </div>
 </body>
 </html>

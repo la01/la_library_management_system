@@ -9,74 +9,74 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
 </head>
 <body>
-	<jsp:include page="../../jsp/template.jsp" flush="true" />
+    <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>会員登録</h1>
-            <form action="confirmMemberView.html" method="post">
-                <div class="row">
-                    <div class="col-xs-2">
-                        <label for="id">ID</label>
-                        <input type="text" class="form-control" id="id" placeholder="000">
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="lastName">苗字</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="山田">
+        <form action="confirmMemberView.html" method="post">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" placeholder="000">
+                </div>
+                <div class="col-xs-4">
+                    <label for="lastName">苗字</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="山田">
 
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="fisrtName">名前</label>
-                        <input type="text" class="form-control" id="fisrtName" placeholder="太郎">
-                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <label for="zip">郵便番号</label>
-                        <input type="text" class="form-control" id="zip" placeholder="0000000">
-                    </div>
-                    <div class="col-xs-8">
-                        <label for="address">住所</label>
-                        <input type="text" class="form-control" id="address" placeholder="東京都新宿区">
-                    </div>
+                <div class="col-xs-4">
+                    <label for="fisrtName">名前</label>
+                    <input type="text" class="form-control" id="fisrtName" placeholder="太郎">
                 </div>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <label for="phone">電話番号</label>
-                        <input type="text" class="form-control" id="phone" placeholder="000-0000-0000">
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="mail">メールアドレス</label>
-                        <input type="text" class="form-control" id="mail" placeholder="my@address.com">
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="InputId">生年月日</label>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <select class="form-control" id="year">
-                                    <option>1998</option>
-                                    <option>1900</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-4">
-                                <select class="form-control" id="month">
-                                    <option>1</option>
-                                    <option>12</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-4">
-                                <select class="form-control" id="day">
-                                    <option>1</option>
-                                    <option>31</option>
-                                </select>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <label for="zip">郵便番号</label>
+                    <input type="text" class="form-control" id="zip" placeholder="0000000">
+                </div>
+                <div class="col-xs-8">
+                    <label for="address">住所</label>
+                    <input type="text" class="form-control" id="address" placeholder="東京都新宿区">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <label for="phone">電話番号</label>
+                    <input type="text" class="form-control" id="phone" placeholder="000-0000-0000">
+                </div>
+                <div class="col-xs-4">
+                    <label for="mail">メールアドレス</label>
+                    <input type="text" class="form-control" id="mail" placeholder="my@address.com">
+                </div>
+                <div class="col-xs-4">
+                    <label for="InputId">生年月日</label>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <select class="form-control" id="year">
+                                <option>1998</option>
+                                <option>1900</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4">
+                            <select class="form-control" id="month">
+                                <option>1</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4">
+                            <select class="form-control" id="day">
+                                <option>1</option>
+                                <option>31</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <button class="btn btn-primary form__button--margin form__button--padding">登録</button>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <button class="btn btn-primary form__button--margin form__button--padding">登録</button>
                 </div>
-            </form>
+            </div>
+        </form>
     </div>
 </body>
 </html>

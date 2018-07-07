@@ -9,10 +9,10 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
 </head>
 <body>
-	<jsp:include page="../../jsp/template.jsp" flush="true" />
+    <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h2>貸出が完了しました</h2>
-            <h2>返却が完了しました</h2>
+        <h2>返却が完了しました</h2>
     </div>
 </body>
 </html>

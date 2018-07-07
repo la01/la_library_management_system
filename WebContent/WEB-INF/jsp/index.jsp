@@ -9,12 +9,9 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
 </head>
 <body>
-	<jsp:include page="../../jsp/template.jsp" flush="true" />
+    <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>メニューから選択してください</h1>
-        <form action="SampleServet" method="get">
-            <input type="submit" value="button">
-        </form>
     </div>
 </body>
 </html>
