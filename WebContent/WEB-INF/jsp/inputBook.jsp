@@ -12,16 +12,20 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>資料登録</h1>
+        <h1>資料登録/資料更新</h1>
         <form action="ConfirmBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="isbn">ISBN番号</label>
-                    <input type="text" class="form-control" id="isbn" placeholder="0000000000000">
+                    <label for="bookId">ID</label>
+                    <input type="text" class="form-control" id="bookId" disabled>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-2">
+                    <label for="isbn">ISBN番号</label>
+                    <input type="text" class="form-control" id="isbn" autocomplete="off">
+                </div>
+                <div class="col-xs-7">
                     <label for="bookName">資料名</label>
-                    <input type="text" class="form-control" id="bookName">
+                    <input type="text" class="form-control" id="bookName" autocomplete="off">
                 </div>
             </div>
             <div class="row">
@@ -37,19 +41,13 @@
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <label for="name">著者</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="author">著者</label>
+                    <input type="text" class="form-control" id="author" autocomplete="off">
                 </div>
                 <div class="col-xs-3">
                     <label for="company">出版社</label>
-                    <input type="text" class="form-control" id="company" placeholder="竹書房">
+                    <input type="text" class="form-control" id="company" autocomplete="off">
                 </div>
-                <div class="col-xs-1">
-                    <label for="num">入荷冊数</label>
-                    <input type="text" class="form-control" id="num">
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-4">
                     <label for="date">出版日</label>
                     <div class="row">
@@ -76,7 +74,16 @@
             </div>
             <div class="row">
                 <div class="col-xs-2">
-                    <button class="btn btn-primary form__button--margin form__button--padding">登録</button>
+                    <label for="num">入荷冊数</label>
+                    <input type="text" class="form-control" id="num" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <button class="btn btn-primary form__button--margin btn-block">登録/更新</button>
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="btn btn-primary form__button--margin btn-block">ISBN番号から取得</button>
                 </div>
             </div>
         </form>

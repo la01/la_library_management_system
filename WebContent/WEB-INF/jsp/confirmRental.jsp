@@ -11,7 +11,7 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>確認</h1>
+        <h1>貸出確認/返却確認</h1>
         <form action="DoneRental" method="post">
             <table class="table">
                 <thead>
@@ -26,29 +26,28 @@
                         <td>000</td>
                     </tr>
                     <tr>
-                        <th>図書ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                     <tr>
-                        <th>図書ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                     <tr>
-                        <th>図書ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                     <tr>
-                        <th>図書ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                     <tr>
-                        <th>図書ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                 </tbody>
             </table>
-            <label>上記の図書を貸出します</label>
-            <label>上記の図書を返却します</label>
+            <h3>上記の資料を貸出します/上記の資料を返却します</h3>
             <div class="form_button--margin">
                 <button class="btn btn-primary form__button form__button--padding">OK</button>
             </div>

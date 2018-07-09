@@ -11,9 +11,10 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h2>登録が完了しました</h2>
-        <h2>更新が完了しました</h2>
-        <h2>削除が完了しました</h2>
+        <h1>登録完了/更新完了/削除完了</h1>
+        <h3>会員ID : <span>000</span></h3>
+        <h3>会員名 : <span>山田太郎</span></h3>
+        <h3>の登録/更新/削除を行いました</h3>
     </div>
 </body>
 </html>

@@ -15,12 +15,16 @@
         <form action="SearchBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="isbn">ISBN番号</label>
-                    <input type="text" class="form-control" id="isbn" placeholder="0000000000000">
+                    <label for="bookId">ID</label>
+                    <input type="text" class="form-control" id="id" autocomplete="off">
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-2">
+                    <label for="isbn">ISBN番号</label>
+                    <input type="text" class="form-control" id="isbn" autocomplete="off">
+                </div>
+                <div class="col-xs-7">
                     <label for="bookName">資料名</label>
-                    <input type="text" class="form-control" id="bookName">
+                    <input type="text" class="form-control" id="bookName" autocomplete="off">
                 </div>
             </div>
             <div class="row">
@@ -36,12 +40,12 @@
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <label for="name">著者</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="author">著者</label>
+                    <input type="text" class="form-control" id="author" autocomplete="off">
                 </div>
                 <div class="col-xs-3">
                     <label for="company">出版社</label>
-                    <input type="text" class="form-control" id="company" placeholder="竹書房">
+                    <input type="text" class="form-control" id="company" autocomplete="off">
                 </div>
                 <div class="col-xs-4">
                     <label for="date">出版日</label>
@@ -69,11 +73,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-2">
-                    <button class="btn btn-primary form__button--margin form__button--padding">登録</button>
+                    <button class="btn btn-primary form__button--margin btn-block">検索</button>
                 </div>
             </div>
         </form>
         <div class="search__table--margin">
+            <h5><span>3</span>件のデータが見つかりました</h5>
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -90,7 +95,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th>000</th>
+                        <td>000</td>
                         <td>1234567890123</td>
                         <td>声に出して読みたい日本語</td>
                         <td>総記</td>
@@ -108,7 +113,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>000</th>
+                        <td>000</td>
                         <td>1234567890123</td>
                         <td>声に出して読みたい日本語</td>
                         <td>総記</td>
@@ -126,7 +131,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>000</th>
+                        <td>000</td>
                         <td>1234567890123</td>
                         <td>声に出して読みたい日本語</td>
                         <td>総記</td>

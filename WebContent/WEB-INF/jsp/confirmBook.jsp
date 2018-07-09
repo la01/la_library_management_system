@@ -11,7 +11,7 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>確認</h1>
+        <h1>登録確認/更新確認/削除確認</h1>
         <form action="DoneBook" method="post">
             <table class="table">
                 <thead>
@@ -55,9 +55,7 @@
                     </tr>
                 </tbody>
             </table>
-            <label>上記のデータで更新します</label>
-            <label>上記のデータを削除します</label>
-            <label>上記のデータを登録します</label>
+            <h3>上記のデータで更新します/上記のデータを削除します/上記のデータを登録します</h3>
             <div class="form_button--margin">
                 <button class="btn btn-primary form__button form__button--padding">OK</button>
             </div>
