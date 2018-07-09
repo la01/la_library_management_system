@@ -16,7 +16,7 @@
         <form action="ConfirmBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="bookId">ID</label>
+                    <label for="bookId">資料ID</label>
                     <input type="text" class="form-control" id="bookId" disabled>
                 </div>
                 <div class="col-xs-2">

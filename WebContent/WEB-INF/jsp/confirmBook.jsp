@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th>ID</th>
+                        <th>資料ID</th>
                         <td>000</td>
                     </tr>
                     <tr>

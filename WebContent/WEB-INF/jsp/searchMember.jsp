@@ -15,7 +15,7 @@
         <form action="SearchMember" action="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="memberId">ID</label>
+                    <label for="memberId">会員ID</label>
                     <input type="text" class="form-control" id="memberId" autocomplete="off">
                 </div>
                 <div class="col-xs-3">
@@ -59,8 +59,10 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>会員ID</th>
                         <th>姓名</th>
+                        <th>郵便番号</th>
+                        <th>電話番号</th>
                         <th>メールアドレス</th>
                         <th>操作</th>
                     </tr>
@@ -69,6 +71,8 @@
                     <tr>
                         <td>000</td>
                         <td>山田　太郎</td>
+                        <td>000-0000</td>
+                        <td>080-1234-5678</td>
                         <td>my@address.com</td>
                         <td>
                             <form action="InputMember" method="post" style="display: inline">
@@ -82,6 +86,8 @@
                     <tr>
                         <td>000</td>
                         <td>山田　太郎</td>
+                        <td>000-0000</td>
+                        <td>080-1234-5678</td>
                         <td>my@address.com</td>
                         <td>
                             <form action="InputMember" method="post" style="display: inline">
@@ -95,6 +101,8 @@
                     <tr>
                         <td>000</td>
                         <td>山田　太郎</td>
+                        <td>000-0000</td>
+                        <td>080-1234-5678</td>
                         <td>my@address.com</td>
                         <td>
                             <form action="InputMember" method="post" style="display: inline">

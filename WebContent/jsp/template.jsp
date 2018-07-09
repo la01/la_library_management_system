@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./">図書管理システム</a>
+            <a class="navbar-brand" href="./">新宿図書館 / 図書管理システム</a>
         </div>
         <%--
         <div id="navbar-collapse" class="collapse navbar-collapse">
@@ -92,6 +92,11 @@
                         <li>
                             <a href="InputReturn" class="bar-4">
                                 <i class="fa fa-caret-right"></i>返却
+                            </a>
+                        </li>
+                        <li>
+                            <a href="SearchRental" class="bar-4">
+                                <i class="fa fa-caret-right"></i>履歴
                             </a>
                         </li>
                     </ul>

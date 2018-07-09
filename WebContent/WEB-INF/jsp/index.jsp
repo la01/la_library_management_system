@@ -12,6 +12,9 @@
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
         <h1>メニューから選択してください</h1>
+        <form action="Error" method="post">
+        <button>エラー遷移</button>
+        </form>
     </div>
 </body>
 </html>

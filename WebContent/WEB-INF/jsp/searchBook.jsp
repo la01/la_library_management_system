@@ -15,7 +15,7 @@
         <form action="SearchBook" method="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="bookId">ID</label>
+                    <label for="bookId">資料ID</label>
                     <input type="text" class="form-control" id="id" autocomplete="off">
                 </div>
                 <div class="col-xs-2">
@@ -82,7 +82,7 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>資料ID</th>
                         <th>ISBN番号</th>
                         <th>資料名</th>
                         <th>分類名</th>

@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th>ID</th>
+                        <th>会員ID</th>
                         <td>000</td>
                     </tr>
                     <tr>
@@ -44,6 +44,10 @@
                     <tr>
                         <th>メールアドレス</th>
                         <td>my@address.com</td>
+                    </tr>
+                    <tr>
+                        <th>生年月日</th>
+                        <td>2018/01/01</td>
                     </tr>
                 </tbody>
             </table>

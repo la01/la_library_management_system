@@ -15,7 +15,7 @@
         <form action="ConfirmMember" method="post">
             <div class="row">
                 <div class="col-xs-2">
-                    <label for="memberId">ID</label>
+                    <label for="memberId">会員ID</label>
                     <input type="text" class="form-control" id="memberId" disabled>
                 </div>
                 <div class="col-xs-4">
