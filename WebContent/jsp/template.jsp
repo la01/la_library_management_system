@@ -5,6 +5,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="./">図書管理システム</a>
         </div>
+        <%--
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -17,6 +18,7 @@
                 </li>
             </ul>
         </div>
+        --%>
     </nav>
 </div>
 <div class="wrapper">
