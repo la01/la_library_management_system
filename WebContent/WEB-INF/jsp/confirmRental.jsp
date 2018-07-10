@@ -50,6 +50,7 @@
             <h3>上記の資料を貸出します/上記の資料を返却します</h3>
             <div class="form_button--margin">
                 <button class="btn btn-primary form__button form__button--padding">OK</button>
+                <button type="button" class="btn btn-default form__button form__button--padding">戻る</button>
             </div>
         </form>
     </div>

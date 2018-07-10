@@ -1,4 +1,4 @@
-package la.servet;
+package la.servlet.rental;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

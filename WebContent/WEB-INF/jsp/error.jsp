@@ -11,8 +11,8 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>エラータイトル</h1>
-        <h3>エラーメッセージ</h3>
+        <h1>${title }</h1>
+        <h3>${body }</h3>
     </div>
 </body>
 </html>
