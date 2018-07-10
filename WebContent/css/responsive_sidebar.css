@@ -16,6 +16,7 @@
 	width: 0;
 	height: 100%;
 	margin-left: -225px;
+	margin-top: 5px;
 	overflow-y: auto;
 	background: #f8f8f8;
 	border-right: 1px solid #e6e6e6;
