@@ -11,8 +11,10 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>登録確認/更新確認/削除確認</h1>
+        <h1>${mode}確認</h1>
         <form action="DoneMember" method="post">
+     	   	<input type="hidden" name="mode" value="${mode}">
+     	   	<input type="hidden" name="action" value="${action}">
             <table class="table">
                 <thead>
                     <tr>
@@ -23,38 +25,38 @@
                 <tbody>
                     <tr>
                         <th>会員ID</th>
-                        <td>000</td>
+                        <td><c:out value="${memberId}" /><input type="hidden" name="memberId" value="${memberId}"></td>
                     </tr>
                     <tr>
                         <th>姓名</th>
-                        <td>山田太郎</td>
+                        <td><c:out value="${familyName}" /><input type="hidden" name="familyName" value="${familyName}">　<c:out value="${name}" /><input type="hidden" name="name" value="${name}"></td>
                     </tr>
                     <tr>
                         <th>郵便番号</th>
-                        <td>000-0000</td>
+                        <td><c:out value="${postal}" /><input type="hidden" name="postal" value="${postal}"></td>
                     </tr>
                     <tr>
                         <th>住所</th>
-                        <td>東京都新宿区</td>
+                        <td><c:out value="${address}" /><input type="hidden" name="address" value="${address}"></td>
                     </tr>
                     <tr>
                         <th>電話番号</th>
-                        <td>000-0000-0000</td>
+                        <td><c:out value="${tel}" /><input type="hidden" name="tel" value="${tel}"></td>
                     </tr>
                     <tr>
                         <th>メールアドレス</th>
-                        <td>my@address.com</td>
+                        <td><c:out value="${email}" /><input type="hidden" name="email" value="${email}"></td>
                     </tr>
                     <tr>
                         <th>生年月日</th>
-                        <td>2018/01/01</td>
+                        <td><c:out value="${year}" /><input type="hidden" name="year" value="${year}">/<c:out value="${month}" /><input type="hidden" name="month" value="${month}">/<c:out value="${date}" /><input type="hidden" name="date" value="${date}"></td>
                     </tr>
                 </tbody>
             </table>
-            <h3>上記のデータで更新します/上記のデータを削除します/上記のデータを登録します</h3>
+            <h3>上記のデータを${mode}します</h3>
             <div class="form_button--margin">
-                <button class="btn btn-primary form__button form__button--padding">OK</button>
-                <button type="button" class="btn btn-default form__button form__button--padding">戻る</button>
+                <button type="submit" class="btn btn-primary form__button form__button--padding">OK</button>
+                <button type="button" class="btn btn-default form__button form__button--padding" onclick="history.back()">戻る</button>
             </div>
         </form>
     </div>

@@ -11,12 +11,15 @@
 <body>
 	<jsp:include page="../../jsp/template.jsp" flush="true" />
 	<div class="page-content-wrapper">
-		<h1>会員${action }</h1>
+		<h1>会員${mode}</h1>
 		<form action="ConfirmMember" method="post">
+			<input type="hidden" name="mode" value="${mode}">
+			<input type="hidden" name="action" value="${action}">
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="memberId">会員ID</label> <input type="text"
-						class="form-control" id="memberId"  name="memberId"disabled>
+						class="form-control" id="memberId" value="11" disabled>
+					<input type="hidden" name="memberId" value = "11">
 				</div>
 				<div class="col-xs-4">
 					<label for="lastName">苗字</label> <input type="text"
@@ -72,7 +75,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<button type="submit" class="btn btn-primary form__button--margin btn-block">${action }</button>
+					<button type="submit" class="btn btn-primary form__button--margin btn-block">${mode}</button>
 				</div>
 				<div class="col-xs-2">
 					<button type="button" onclick="history.back()"

@@ -12,11 +12,14 @@ public class InputMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("mode", "登録");
+		request.setAttribute("action", "insert");
 		request.getRequestDispatcher("WEB-INF/jsp/inputMember.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("action", "変更");
+		request.setAttribute("mode", "変更");
+		request.setAttribute("action", "update");
 		request.getRequestDispatcher("WEB-INF/jsp/inputMember.jsp").forward(request, response);
 	}
 

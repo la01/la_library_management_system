@@ -1,7 +1,7 @@
 package la.bean.member;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Member implements Serializable{
 

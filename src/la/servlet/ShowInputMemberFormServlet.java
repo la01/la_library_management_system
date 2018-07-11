@@ -15,6 +15,7 @@ import la.servet.member.MemberServlet;
 @WebServlet("/ShowInputMemberFormServlet")
 public class ShowInputMemberFormServlet extends MemberServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("action", "登録");
 		forward(request, response, "/InputMember.jsp");
 	}
 
