@@ -87,26 +87,41 @@
 .sidebar-nav .bar-0 {
 	background: #ffffff !important;
 	color: #666 !important;
+	border: 1px;
+	border-style: none solid solid solid;
+	border-color: #ffffff;
 }
 
 .sidebar-nav .bar-1 {
 	background: #f4f4f4 !important;
 	color: #666 !important;
+	border: 1px;
+	border-style: none solid solid solid;
+	border-color: #f4f4f4;
 }
 
 .sidebar-nav .bar-2 {
 	background: #e8e8e8 !important;
 	color: #666 !important;
+	border: 1px;
+	border-style: none solid solid solid;
+	border-color: #e8e8e8;
 }
 
 .sidebar-nav .bar-3 {
 	background: #dcdcdc !important;
 	color: #666 !important;
+	border: 1px;
+	border-style: none solid solid solid;
+	border-color: #dcdcdc;
 }
 
 .sidebar-nav .bar-4 {
 	background: #d0d0d0 !important;
 	color: #666 !important;
+	border: 1px;
+	border-style: none solid solid solid;
+	border-color: #d0d0d0;
 }
 
 @media ( max-width : 992px) {

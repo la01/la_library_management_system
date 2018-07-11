@@ -30,55 +30,70 @@
 	<div class="sidebar-wrapper">
 		<div id="sidebar">
 			<ul class="sidebar-nav">
-				<li><a href="./" class="bar-1"> <span class="sidebar-icon">
-							<i class="fas fa-home"></i>
-					</span> <span class="sidebar-title">ホーム</span>
-				</a></li>
-				<li><a class="accordion-toggle collapsed toggle-switch bar-2"
-					data-toggle="collapse" href="#submenu-1"> <span
-						class="sidebar-icon"> <i class="fa fa-users"></i>
-					</span> <span class="sidebar-title">会員メニュー</span> <b class="caret"></b>
-				</a>
-					<ul id="submenu-1" class="panel-collapse collapse panel-switch"
-						role="menu">
-						<li><a href="SearchMember" class="bar-2"> <i
-								class="fa fa-caret-right"></i>会員検索・更新・削除
-						</a></li>
-						<li><a href="InputMember" class="bar-2"> <i
-								class="fa fa-caret-right"></i>会員登録
-						</a></li>
-					</ul></li>
-				<li><a class="accordion-toggle collapsed toggle-switch bar-3"
-					data-toggle="collapse" href="#submenu-2"> <span
-						class="sidebar-icon"> <i class="fas fa-book"></i>
-					</span> <span class="sidebar-title">資料メニュー</span> <b class="caret"></b>
-				</a>
-					<ul id="submenu-2" class="panel-collapse collapse panel-switch"
-						role="menu">
-						<li><a href="SearchBook" class="bar-3"> <i
-								class="fa fa-caret-right"></i>資料検索・更新・削除
-						</a></li>
-						<li><a href="InputBook" class="bar-3"> <i
-								class="fa fa-caret-right"></i>資料登録
-						</a></li>
-					</ul></li>
-				<li><a class="accordion-toggle collapsed toggle-switch bar-4"
-					data-toggle="collapse" href="#submenu-3"> <span
-						class="sidebar-icon"> <i class="fas fa-exchange-alt"></i>
-					</span> <span class="sidebar-title">レンタルメニュー</span> <b class="caret"></b>
-				</a>
-					<ul id="submenu-3" class="panel-collapse collapse panel-switch"
-						role="menu">
-						<li><a href="InputRental" class="bar-4"> <i
-								class="fa fa-caret-right"></i>貸出
-						</a></li>
-						<li><a href="InputReturn" class="bar-4"> <i
-								class="fa fa-caret-right"></i>返却
-						</a></li>
-						<li><a href="SearchRental" class="bar-4"> <i
-								class="fa fa-caret-right"></i>履歴
-						</a></li>
-					</ul></li>
+				<c:if test="${!empty login }">
+					<li class="border"><a href="./" class="bar-1"> <span
+							class="sidebar-icon"> <i class="fas fa-home"></i>
+						</span> <span class="sidebar-title">ホーム</span>
+					</a></li>
+					<li class="border"><a
+						class="accordion-toggle collapsed toggle-switch bar-2"
+						data-toggle="collapse" href="#submenu-1"> <span
+							class="sidebar-icon"> <i class="fa fa-users"></i>
+						</span> <span class="sidebar-title">会員メニュー</span> <b class="caret"></b>
+					</a>
+						<ul id="submenu-1" class="panel-collapse collapse panel-switch"
+							role="menu">
+							<li><a href="SearchMember" class="bar-2"> <i
+									class="fa fa-caret-right"></i>会員検索・更新・削除
+							</a></li>
+							<li><a href="InputMember" class="bar-2"> <i
+									class="fa fa-caret-right"></i>会員登録
+							</a></li>
+						</ul></li>
+					<li class="border"><a
+						class="accordion-toggle collapsed toggle-switch bar-3"
+						data-toggle="collapse" href="#submenu-2"> <span
+							class="sidebar-icon"> <i class="fas fa-book"></i>
+						</span> <span class="sidebar-title">資料メニュー</span> <b class="caret"></b>
+					</a>
+						<ul id="submenu-2" class="panel-collapse collapse panel-switch"
+							role="menu">
+							<li><a href="SearchBook" class="bar-3"> <i
+									class="fa fa-caret-right"></i>資料検索・更新・削除
+							</a></li>
+							<li><a href="InputBook" class="bar-3"> <i
+									class="fa fa-caret-right"></i>資料登録
+							</a></li>
+						</ul></li>
+					<li class="border"><a
+						class="accordion-toggle collapsed toggle-switch bar-4"
+						data-toggle="collapse" href="#submenu-3"> <span
+							class="sidebar-icon"> <i class="fas fa-exchange-alt"></i>
+						</span> <span class="sidebar-title">レンタルメニュー</span> <b class="caret"></b>
+					</a>
+						<ul id="submenu-3" class="panel-collapse collapse panel-switch"
+							role="menu">
+							<li><a href="InputRental" class="bar-4"> <i
+									class="fa fa-caret-right"></i>貸出
+							</a></li>
+							<li><a href="InputReturn" class="bar-4"> <i
+									class="fa fa-caret-right"></i>返却
+							</a></li>
+							<li><a href="SearchRental" class="bar-4"> <i
+									class="fa fa-caret-right"></i>履歴
+							</a></li>
+						</ul></li>
+				</c:if>
+				<c:if test="${empty login }">
+					<li class="border"><a href="./" class="bar-1"> <span
+							class="sidebar-icon"> <i class="fas fa-home"></i>
+						</span> <span class="sidebar-title">ホーム</span>
+					</a></li>
+					<li class="border"><a href="SearchBook" class="bar-2"> <span
+							class="sidebar-icon"> <i class="fas fa-book"></i>
+						</span> <span class="sidebar-title">資料検索</span>
+					</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
