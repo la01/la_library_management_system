@@ -11,63 +11,60 @@
 <body>
 	<jsp:include page="../../jsp/template.jsp" flush="true" />
 	<div class="page-content-wrapper">
-		<h1>会員登録/会員更新</h1>
+		<h1>会員${action }</h1>
 		<form action="ConfirmMember" method="post">
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="memberId">会員ID</label> <input type="text"
-						class="form-control" id="memberId" disabled>
+						class="form-control" id="memberId"  name="memberId"disabled>
 				</div>
 				<div class="col-xs-4">
 					<label for="lastName">苗字</label> <input type="text"
-						class="form-control" id="lastName" autocomplete="off">
+						class="form-control" id="lastName" name="familyName" autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="fisrtName">名前</label> <input type="text"
-						class="form-control" id="fisrtName" autocomplete="off">
+						class="form-control" id="name" name="name" autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="zip">郵便番号</label> <input type="text"
-						class="form-control" id="zip" placeholder="0000000"
+						class="form-control" id="postal" name="postal" placeholder="0000000"
 						autocomplete="off">
 				</div>
 				<div class="col-xs-8">
 					<label for="address">住所</label> <input type="text"
-						class="form-control" id="address" autocomplete="off">
+						class="form-control" id="address" name="address" autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="phone">電話番号</label> <input type="text"
-						class="form-control" id="phone" placeholder="000-0000-0000"
+						class="form-control" id="tel" name="tel" placeholder="000-0000-0000"
 						autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="mail">メールアドレス</label> <input type="text"
-						class="form-control" id="mail" placeholder="my@address.com"
+						class="form-control" id="email"  name="email" placeholder="my@address.com"
 						autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="date">生年月日</label>
 					<div class="row">
 						<div class="col-xs-4">
-							<select class="form-control" id="year">
-								<option>1998</option>
-								<option>1900</option>
+							<select class="form-control" id="year" name="year">
+								<jsp:include page="../../jsp/year.jsp" flush="true" />
 							</select>
 						</div>
 						<div class="col-xs-4">
-							<select class="form-control" id="month">
-								<option>1</option>
-								<option>12</option>
+							<select class="form-control" id="month" name="month">
+								<jsp:include page="../../jsp/month.jsp" flush="true" />
 							</select>
 						</div>
 						<div class="col-xs-4">
-							<select class="form-control" id="day">
-								<option>1</option>
-								<option>31</option>
+							<select class="form-control" id="date" name="date">
+								<jsp:include page="../../jsp/date.jsp" flush="true" />
 							</select>
 						</div>
 					</div>
@@ -75,10 +72,10 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<button class="btn btn-primary form__button--margin btn-block">登録/更新</button>
+					<button type="submit" class="btn btn-primary form__button--margin btn-block">${action }</button>
 				</div>
 				<div class="col-xs-2">
-					<button type="button"
+					<button type="button" onclick="history.back()"
 						class="btn btn-default form__button--margin btn-block">戻る</button>
 				</div>
 			</div>
