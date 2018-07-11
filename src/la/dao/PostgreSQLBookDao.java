@@ -20,7 +20,7 @@ public class PostgreSQLBookDao extends DBManager{
 		try {
 			String sql =
 					"select bs.bookstate_id, bi.bookinfo_isbn, bi.bookinfo_name, c.category_code, c.category_name, " +
-					"bi.bookinfo_author, p.publisher_name, bi.bookinfo_date, bs.bookstate_add from bookinfo bi JOIN " +
+					"bi.bookinfo_author, p.publisher_name, bi.bookinfo_date, bs.bookstate_add, bs.bookstate_remove from bookinfo bi JOIN " +
 					"bookstate bs on bi.bookinfo_isbn = bs.bookinfo_isbn JOIN category c ON bi.category_code = " +
 					"c.category_code JOIN publisher p ON  bi.publisher_code = p.publisher_code ";
 			stmt = conn.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class PostgreSQLBookDao extends DBManager{
 			// create query
 			String sql =
 					"select bs.bookstate_id, bi.bookinfo_isbn, bi.bookinfo_name, c.category_code, c.category_name, " +
-					"bi.bookinfo_author, p.publisher_name, bi.bookinfo_date, bs.bookstate_add from bookinfo bi JOIN " +
+					"bi.bookinfo_author, p.publisher_name, bi.bookinfo_date, bs.bookstate_add, bs.bookstate_remove from bookinfo bi JOIN " +
 					"bookstate bs on bi.bookinfo_isbn = bs.bookinfo_isbn JOIN category c ON bi.category_code = " +
 					"c.category_code JOIN publisher p ON  bi.publisher_code = p.publisher_code ";
 			List<String> queryList = new ArrayList<String>();
