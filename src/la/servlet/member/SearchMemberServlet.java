@@ -1,4 +1,4 @@
-package la.servet.member;
+package la.servlet.member;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -76,6 +76,7 @@ public class SearchMemberServlet extends MemberServlet {
 		}
 
 		// set request scope
+		request.setAttribute("result", true);
 		request.setAttribute("memberList", memberList);
 
 		forward(request, response, "WEB-INF/jsp/searchMember.jsp");

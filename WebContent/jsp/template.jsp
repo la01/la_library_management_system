@@ -11,7 +11,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><c:if test="${!empty login}">
 						<a href="#" class="navbar__dropdown--margin"
-							data-toggle="dropdown">{login.name}でログイン中</a>
+							data-toggle="dropdown">職員でログイン中</a>
 						<ul class="dropdown-menu dropdown-block" role="menu">
 							<li><a href="Logout">Logout</a></li>
 						</ul>

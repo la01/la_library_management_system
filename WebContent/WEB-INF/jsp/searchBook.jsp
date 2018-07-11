@@ -89,7 +89,7 @@
 			</div>
 		</form>
 		<div class="search__table--margin">
-			<c:if test="${!empty bookList}">
+			<c:if test="${!empty result}">
 				<h5>
 					<span>${ fn:length( bookList ) }</span>件のデータが見つかりました
 				</h5>

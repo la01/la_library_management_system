@@ -1,4 +1,4 @@
-package la.servet.book;
+package la.servlet.book;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -94,7 +94,6 @@ public class SearchBookServlet extends BookServlet {
 			// dao
 			PostgreSQLBookDao dao = new PostgreSQLBookDao();
 			bookList = dao.selectByCondition(book);
-			System.out.println("bookList length:" + bookList.size());
 
 			PostgreSQLCategoryDao categoryDao = new PostgreSQLCategoryDao();
 			categoryList = categoryDao.select();
@@ -120,6 +119,7 @@ public class SearchBookServlet extends BookServlet {
 		}
 
 		// set request scope
+		request.setAttribute("result", true);
 		request.setAttribute("bookList", bookList);
 		request.setAttribute("categoryList", categoryList);
 

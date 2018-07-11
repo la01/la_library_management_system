@@ -89,7 +89,6 @@ public class PostgreSQLBookDao extends DBManager{
 			}
 			queryList.remove(queryList.size()-1);
 			sql += " " + String.join(" ", queryList);
-			System.out.println("sql:"+sql);
 
 			//create statement
 			stmt = conn.prepareStatement(sql);
