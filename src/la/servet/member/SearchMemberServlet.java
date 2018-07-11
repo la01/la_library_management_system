@@ -54,10 +54,9 @@ public class SearchMemberServlet extends MemberServlet {
 				member = new Member(id, familyName, name, postal, address, tel, email, null);
 			}
 
-			// dao search
-			PostgreSQLMemberDao dao = new PostgreSQLMemberDao();
-			memberList = dao.selectByCondition(member);
-			//memberList = dao.select();
+			// dao
+			PostgreSQLMemberDao memberDao = new PostgreSQLMemberDao();
+			memberList = memberDao.selectByCondition(member);
 
 		} catch(DataAccessException e) {
 			request.setAttribute("title", "検索に失敗しました");
