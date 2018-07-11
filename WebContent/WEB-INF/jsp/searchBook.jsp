@@ -221,8 +221,10 @@
 							<th>分類名</th>
 							<th>著者</th>
 							<th>出版社</th>
+							<th>貸出状況</th>
 							<th>出版日</th>
 							<th>入荷日</th>
+							<th>処分日</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -235,8 +237,10 @@
 								<td><c:out value="${book.categoryName }" /></td>
 								<td><c:out value="${book.author }" /></td>
 								<td><c:out value="${book.publisher }" /></td>
+								<td>?</td>
 								<td><c:out value="${book.publishedDay }" /></td>
 								<td><c:out value="${book.addedDay }" /></td>
+								<td><c:out value="${book.removedDay }" /></td>
 								<td>
 									<form action="InputBook" method="post" style="display: inline">
 										<button class="btn btn-warning table__button--margin">更新</button>

@@ -165,6 +165,7 @@ public class PostgreSQLBookDao extends DBManager{
 			String publisher = rs.getString("publisher_name");
 			Date publishedDay = rs.getDate("bookinfo_date");
 			Date addedDay = rs.getDate("bookstate_add");
+			Date removedDay = rs.getDate("bookstate_remove");
 
 			Book book = new Book();
 			book.setId(id);
@@ -176,6 +177,7 @@ public class PostgreSQLBookDao extends DBManager{
 			book.setPublisher(publisher);
 			book.setPublishedDay(publishedDay);
 			book.setAddedDay(addedDay);
+			book.setRemovedDay(removedDay);
 			return book;
 
 		} catch(Exception e) {
