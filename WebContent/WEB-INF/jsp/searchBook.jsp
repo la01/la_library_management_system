@@ -25,7 +25,7 @@
 						class="form-control" id="isbn" name="isbn" value="${isbn }"
 						autocomplete="off">
 				</div>
-				<div class="col-xs-7">
+				<div class="col-xs-8">
 					<label for="bookName">資料名</label> <input type="text"
 						class="form-control" id="name" name="name" value="${name }"
 						autocomplete="off">
@@ -48,35 +48,154 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-4">
 					<label for="author">著者</label> <input type="text"
 						class="form-control" id="author" name="author" value="${author}"
 						autocomplete="off">
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-4">
 					<label for="company">出版社</label> <input type="text"
 						class="form-control" id="publisher" name="publisher"
 						value="${publisher}" autocomplete="off">
 				</div>
+				<div class="col-xs-2">
+					<label for="date">貸出状況</label> <select class="form-control"
+						id="rental">
+						<option>全て</option>
+						<option>貸出可能</option>
+						<option>貸出不可</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-xs-4">
-					<label for="date">出版日</label>
+					<label for="from_publish_date">出版日(From)</label>
 					<div class="row">
 						<div class="col-xs-4">
-							<select class="form-control" id="year">
+							<select class="form-control" id="from_publish_year">
 								<option>2018</option>
-								<option>1900</option>
 							</select>
 						</div>
 						<div class="col-xs-4">
-							<select class="form-control" id="month">
-								<option>1</option>
+							<select class="form-control" id="from_publish_month">
 								<option>12</option>
 							</select>
 						</div>
 						<div class="col-xs-4">
-							<select class="form-control" id="day">
-								<option>1</option>
+							<select class="form-control" id="from_publish_day">
 								<option>31</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<label for="to_publish_date">出版日(To)</label>
+					<div class="row">
+						<div class="col-xs-4">
+							<select class="form-control" id="to_publish_year">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_publish_month">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_publish_day">
+								<option></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<label for="date">資料の状態</label> <select class="form-control"
+						id="status">
+						<option>全て</option>
+						<option>蔵書のみ</option>
+						<option>処分済み</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="from_add_date">入荷日(From)</label>
+					<div class="row">
+						<div class="col-xs-4">
+							<select class="form-control" id="from_add_year">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="from_add_month">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="from_add_day">
+								<option></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<label for="to_add_date">入荷日(To)</label>
+					<div class="row">
+						<div class="col-xs-4">
+							<select class="form-control" id="to_add_year">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_add_month">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_add_day">
+								<option></option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="from_remove_date">処分日(From)</label>
+					<div class="row">
+						<div class="col-xs-4">
+							<select class="form-control" id="from_remove_year">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="from_remove_month">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="from_remove_day">
+								<option></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<label for="to_remove_date">処分日(To)</label>
+					<div class="row">
+						<div class="col-xs-4">
+							<select class="form-control" id="to_remove_year">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_remove_month">
+								<option></option>
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<select class="form-control" id="to_remove_day">
+								<option></option>
 							</select>
 						</div>
 					</div>
