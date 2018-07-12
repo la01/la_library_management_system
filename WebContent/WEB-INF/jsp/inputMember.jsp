@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,61 +14,72 @@
 	<div class="page-content-wrapper">
 		<h1>会員${mode}</h1>
 		<form action="ConfirmMember" method="post">
-			<input type="hidden" name="mode" value="${mode}">
-			<input type="hidden" name="action" value="${action}">
+			<input type="hidden" name="mode" value="${mode}"> <input
+				type="hidden" name="action" value="${action}">
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="memberId">会員ID</label> <input type="text"
-						class="form-control" id="memberId" value="11" disabled>
-					<input type="hidden" name="memberId" value = "11">
+						class="form-control" id="memberId" value="${memberId}" disabled> <input
+						type="hidden" name="memberId" value="${memberId}">
 				</div>
 				<div class="col-xs-4">
 					<label for="lastName">苗字</label> <input type="text"
-						class="form-control" id="lastName" name="familyName" autocomplete="off">
+						class="form-control" id="lastName" name="familyName" value="${familyName}"
+						autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="fisrtName">名前</label> <input type="text"
-						class="form-control" id="name" name="name" autocomplete="off">
+						class="form-control" id="name" name="name" value="${name}" autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="zip">郵便番号</label> <input type="text"
-						class="form-control" id="postal" name="postal" placeholder="0000000"
-						autocomplete="off">
+						class="form-control" id="postal" name="postal" value="${postal}"
+						placeholder="0000000" autocomplete="off">
 				</div>
 				<div class="col-xs-8">
 					<label for="address">住所</label> <input type="text"
-						class="form-control" id="address" name="address" autocomplete="off">
+						class="form-control" id="address" name="address" value="${address}"
+						autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="phone">電話番号</label> <input type="text"
-						class="form-control" id="tel" name="tel" placeholder="000-0000-0000"
-						autocomplete="off">
+						class="form-control" id="tel" name="tel" value="${tel}"
+						placeholder="000-0000-0000" autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="mail">メールアドレス</label> <input type="text"
-						class="form-control" id="email"  name="email" placeholder="my@address.com"
-						autocomplete="off">
+						class="form-control" id="email" name="email" value="${email}"
+						placeholder="my@address.com" autocomplete="off">
 				</div>
 				<div class="col-xs-4">
 					<label for="date">生年月日</label>
 					<div class="row">
 						<div class="col-xs-4">
 							<select class="form-control" id="year" name="year">
-								<jsp:include page="../../jsp/year.jsp" flush="true" />
+								<c:forEach begin="1900" end="2030" var="i">
+									<option <c:if test="${i == year}">selected</c:if> value="<fmt:formatNumber value="${i}" pattern="0000" />">
+										<c:out value="${i}" /></option>
+								</c:forEach>
 							</select>
 						</div>
 						<div class="col-xs-4">
 							<select class="form-control" id="month" name="month">
-								<jsp:include page="../../jsp/month.jsp" flush="true" />
+								<c:forEach begin="0" end="11" var="i">
+									<option <c:if test="${i == month }">selected</c:if> value="<fmt:formatNumber value="${i + 1}" pattern="00" />">
+										<c:out value="${i + 1}" /></option>
+								</c:forEach>
 							</select>
 						</div>
 						<div class="col-xs-4">
 							<select class="form-control" id="date" name="date">
-								<jsp:include page="../../jsp/date.jsp" flush="true" />
+								<c:forEach begin="1" end="31" var="i">
+									<option <c:if test="${i == date }">selected</c:if> value="<fmt:formatNumber value="${i}" pattern="00" />">
+										<c:out value="${i}" /></option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -75,7 +87,8 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<button type="submit" class="btn btn-primary form__button--margin btn-block">${mode}</button>
+					<button type="submit"
+						class="btn btn-primary form__button--margin btn-block">${mode}</button>
 				</div>
 				<div class="col-xs-2">
 					<button type="button" onclick="history.back()"

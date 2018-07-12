@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.ValidationErrors;
+import la.bean.member.InputMemberForm;
+
 @WebServlet("/ConfirmMember")
 public class ConfirmMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,18 +44,18 @@ public class ConfirmMemberServlet extends MemberServlet {
 			String month = request.getParameter("month");
 			String date = request.getParameter("date");
 
-/*			if (!action.equals("delete")) {
+			if (!(action.equals("delete"))) {
 				InputMemberForm memberForm = new InputMemberForm(memberId, familyName, name, postal, address, tel,
 						email, year, month, date);
 				ValidationErrors errors = memberForm.validate();
 
-				if (errors != null) {
+				if (errors.getSize() != 0) {
 					request.setAttribute("title", "入力フォームエラー");
 					request.setAttribute("body", errors);
 					forward(request, response, "Error");
 				}
 			}
-*/
+
 			request.setAttribute("memberId", memberId);
 			request.setAttribute("familyName", familyName);
 			request.setAttribute("name", name);

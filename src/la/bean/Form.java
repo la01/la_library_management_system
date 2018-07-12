@@ -8,12 +8,12 @@ public abstract class Form {
 		}
 		return null;
 	}
-	protected ValidationError checkLength(String propertyName, String propety, int min, int max) {
+	protected ValidationError checkLength(String propertyName, String property, int min, int max) {
 		if(propertyName == null) {
 			return null;
-		} else if(propertyName.length() < min) {
+		} else if(property.length() < min) {
 			return new ValidationError(propertyName + "は" + min + "文字以上である必要があります");
-		} else if(propertyName.length() > max) {
+		} else if(property.length() > max) {
 			return new ValidationError(propertyName + "は" + max + "文字以下である必要があります");
 		}
 		return null;

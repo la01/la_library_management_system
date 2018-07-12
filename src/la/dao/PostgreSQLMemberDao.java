@@ -136,8 +136,6 @@ public class PostgreSQLMemberDao extends DBManager {
 	}
 
 	public int insert(Member member) throws DataAccessException {
-
-
 		return 0;
 	}
 
