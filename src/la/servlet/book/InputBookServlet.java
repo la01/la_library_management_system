@@ -62,7 +62,7 @@ public class InputBookServlet extends BookServlet {
 			String id = request.getParameter("id");
 			String isbn = request.getParameter("isbn");
 			String name = request.getParameter("name");
-			String categoryName = request.getParameter("categoryName");
+			String categoryCode = request.getParameter("categoryCode");
 			String author = request.getParameter("author");
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
@@ -70,7 +70,7 @@ public class InputBookServlet extends BookServlet {
 			request.setAttribute("id", id);
 			request.setAttribute("isbn", isbn);
 			request.setAttribute("name", name);
-			request.setAttribute("categoryName", categoryName);
+			request.setAttribute("categoryCode", categoryCode);
 			request.setAttribute("author", author);
 			request.setAttribute("publisher", publisher);
 			request.setAttribute("publishedDay", publishedDay);

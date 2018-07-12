@@ -23,6 +23,7 @@ public class PostgreSQLBookDao extends DBManager{
 					"  bs.bookstate_id, \n" + 
 					"  bi.bookinfo_isbn, \n" + 
 					"  bi.bookinfo_name, \n" + 
+					"  c.category_code, \n" + 
 					"  c.category_name, \n" + 
 					"  bi.bookinfo_author, \n" + 
 					"  p.publisher_name, \n" + 
@@ -90,6 +91,7 @@ public class PostgreSQLBookDao extends DBManager{
 					"  bs.bookstate_id, \n" + 
 					"  bi.bookinfo_isbn, \n" + 
 					"  bi.bookinfo_name, \n" + 
+					"  c.category_code, \n" + 
 					"  c.category_name, \n" + 
 					"  bi.bookinfo_author, \n" + 
 					"  p.publisher_name, \n" + 
@@ -287,6 +289,7 @@ public class PostgreSQLBookDao extends DBManager{
 			int id = rs.getInt("bookstate_id");
 			String ISBNCode = rs.getString("bookinfo_isbn");
 			String name = rs.getString("bookinfo_name");
+			int categoryCode = rs.getInt("category_code");
 			String categoryName = rs.getString("category_name");
 			String author = rs.getString("bookinfo_author");
 			String publisher = rs.getString("publisher_name");
@@ -300,6 +303,7 @@ public class PostgreSQLBookDao extends DBManager{
 			book.setId(id);
 			book.setISBNCode(ISBNCode);
 			book.setName(name);
+			book.setCategoryCode(categoryCode);
 			book.setCategoryName(categoryName);
 			book.setAuthor(author);
 			book.setPublisher(publisher);

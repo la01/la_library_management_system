@@ -8,7 +8,7 @@
     <title></title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
-    <script type="text/javascript" src="./js/searchRental.js"></script>
+    <script type="text/javascript" src="./js/tablesorter.js"></script>
 </head>
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />

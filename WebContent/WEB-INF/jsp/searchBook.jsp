@@ -8,6 +8,8 @@
 <meta charset="utf-8">
 <title></title>
 <jsp:include page="../../jsp/include.jsp" flush="true" />
+<script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="./js/tablesorter.js"></script>
 </head>
 <body>
 	<jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -81,40 +83,44 @@
 							<c:if test="${rental == 2}">selected="selected"</c:if>>貸出不可</option>
 					</select>
 				</div>
-				<div class="col-xs-3">
-					<label for="date">資料の状態</label> <select class="form-control"
-						id="status" name="status">
-						<option value="0"
-							<c:if test="${status == 0}">selected="selected"</c:if>>全て</option>
-						<option value="1"
-							<c:if test="${status == 1}">selected="selected"</c:if>>蔵書のみ</option>
-						<option value="2"
-							<c:if test="${status == 2}">selected="selected"</c:if>>処分済み</option>
-					</select>
-				</div>
+				<c:if test="${!empty login}">
+					<div class="col-xs-3">
+						<label for="date">資料の状態</label> <select class="form-control"
+							id="status" name="status">
+							<option value="0"
+								<c:if test="${status == 0}">selected="selected"</c:if>>全て</option>
+							<option value="1"
+								<c:if test="${status == 1}">selected="selected"</c:if>>蔵書のみ</option>
+							<option value="2"
+								<c:if test="${status == 2}">selected="selected"</c:if>>処分済み</option>
+						</select>
+					</div>
+				</c:if>
 			</div>
-			<div class="row">
-				<div class="col-xs-3">
-					<label for="from_added_date">入荷日(From)</label> <input type="date"
-						class="form-control" id="from_added_date" name="from_added_date"
-						value="${ from_added_date}">
+			<c:if test="${!empty login }">
+				<div class="row">
+					<div class="col-xs-3">
+						<label for="from_added_date">入荷日(From)</label> <input type="date"
+							class="form-control" id="from_added_date" name="from_added_date"
+							value="${ from_added_date}">
+					</div>
+					<div class="col-xs-3">
+						<label for="to_added_date">入荷日(To)</label> <input type="date"
+							class="form-control" id="to_added_date" name="to_added_date"
+							value="${ to_added_date}">
+					</div>
+					<div class="col-xs-3">
+						<label for="from_removed_date">処分日(From)</label> <input
+							type="date" class="form-control" id="from_removed_date"
+							name="from_removed_date" value="${ from_removed_date}">
+					</div>
+					<div class="col-xs-3">
+						<label for="to_removed_date">処分日(To)</label> <input type="date"
+							class="form-control" id="to_removed_date" name="to_removed_date"
+							value="${ to_removed_date}">
+					</div>
 				</div>
-				<div class="col-xs-3">
-					<label for="to_added_date">入荷日(To)</label> <input type="date"
-						class="form-control" id="to_added_date" name="to_added_date"
-						value="${ to_added_date}">
-				</div>
-				<div class="col-xs-3">
-					<label for="from_removed_date">処分日(From)</label> <input type="date"
-						class="form-control" id="from_removed_date"
-						name="from_removed_date" value="${ from_removed_date}">
-				</div>
-				<div class="col-xs-3">
-					<label for="to_removed_date">処分日(To)</label> <input type="date"
-						class="form-control" id="to_removed_date" name="to_removed_date"
-						value="${ to_removed_date}">
-				</div>
-			</div>
+			</c:if>
 			<div class="row">
 				<div class="col-xs-2">
 					<button class="btn btn-primary form__button--margin btn-block">検索</button>
@@ -126,7 +132,7 @@
 				<h5>
 					<span>${ fn:length( bookList ) }</span>件のデータが見つかりました
 				</h5>
-				<table class="table table-condensed">
+				<table class="table table-condensed" id="resultTable">
 					<thead>
 						<tr>
 							<th>資料ID</th>
@@ -137,9 +143,11 @@
 							<th>出版社</th>
 							<th>貸出状況</th>
 							<th>出版日</th>
-							<th>入荷日</th>
-							<th>処分日</th>
-							<th>操作</th>
+							<c:if test="${!empty login }">
+								<th>入荷日</th>
+								<th>処分日</th>
+								<th>操作</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
@@ -154,35 +162,38 @@
 								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if> <c:if
 										test='${book.statusCode == 2}'>貸出不可</c:if></td>
 								<td><c:out value="${book.publishedDay }" /></td>
-								<td><c:out value="${book.addedDay }" /></td>
-								<td><c:out value="${book.removedDay }" /></td>
-								<td>
-									<form action="InputBook" method="post" style="display: inline">
-										<input type="hidden" name="id" value="${book.id }"> <input
-											type="hidden" name="isbn" value="${book.ISBNCode }"> <input
-											type="hidden" name="name" value="${book.name }"> <input
-											type="hidden" name="categoryName"
-											value="${book.categoryName }"> <input type="hidden"
-											name="author" value="${book.author }"> <input
-											type="hidden" name="publisher" value="${book.publisher }">
-										<input type="hidden" name="publishedDay"
-											value="${book.publishedDay }">
-										<button class="btn btn-warning table__button--margin">更新</button>
-									</form>
-									<form action="ConfirmBook" method="post"
-										style="display: inline">
-										<input type="hidden" name="id" value="${book.id }"> <input
-											type="hidden" name="isbn" value="${book.ISBNCode }"> <input
-											type="hidden" name="name" value="${book.name }"> <input
-											type="hidden" name="categoryCode"
-											value="${book.categoryName }"> <input type="hidden"
-											name="author" value="${book.author }"> <input
-											type="hidden" name="publisher" value="${book.publisher }">
-										<input type="hidden" name="publishedDay"
-											value="${book.publishedDay }">
-										<button class="btn btn-danger table__button--margin" <c:if test="${book.removedDay != NULL}">disabled="disabled"</c:if>>削除</button>
-									</form>
-								</td>
+								<c:if test="${!empty login }">
+									<td><c:out value="${book.addedDay }" /></td>
+									<td><c:out value="${book.removedDay }" /></td>
+									<td>
+										<form action="InputBook" method="post" style="display: inline">
+											<input type="hidden" name="id" value="${book.id }"> <input
+												type="hidden" name="isbn" value="${book.ISBNCode }">
+											<input type="hidden" name="name" value="${book.name }">
+											<input type="hidden" name="categoryCode"
+												value="${book.categoryCode }"> <input type="hidden"
+												name="author" value="${book.author }"> <input
+												type="hidden" name="publisher" value="${book.publisher }">
+											<input type="hidden" name="publishedDay"
+												value="${book.publishedDay }">
+											<button class="btn btn-warning table__button--margin">更新</button>
+										</form>
+										<form action="ConfirmBook" method="post"
+											style="display: inline">
+											<input type="hidden" name="id" value="${book.id }"> <input
+												type="hidden" name="isbn" value="${book.ISBNCode }">
+											<input type="hidden" name="name" value="${book.name }">
+											<input type="hidden" name="categoryCode"
+												value="${book.categoryName }"> <input type="hidden"
+												name="author" value="${book.author }"> <input
+												type="hidden" name="publisher" value="${book.publisher }">
+											<input type="hidden" name="publishedDay"
+												value="${book.publishedDay }">
+											<button class="btn btn-danger table__button--margin"
+												<c:if test="${book.removedDay != NULL}">disabled="disabled"</c:if>>削除</button>
+										</form>
+									</td>
+								</c:if>
 							</tr>
 						</c:forEach>
 					</tbody>

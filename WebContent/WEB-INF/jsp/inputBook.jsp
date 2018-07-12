@@ -13,14 +13,15 @@
 <body>
 	<jsp:include page="../../jsp/template.jsp" flush="true" />
 	<div class="page-content-wrapper">
-		<h1>資料${mode }</h1>
+		<h1>資料${mode}</h1>
 		<form action="ConfirmBook" method="post">
 			<input type="hidden" name="mode" value="${mode }"> <input
 				type="hidden" name="action" value="${action }">
 			<div class="row">
 				<div class="col-xs-2">
-					<label for="bookId">資料ID</label> <input type="text"
-						class="form-control" id="id" name="id" value="${id }" disabled>
+					<label for="id">資料ID</label> <input type="text"
+						class="form-control" id="id" value="${id}" disabled> <input
+						type="hidden" name="id" value="${id }">
 				</div>
 				<div class="col-xs-2">
 					<label for="isbn">ISBN番号</label> <input type="text"
@@ -35,14 +36,15 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<label for="category">分類コード</label>
+					<label for="categoryCode">分類コード</label>
 					<div class="row">
 						<div class="col-xs-12">
-							<select class="form-control" id="category" name="category">
+							<select class="form-control" id="categoryCode"
+								name="categoryCode">
 								<c:forEach var="category" items="${categoryList }"
 									varStatus="status">
 									<option value="${category.categoryCode}"
-										<c:if test="${category.categoryName.equals(categoryName) }">selected="selected"</c:if>><c:out
+										<c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>><c:out
 											value="${category.categoryName }" /></option>
 								</c:forEach>
 							</select>
