@@ -23,19 +23,19 @@
 						type="hidden" name="memberId" value="${memberId}">
 				</div>
 				<div class="col-xs-4">
-					<label for="lastName">苗字</label> <input type="text"
-						class="form-control" id="lastName" name="familyName" value="${familyName}"
+					<label for="familyName">苗字</label> <input type="text"
+						class="form-control" id="familyName" name="familyName" value="${familyName}"
 						autocomplete="off" maxlength='10' required>
 				</div>
 				<div class="col-xs-4">
-					<label for="fisrtName">名前</label> <input type="text"
+					<label for="name">名前</label> <input type="text"
 						class="form-control" id="name" name="name" value="${name}"
 						autocomplete="off" maxlength='10' required>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<label for="zip">郵便番号</label> <input type="text"
+					<label for="postal">郵便番号</label> <input type="text"
 						class="form-control" id="postal" name="postal" value="${postal}"
 						placeholder="0000000" autocomplete="off" pattern="[0-9]{7}" maxlength="7" required>
 				</div>
@@ -47,17 +47,17 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<label for="phone">電話番号</label> <input type="text"
+					<label for="tel">電話番号</label> <input type="text"
 						class="form-control" id="tel" name="tel" value="${tel}"
 						placeholder="000-0000-0000" autocomplete="off" pattern="\d{2,4}-\d{3,4}-\d{3,4}" maxlength="20" required>
 				</div>
 				<div class="col-xs-4">
-					<label for="mail">メールアドレス</label> <input type="text"
+					<label for="email">メールアドレス</label> <input type="text"
 						class="form-control" id="email" name="email" value="${email}"
 						placeholder="my@address.com" autocomplete="off" maxlength="100" pattern="^[a-zA-Z]{1}[0-9a-zA-Z]+[\w\.-]+@[\w\.-]+\.\w{2,}$" required>
 				</div>
 				<div class="col-xs-4">
-					<label for="date">生年月日</label>
+					<label for="birthday">生年月日</label>
 					<div class="row">
 						<div class="col-xs-4">
 							<select class="form-control" id="year" name="year">
