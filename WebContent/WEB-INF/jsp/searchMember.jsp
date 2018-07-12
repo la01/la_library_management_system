@@ -83,10 +83,28 @@
 								<td>
 									<form action="InputMember" method="post"
 										style="display: inline">
+										<input type="hidden" name="memberId" value="${member.id}">
+										<input type="hidden" name="familyName" value="${member.familyName}">
+										<input type="hidden" name="name" value="${member.name}">
+										<input type="hidden" name="postal" value="${member.postal}">
+										<input type="hidden" name="address" value="${member.address}">
+										<input type="hidden" name="tel" value="${member.tel}">
+										<input type="hidden" name="email" value="${member.email}">
+										<input type="hidden" name="birthday" value="${member.birthday}">
 										<button class="btn btn-warning table__button--margin">更新</button>
 									</form>
 									<form action="ConfirmMember" method="post"
 										style="display: inline">
+										<input type="hidden" name="memberId" value="${member.id}">
+										<input type="hidden" name="familyName" value="${member.familyName}">
+										<input type="hidden" name="name" value="${member.name}">
+										<input type="hidden" name="postal" value="${member.postal}">
+										<input type="hidden" name="address" value="${member.address}">
+										<input type="hidden" name="tel" value="${member.tel}">
+										<input type="hidden" name="email" value="${member.email}">
+										<input type="hidden" name="birthday" value="${member.birthday}">
+										<input type="hidden" name="mode" value="削除">
+										<input type="hidden" name="action" value="delete">
 										<button class="btn btn-danger table__button--margin">削除</button>
 									</form>
 								</td>

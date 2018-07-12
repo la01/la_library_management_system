@@ -1,7 +1,7 @@
 package la.bean.member;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Member implements Serializable{
 
@@ -17,9 +17,10 @@ public class Member implements Serializable{
 	private char role;
 	private Date join;
 	private Date leave;
+	private boolean delete_flag;
 
-	public Member(String familyName, String name, String postal, String address,
-			String tel, String email, Date birthday) {
+	public Member(String familyName, String name, String postal, String address, String tel, String email,
+			Date birthday) {
 		this.familyName = familyName;
 		this.name = name;
 		this.postal = postal;
@@ -29,8 +30,8 @@ public class Member implements Serializable{
 		this.birthday = birthday;
 	}
 
-	public Member(int id, String familyName, String name, String postal, String address,
-			String tel, String email, Date birthday) {
+	public Member(int id, String familyName, String name, String postal, String address, String tel, String email,
+			Date birthday) {
 		this.id = id;
 		this.familyName = familyName;
 		this.name = name;
@@ -73,6 +74,14 @@ public class Member implements Serializable{
 		this.leave = leave;
 	}
 
+	public boolean isDelete_flag() {
+		return delete_flag;
+	}
+
+	public void setDelete_flag(boolean delete_flag) {
+		this.delete_flag = delete_flag;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -104,4 +113,5 @@ public class Member implements Serializable{
 	public Date getBirthday() {
 		return birthday;
 	}
+
 }

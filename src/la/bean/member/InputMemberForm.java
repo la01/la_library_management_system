@@ -41,16 +41,16 @@ public class InputMemberForm extends Form{
 		errors.add(checkLength("郵便番号", postal, 7, 7));
 		errors.add(checkRequired("住所", address));
 		errors.add(checkLength("住所", address, 1, 100));
-		errors.add(checkRequired("電話番号", address));
-		errors.add(checkLength("電話番号", address, 1, 20));
-		errors.add(checkRequired("メールアドレス", address));
-		errors.add(checkLength("メールアドレス", address, 1, 100));
-		errors.add(checkRequired("誕生日-年", address));
-		errors.add(checkLength("誕生日-年", address, 4, 4));
-		errors.add(checkRequired("誕生日-月", address));
-		errors.add(checkLength("誕生日-月", address, 1, 2));
-		errors.add(checkRequired("誕生日-日", address));
-		errors.add(checkLength("誕生日-日", address, 1, 2));
+		errors.add(checkRequired("電話番号", tel));
+		errors.add(checkLength("電話番号", tel, 1, 20));
+		errors.add(checkRequired("メールアドレス", email));
+		errors.add(checkLength("メールアドレス", email, 1, 100));
+		errors.add(checkRequired("誕生日-年", birthdayYear));
+		errors.add(checkLength("誕生日-年", birthdayYear, 4, 4));
+		errors.add(checkRequired("誕生日-月", birthdayMonth));
+		errors.add(checkLength("誕生日-月", birthdayMonth, 1, 2));
+		errors.add(checkRequired("誕生日-日", birthdayDate));
+		errors.add(checkLength("誕生日-日", birthdayDate, 1, 2));
 
 		return errors;
 	}
