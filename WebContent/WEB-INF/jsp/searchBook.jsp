@@ -60,145 +60,59 @@
 				</div>
 				<div class="col-xs-2">
 					<label for="date">貸出状況</label> <select class="form-control"
-						id="rental">
-						<option>全て</option>
-						<option>貸出可能</option>
-						<option>貸出不可</option>
+						id="rental" name="rental">
+						<option value="0"
+							<c:if test="${rental == 0}">selected="selected"</c:if>>全て</option>
+						<option value="1"
+							<c:if test="${rental == 1}">selected="selected"</c:if>>貸出可能</option>
+						<option value="2"
+							<c:if test="${rental == 2}">selected="selected"</c:if>>貸出不可</option>
 					</select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4">
-					<label for="from_publish_date">出版日(From)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="from_publish_year">
-								<option>2018</option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_publish_month">
-								<option>12</option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_publish_day">
-								<option>31</option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="from_publish_date">出版日(From)</label> <input type="date"
+						class="form-control" id="from_publish_date"
+						name="from_publish_date" value="${from_publish_date }">
 				</div>
-				<div class="col-xs-4">
-					<label for="to_publish_date">出版日(To)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="to_publish_year">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_publish_month">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_publish_day">
-								<option></option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="to_publish_date">出版日(To)</label> <input type="date"
+						class="form-control" id="to_publish_date" name="to_publish_date"
+						value="${to_publish_date }">
 				</div>
 				<div class="col-xs-2">
 					<label for="date">資料の状態</label> <select class="form-control"
-						id="status">
-						<option>全て</option>
-						<option>蔵書のみ</option>
-						<option>処分済み</option>
+						id="status" name="status">
+						<option value="0"
+							<c:if test="${status == 0}">selected="selected"</c:if>>全て</option>
+						<option value="1"
+							<c:if test="${status == 1}">selected="selected"</c:if>>蔵書のみ</option>
+						<option value="2"
+							<c:if test="${status == 2}">selected="selected"</c:if>>処分済み</option>
 					</select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4">
-					<label for="from_add_date">入荷日(From)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="from_add_year">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_add_month">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_add_day">
-								<option></option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="from_added_date">入荷日(From)</label> <input type="date"
+						class="form-control" id="from_added_date" name="from_added_date"
+						value="${ from_added_date}">
 				</div>
-				<div class="col-xs-4">
-					<label for="to_add_date">入荷日(To)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="to_add_year">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_add_month">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_add_day">
-								<option></option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="to_added_date">入荷日(To)</label> <input type="date"
+						class="form-control" id="to_added_date" name="to_added_date"
+						value="${ to_added_date}">
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<label for="from_remove_date">処分日(From)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="from_remove_year">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_remove_month">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="from_remove_day">
-								<option></option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="from_removed_date">処分日(From)</label> <input type="date"
+						class="form-control" id="from_removed_date"
+						name="from_removed_date" value="${ from_removed_date}">
 				</div>
-				<div class="col-xs-4">
-					<label for="to_remove_date">処分日(To)</label>
-					<div class="row">
-						<div class="col-xs-4">
-							<select class="form-control" id="to_remove_year">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_remove_month">
-								<option></option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<select class="form-control" id="to_remove_day">
-								<option></option>
-							</select>
-						</div>
-					</div>
+				<div class="col-xs-3">
+					<label for="to_removed_date">処分日(To)</label> <input type="date"
+						class="form-control" id="to_removed_date" name="to_removed_date"
+						value="${ to_removed_date}">
 				</div>
 			</div>
 			<div class="row">
@@ -237,7 +151,8 @@
 								<td><c:out value="${book.categoryName }" /></td>
 								<td><c:out value="${book.author }" /></td>
 								<td><c:out value="${book.publisher }" /></td>
-								<td>?</td>
+								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if>
+									<c:if test='${book.statusCode == 2}'>貸出不可</c:if></td>
 								<td><c:out value="${book.publishedDay }" /></td>
 								<td><c:out value="${book.addedDay }" /></td>
 								<td><c:out value="${book.removedDay }" /></td>

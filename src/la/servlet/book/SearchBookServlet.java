@@ -1,6 +1,7 @@
 package la.servlet.book;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,10 +66,15 @@ public class SearchBookServlet extends BookServlet {
 			String categoryCode = request.getParameter("category");
 			String author = request.getParameter("author");
 			String publisher = request.getParameter("publisher");
-			String year = request.getParameter("year");
-			String month = request.getParameter("month");
-			String day = request.getParameter("day");
-
+			String rental = request.getParameter("rental");
+			String fromPublishDate = request.getParameter("from_publish_date");
+			String toPublishDate = request.getParameter("to_publish_date");
+			String status = request.getParameter("status");
+			String fromAddedDate = request.getParameter("from_added_date");
+			String toAddedDate = request.getParameter("to_added_date");
+			String fromRemovedDate = request.getParameter("from_removed_date");
+			String toRemovedDate = request.getParameter("to_removed_date");
+			
 			// set parameter for input form
 			request.setAttribute("id", bookId);
 			request.setAttribute("isbn", ISBNCode);
@@ -76,9 +82,14 @@ public class SearchBookServlet extends BookServlet {
 			request.setAttribute("categoryCode", categoryCode);
 			request.setAttribute("author", author);
 			request.setAttribute("publisher", publisher);
-			request.setAttribute("year", year);
-			request.setAttribute("month", month);
-			request.setAttribute("day", day);
+			request.setAttribute("rental", rental);
+			request.setAttribute("from_publish_date", fromPublishDate);
+			request.setAttribute("to_publish_date", toPublishDate);
+			request.setAttribute("status", status);
+			request.setAttribute("from_added_date", fromAddedDate);
+			request.setAttribute("to_added_date", toAddedDate);
+			request.setAttribute("from_removed_date", fromRemovedDate);
+			request.setAttribute("to_removed_date", toRemovedDate);
 
 			// create book
 			Book book = new Book();
@@ -90,6 +101,27 @@ public class SearchBookServlet extends BookServlet {
 			book.setAuthor(author);
 			book.setCategoryCode(Integer.parseInt(categoryCode));
 			book.setPublisher(publisher);
+			book.setRentalCode(rental);
+			book.setStatusCode(status);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			if(fromPublishDate != null && fromPublishDate.length() != 0) {
+				book.setFromPublishDate(sdf.parse(fromPublishDate));
+			}
+			if(toPublishDate != null && toPublishDate.length() != 0) {
+				book.setToPublishDate(sdf.parse(toPublishDate));
+			}
+			if(fromAddedDate != null && fromAddedDate.length() != 0) {
+				book.setFromAddedDate(sdf.parse(fromAddedDate));
+			}
+			if(toAddedDate != null && toAddedDate.length() != 0) {
+				book.setToAddedDate(sdf.parse(toAddedDate));
+			}
+			if(fromRemovedDate != null && fromRemovedDate.length() != 0) {
+				book.setFromRemovedDate(sdf.parse(fromRemovedDate));
+			}
+			if(toRemovedDate != null && toRemovedDate.length() != 0) {
+				book.setToRemovedDate(sdf.parse(toRemovedDate));
+			}
 
 			// dao
 			PostgreSQLBookDao dao = new PostgreSQLBookDao();
