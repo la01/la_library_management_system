@@ -33,7 +33,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
-					<label for="code">分類コード</label>
+					<label for="category">分類コード</label>
 					<div class="row">
 						<div class="col-xs-12">
 							<select class="form-control" id="category" name="category">
@@ -48,26 +48,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-4">
+				<div class="col-xs-5">
 					<label for="author">著者</label> <input type="text"
 						class="form-control" id="author" name="author" value="${author}"
 						autocomplete="off">
 				</div>
-				<div class="col-xs-4">
+				<div class="col-xs-5">
 					<label for="company">出版社</label> <input type="text"
 						class="form-control" id="publisher" name="publisher"
 						value="${publisher}" autocomplete="off">
-				</div>
-				<div class="col-xs-2">
-					<label for="date">貸出状況</label> <select class="form-control"
-						id="rental" name="rental">
-						<option value="0"
-							<c:if test="${rental == 0}">selected="selected"</c:if>>全て</option>
-						<option value="1"
-							<c:if test="${rental == 1}">selected="selected"</c:if>>貸出可能</option>
-						<option value="2"
-							<c:if test="${rental == 2}">selected="selected"</c:if>>貸出不可</option>
-					</select>
 				</div>
 			</div>
 			<div class="row">
@@ -81,7 +70,18 @@
 						class="form-control" id="to_publish_date" name="to_publish_date"
 						value="${to_publish_date }">
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-3">
+					<label for="date">貸出状況</label> <select class="form-control"
+						id="rental" name="rental">
+						<option value="0"
+							<c:if test="${rental == 0}">selected="selected"</c:if>>全て</option>
+						<option value="1"
+							<c:if test="${rental == 1}">selected="selected"</c:if>>貸出可能</option>
+						<option value="2"
+							<c:if test="${rental == 2}">selected="selected"</c:if>>貸出不可</option>
+					</select>
+				</div>
+				<div class="col-xs-3">
 					<label for="date">資料の状態</label> <select class="form-control"
 						id="status" name="status">
 						<option value="0"
@@ -151,18 +151,36 @@
 								<td><c:out value="${book.categoryName }" /></td>
 								<td><c:out value="${book.author }" /></td>
 								<td><c:out value="${book.publisher }" /></td>
-								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if>
-									<c:if test='${book.statusCode == 2}'>貸出不可</c:if></td>
+								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if> <c:if
+										test='${book.statusCode == 2}'>貸出不可</c:if></td>
 								<td><c:out value="${book.publishedDay }" /></td>
 								<td><c:out value="${book.addedDay }" /></td>
 								<td><c:out value="${book.removedDay }" /></td>
 								<td>
 									<form action="InputBook" method="post" style="display: inline">
+										<input type="hidden" name="id" value="${book.id }"> <input
+											type="hidden" name="isbn" value="${book.ISBNCode }"> <input
+											type="hidden" name="name" value="${book.name }"> <input
+											type="hidden" name="categoryName"
+											value="${book.categoryName }"> <input type="hidden"
+											name="author" value="${book.author }"> <input
+											type="hidden" name="publisher" value="${book.publisher }">
+										<input type="hidden" name="publishedDay"
+											value="${book.publishedDay }">
 										<button class="btn btn-warning table__button--margin">更新</button>
 									</form>
 									<form action="ConfirmBook" method="post"
 										style="display: inline">
-										<button class="btn btn-danger table__button--margin">削除</button>
+										<input type="hidden" name="id" value="${book.id }"> <input
+											type="hidden" name="isbn" value="${book.ISBNCode }"> <input
+											type="hidden" name="name" value="${book.name }"> <input
+											type="hidden" name="categoryCode"
+											value="${book.categoryName }"> <input type="hidden"
+											name="author" value="${book.author }"> <input
+											type="hidden" name="publisher" value="${book.publisher }">
+										<input type="hidden" name="publishedDay"
+											value="${book.publishedDay }">
+										<button class="btn btn-danger table__button--margin" <c:if test="${book.removedDay != NULL}">disabled="disabled"</c:if>>削除</button>
 									</form>
 								</td>
 							</tr>
