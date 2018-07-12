@@ -57,7 +57,7 @@
 			</div>
 		</form>
 		<div class="search__table--margin">
-			<c:if test="${!empty memberList}">
+			<c:if test="${!empty result}">
 				<h5>
 					<span>${ fn:length( memberList ) }</span>件のデータが見つかりました
 				</h5>

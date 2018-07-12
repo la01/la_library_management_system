@@ -1,4 +1,4 @@
-package la.servet.member;
+package la.servlet.book;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MemberServlet extends HttpServlet {
+public class BookServlet extends HttpServlet {
 
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String path)
 			throws ServletException, IOException {
