@@ -1,4 +1,4 @@
-package la.servet.member;
+package la.servlet.member;
 
 import java.io.IOException;
 import java.sql.Date;
