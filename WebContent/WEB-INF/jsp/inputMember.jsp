@@ -54,7 +54,7 @@
 				<div class="col-xs-4">
 					<label for="email">メールアドレス</label> <input type="text"
 						class="form-control" id="email" name="email" value="${email}"
-						placeholder="my@address.com" autocomplete="off" maxlength="100" pattern="^[a-zA-Z]{1}[0-9a-zA-Z]+[\w\.-]+@[\w\.-]+\.\w{2,}$" required>
+						placeholder="my@address.com" autocomplete="off" maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 				</div>
 				<div class="col-xs-4">
 					<label for="birthday">生年月日</label>

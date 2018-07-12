@@ -102,7 +102,9 @@
 										<input type="hidden" name="address" value="${member.address}">
 										<input type="hidden" name="tel" value="${member.tel}">
 										<input type="hidden" name="email" value="${member.email}">
-										<input type="hidden" name="email" value="${member.birthday}">
+										<input type="hidden" name="birthday" value="${member.birthday}">
+										<input type="hidden" name="mode" value="削除">
+										<input type="hidden" name="action" value="delete">
 										<button class="btn btn-danger table__button--margin">削除</button>
 									</form>
 								</td>
