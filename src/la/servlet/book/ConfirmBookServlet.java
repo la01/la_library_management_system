@@ -32,6 +32,7 @@ public class ConfirmBookServlet extends BookServlet {
 			String author = request.getParameter("author");
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
+			String number = request.getParameter("number");
 			
 			//TODO: validation
 			
@@ -44,6 +45,7 @@ public class ConfirmBookServlet extends BookServlet {
 			request.setAttribute("author", author);
 			request.setAttribute("publisher", publisher);
 			request.setAttribute("publishedDay", publishedDay);
+			request.setAttribute("number", number);
 
 			// get category name
 			PostgreSQLCategoryDao dao = new PostgreSQLCategoryDao();

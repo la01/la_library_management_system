@@ -70,8 +70,8 @@
 				</div>
 				<c:if test="${action == 'insert' }">
 					<div class="col-xs-3">
-						<label for="num">入荷冊数</label> <input type="text"
-							class="form-control" id="num" autocomplete="off">
+						<label for="number">入荷冊数</label> <input type="text"
+							class="form-control" id="number" name="number" autocomplete="off">
 					</div>
 				</c:if>
 			</div>

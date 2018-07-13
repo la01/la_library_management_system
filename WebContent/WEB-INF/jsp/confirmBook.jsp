@@ -14,7 +14,7 @@
 		<h1>${mode }確認</h1>
 		<form action="DoneBook" method="post">
 			<input type="hidden" name="mode" value="${mode}">
-			<input　type="hidden" name="action" value="${action}">
+			<input type="hidden" name="action" value="${action}">
 			<table class="table">
 				<thead>
 					<tr>
@@ -42,6 +42,7 @@
 					<tr>
 						<th>分類</th>
 						<td><c:out value="${categoryName}" /><input type="hidden"
+							name="categoryCode" value="${categoryCode }"><input type="hidden"
 							name="categoryName" value="${categoryName}"></td>
 					</tr>
 					<tr>
