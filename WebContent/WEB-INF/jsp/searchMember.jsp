@@ -64,7 +64,7 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr>
-							<th>会員ID</th>
+							<th>ID</th>
 							<th>姓名</th>
 							<th>郵便番号</th>
 							<th>電話番号</th>
