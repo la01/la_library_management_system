@@ -26,7 +26,8 @@
 				<div class="col-xs-2">
 					<label for="isbn">ISBN番号</label> <input type="text"
 						class="form-control" id="isbn" name="isbn" value="${isbn }"
-						autocomplete="off">
+						autocomplete="off" <c:if test="${action == 'update' }">disabled</c:if>>
+						<input type="hidden" name="isbn" value="${isbn}">
 				</div>
 				<div class="col-xs-8">
 					<label for="bookName">資料名</label> <input type="text"

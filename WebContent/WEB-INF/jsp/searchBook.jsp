@@ -167,6 +167,8 @@
 									<td><c:out value="${book.removedDay }" /></td>
 									<td>
 										<form action="InputBook" method="post" style="display: inline">
+											<input type="hidden" name="mode" value="変更">
+											<input type="hidden" name="action" value="update">
 											<input type="hidden" name="id" value="${book.id }"> <input
 												type="hidden" name="isbn" value="${book.ISBNCode }">
 											<input type="hidden" name="name" value="${book.name }">
@@ -180,11 +182,13 @@
 										</form>
 										<form action="ConfirmBook" method="post"
 											style="display: inline">
+											<input type="hidden" name="mode" value="削除">
+											<input type="hidden" name="action" value="delete">
 											<input type="hidden" name="id" value="${book.id }"> <input
 												type="hidden" name="isbn" value="${book.ISBNCode }">
 											<input type="hidden" name="name" value="${book.name }">
 											<input type="hidden" name="categoryCode"
-												value="${book.categoryName }"> <input type="hidden"
+												value="${book.categoryCode}"> <input type="hidden"
 												name="author" value="${book.author }"> <input
 												type="hidden" name="publisher" value="${book.publisher }">
 											<input type="hidden" name="publishedDay"
