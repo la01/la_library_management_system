@@ -11,18 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 public class InputReturnServlet extends RentalServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = "return";
-		String mode = "返却";
-
-		request.setAttribute("mode", mode);
-		request.setAttribute("action", action);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("mode", "返却");
+		request.setAttribute("action", "return");
 
 		forward(request, response, "WEB-INF/jsp/inputRental.jsp");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("mode", "返却");
+		request.setAttribute("action", "return");
+		
+		//TODO: try-catch
+		//TODO: searchIdからRentalDao叩いてレンタル中の本のIDリストげt
+		//TODO: request set
+		
 		forward(request, response, "WEB-INF/jsp/inputRental.jsp");
 	}
-
 }

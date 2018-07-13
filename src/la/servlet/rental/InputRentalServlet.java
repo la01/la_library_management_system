@@ -13,19 +13,9 @@ public class InputRentalServlet extends RentalServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String action = "rental";
-		String mode = "貸出";
-
-		request.setAttribute("mode", mode);
-		request.setAttribute("action", action);
+		request.setAttribute("mode", "貸出");
+		request.setAttribute("action", "rental");
 
 		forward(request, response, "WEB-INF/jsp/inputRental.jsp");
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		forward(request, response, "WEB-INF/jsp/inputRental.jsp");
-	}
-
 }

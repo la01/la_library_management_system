@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
-			<label class="navbar-brand">新宿図書館 / 図書管理システム</label>
+			<a href="./"><label class="navbar-brand">新宿図書館 / 図書管理システム</label></a>
 		</div>
 		<div id="navbar-collapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">

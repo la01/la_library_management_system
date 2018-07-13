@@ -135,7 +135,7 @@
 				<table class="table table-condensed" id="resultTable">
 					<thead>
 						<tr>
-							<th>資料ID</th>
+							<th>ID</th>
 							<th>ISBN番号</th>
 							<th>資料名</th>
 							<th>分類名</th>
