@@ -151,8 +151,8 @@
 								<td><c:out value="${book.categoryName }" /></td>
 								<td><c:out value="${book.author }" /></td>
 								<td><c:out value="${book.publisher }" /></td>
-								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if>
-									<c:if test='${book.statusCode == 2}'>貸出不可</c:if></td>
+								<td><c:if test='${book.statusCode == 1}'>貸出可能</c:if> <c:if
+										test='${book.statusCode == 2}'>貸出不可</c:if></td>
 								<td><c:out value="${book.publishedDay }" /></td>
 								<td><c:out value="${book.addedDay }" /></td>
 								<td><c:out value="${book.removedDay }" /></td>

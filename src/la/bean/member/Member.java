@@ -42,6 +42,8 @@ public class Member implements Serializable{
 		this.birthday = birthday;
 	}
 
+
+
 	public String getPassword() {
 		return password;
 	}

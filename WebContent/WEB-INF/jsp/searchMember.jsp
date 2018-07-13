@@ -17,37 +17,42 @@
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="memberId">会員ID</label> <input type="text"
-						class="form-control" id="memberId" name="memberId" value="${memberId }" autocomplete="off">
+						class="form-control" id="memberId" name="memberId"
+						value="${memberId }" autocomplete="off">
 				</div>
 				<div class="col-xs-3">
 					<label for="familyName">苗字</label> <input type="text"
-						class="form-control" id="familyName" name="familyName" value="${familyName }" autocomplete="off">
+						class="form-control" id="familyName" name="familyName"
+						value="${familyName }" autocomplete="off">
 				</div>
 				<div class="col-xs-3">
 					<label for="name">名前</label> <input type="text"
-						class="form-control" id="name" name="name" value="${name }" autocomplete="off">
+						class="form-control" id="name" name="name" value="${name }"
+						autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="postal">郵便番号</label> <input type="text"
-						class="form-control" id="postal" name="postal" value="${postal }" placeholder="0000000"
-						autocomplete="off">
+						class="form-control" id="postal" name="postal" value="${postal }"
+						placeholder="0000000" autocomplete="off">
 				</div>
 				<div class="col-xs-6">
 					<label for="address">住所</label> <input type="text"
-						class="form-control" id="address" name="address" value="${address }" autocomplete="off">
+						class="form-control" id="address" name="address"
+						value="${address }" autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">
 					<label for="tel">電話番号</label> <input type="text"
-						class="form-control" id="tel" name="tel" value="${tel }" placeholder="000-0000-0000"
-						autocomplete="off">
+						class="form-control" id="tel" name="tel" value="${tel }"
+						placeholder="000-0000-0000" autocomplete="off">
 				</div>
 				<div class="col-xs-3">
 					<label for="email">メールアドレス</label> <input type="text"
-						class="form-control" id="email" name="email" value="${email }" autocomplete="off">
+						class="form-control" id="email" name="email" value="${email }"
+						autocomplete="off">
 				</div>
 			</div>
 			<div class="row">
@@ -76,7 +81,8 @@
 						<c:forEach var="member" items="${memberList}" varStatus="status">
 							<tr>
 								<td><c:out value="${member.id}" /></td>
-								<td><c:out value="${member.familyName}" />　<c:out value="${member.name}" /></td>
+								<td><c:out value="${member.familyName}" /> <c:out
+										value="${member.name}" /></td>
 								<td>〒<c:out value="${member.postal}" /></td>
 								<td><c:out value="${member.tel}" /></td>
 								<td><c:out value="${member.email}" /></td>
@@ -84,27 +90,31 @@
 									<form action="InputMember" method="post"
 										style="display: inline">
 										<input type="hidden" name="memberId" value="${member.id}">
-										<input type="hidden" name="familyName" value="${member.familyName}">
-										<input type="hidden" name="name" value="${member.name}">
-										<input type="hidden" name="postal" value="${member.postal}">
+										<input type="hidden" name="familyName"
+											value="${member.familyName}"> <input type="hidden"
+											name="name" value="${member.name}"> <input
+											type="hidden" name="postal" value="${member.postal}">
 										<input type="hidden" name="address" value="${member.address}">
 										<input type="hidden" name="tel" value="${member.tel}">
 										<input type="hidden" name="email" value="${member.email}">
-										<input type="hidden" name="birthday" value="${member.birthday}">
+										<input type="hidden" name="birthday"
+											value="${member.birthday}">
 										<button class="btn btn-warning table__button--margin">更新</button>
 									</form>
 									<form action="ConfirmMember" method="post"
 										style="display: inline">
 										<input type="hidden" name="memberId" value="${member.id}">
-										<input type="hidden" name="familyName" value="${member.familyName}">
-										<input type="hidden" name="name" value="${member.name}">
-										<input type="hidden" name="postal" value="${member.postal}">
+										<input type="hidden" name="familyName"
+											value="${member.familyName}"> <input type="hidden"
+											name="name" value="${member.name}"> <input
+											type="hidden" name="postal" value="${member.postal}">
 										<input type="hidden" name="address" value="${member.address}">
 										<input type="hidden" name="tel" value="${member.tel}">
 										<input type="hidden" name="email" value="${member.email}">
-										<input type="hidden" name="birthday" value="${member.birthday}">
-										<input type="hidden" name="mode" value="削除">
-										<input type="hidden" name="action" value="delete">
+										<input type="hidden" name="birthday"
+											value="${member.birthday}"> <input type="hidden"
+											name="mode" value="削除"> <input type="hidden"
+											name="action" value="delete">
 										<button class="btn btn-danger table__button--margin">削除</button>
 									</form>
 								</td>
