@@ -11,8 +11,10 @@
 <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>貸出確認/返却確認</h1>
+        <h1>${mode}確認</h1>
         <form action="DoneRental" method="post">
+        	<input type="hidden" name="mode" value="${mode}">
+        	<input type="hidden" name="action" value="${action}">
             <table class="table">
                 <thead>
                     <tr>
@@ -23,34 +25,20 @@
                 <tbody>
                     <tr>
                         <th>会員ID</th>
-                        <td>000</td>
+                        <td>${memberId }<input type="hidden" name="memberId" value="${memberId}" ></td>
                     </tr>
-                    <tr>
+                    <c:forEach items="${bookId }" var="item" varStatus="status">
+                    	<tr>
                         <th>資料ID</th>
-                        <td>000</td>
+                        <td>${item }<input type="hidden" name="${'bookId' += status.count}" value="${item}"></td>
                     </tr>
-                    <tr>
-                        <th>資料ID</th>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <th>資料ID</th>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <th>資料ID</th>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <th>資料ID</th>
-                        <td>000</td>
-                    </tr>
+                    </c:forEach>
                 </tbody>
             </table>
-            <h3>上記の資料を貸出します/上記の資料を返却します</h3>
+            <h3>上記の資料を${mode}します</h3>
             <div class="form_button--margin">
                 <button class="btn btn-primary form__button form__button--padding">OK</button>
-                <button type="button" class="btn btn-default form__button form__button--padding">戻る</button>
+                <button type="button" class="btn btn-default form__button form__button--padding" onclick="history.back()">戻る</button>
             </div>
         </form>
     </div>
