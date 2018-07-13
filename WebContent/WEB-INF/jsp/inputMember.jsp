@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <title></title>
 <jsp:include page="../../jsp/include.jsp" flush="true" />
+<script type="text/javascript" src="./js/inputRental.js"></script>
 </head>
 <body>
 	<jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -91,10 +92,18 @@
 					<button type="submit"
 						class="btn btn-primary form__button--margin btn-block">${mode}</button>
 				</div>
-				<div class="col-xs-2">
-					<button type="button" onclick="history.back()"
-						class="btn btn-default form__button--margin btn-block">戻る</button>
-				</div>
+				<c:if test="${action == 'return' }">
+					<div class="col-xs-2">
+						<button type="button" onclick="getDataFromMemberId()"
+							class="btn btn-primary form__button--margin btn-block">会員IDから取得</button>
+					</div>
+				</c:if>
+				<c:if test="${action == 'rental' }">
+					<div class="col-xs-2">
+						<button type="button" onclick="history.back()"
+							class="btn btn-default form__button--margin btn-block">戻る</button>
+					</div>
+				</c:if>
 			</div>
 		</form>
 	</div>

@@ -4,10 +4,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import la.bean.rental.Rental;
 import la.exception.DataAccessException;
 
 public class PostgreSQLRentalDao extends DBManager {
+
+	public Rental select(int memberId) throws DataAccessException {
+		Connection conn = getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		Rental rental;
+		try {
+			String sql = "select bookstate_id from rental where user_id = ? and rental_return is null;";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, memberId);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getInt(1));
+			}
+			rental = new Rental(memberId, list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DataAccessException("SQLの実行中にエラーが発生しました");
+		} finally {
+			try {
+				close(rs, stmt, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DataAccessException("SQLの終了中にエラーが発生しました");
+			}
+		}
+		return rental;
+	}
 
 	public int countRentalBookNum(int memberId) throws DataAccessException {
 		Connection conn = getConnection();

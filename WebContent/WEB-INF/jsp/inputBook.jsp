@@ -26,12 +26,13 @@
 				<div class="col-xs-2">
 					<label for="isbn">ISBN番号</label> <input type="text"
 						class="form-control" id="isbn" name="isbn" value="${isbn }"
-						autocomplete="off">
+						autocomplete="off" pattern="[0-9]{13}" maxlength="13" required <c:if test="${action == 'update' }">disabled</c:if>>
+						<input type="hidden" name="isbn" value="${isbn}">
 				</div>
 				<div class="col-xs-8">
 					<label for="bookName">資料名</label> <input type="text"
 						class="form-control" id="name" name="name" value="${name }"
-						autocomplete="off">
+						autocomplete="off" maxlength="100" required>
 				</div>
 			</div>
 			<div class="row">
@@ -54,12 +55,12 @@
 				<div class="col-xs-5">
 					<label for="author">著者</label> <input type="text"
 						class="form-control" id="author" name="author" value="${author }"
-						autocomplete="off">
+						autocomplete="off" maxlength="20" required>
 				</div>
 				<div class="col-xs-5">
 					<label for="publisher">出版社</label> <input type="text"
 						class="form-control" id="publisher" name="publisher"
-						value="${publisher }" autocomplete="off">
+						value="${publisher }" autocomplete="off" maxlength="20" required>
 				</div>
 			</div>
 			<div class="row">
@@ -71,7 +72,7 @@
 				<c:if test="${action == 'insert' }">
 					<div class="col-xs-3">
 						<label for="number">入荷冊数</label> <input type="text"
-							class="form-control" id="number" name="number" autocomplete="off">
+							class="form-control" id="number" name="number" autocomplete="off" required>
 					</div>
 				</c:if>
 			</div>

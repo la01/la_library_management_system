@@ -1,7 +1,6 @@
 package la.servlet.book;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,7 +19,7 @@ public class ConfirmBookServlet extends BookServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		try {
 			// request parameterをattributeに詰め替える
 			String action = request.getParameter("action");
@@ -33,9 +32,9 @@ public class ConfirmBookServlet extends BookServlet {
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
 			String number = request.getParameter("number");
-			
-			//TODO: validation
-			
+
+			// TODO: validation
+
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 			request.setAttribute("id", id);
@@ -51,24 +50,23 @@ public class ConfirmBookServlet extends BookServlet {
 			PostgreSQLCategoryDao dao = new PostgreSQLCategoryDao();
 			List<Category> categoryList = dao.select();
 			Category category = categoryList.stream()
-			.filter(cat -> cat.getCategoryCode() == Integer.parseInt(categoryCode))
-			.findFirst()
-			.orElse(new Category(0, ""));
+					.filter(cat -> cat.getCategoryCode() == Integer.parseInt(categoryCode)).findFirst()
+					.orElse(new Category(0, ""));
 			request.setAttribute("categoryName", category.getCategoryName());
-			
-		} catch(DataAccessException e) {
+
+		} catch (DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "検索に失敗しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "予期せぬエラーが発生しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("title", "内部エラーが発生しました");
 			request.setAttribute("body", e);
