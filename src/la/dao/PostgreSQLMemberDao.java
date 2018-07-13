@@ -157,7 +157,7 @@ public class PostgreSQLMemberDao extends DBManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DataAccessException("会員情報の変更中にエラーが発生しました");
-		}finally {
+		} finally {
 			try {
 				close(stmt, conn);
 			} catch (SQLException e) {
@@ -169,6 +169,26 @@ public class PostgreSQLMemberDao extends DBManager {
 	}
 
 	public boolean delete(int id) throws DataAccessException {
+		Connection conn = getConnection();
+		PreparedStatement stmt = null;
+		try {
+			// 削除処理
+			String sql = "UPDATE member SET delete_flag = true WHERE user_id = ?";
+			System.out.println(sql);
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DataAccessException("会員情報の削除中にエラーが発生しました");
+		} finally {
+			try {
+				close(stmt, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DataAccessException("SQLの終了中にエラーが発生しました");
+			}
+		}
 		return false;
 	}
 

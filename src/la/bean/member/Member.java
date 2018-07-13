@@ -19,6 +19,12 @@ public class Member implements Serializable{
 	private Date leave;
 	private boolean delete_flag;
 
+	public Member(int id, String familyName, String name){
+		this.id = id;
+		this.familyName = familyName;
+		this.name = name;
+	}
+
 	public Member(String familyName, String name, String postal, String address, String tel, String email,
 			Date birthday) {
 		this.familyName = familyName;
