@@ -53,6 +53,9 @@
                 <div class="col-xs-2">
                     <button class="btn btn-primary form__button--margin btn-block">${mode}</button>
                 </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-primary form__button--margin btn-block">会員IDから取得</button>
+                </div>
             </div>
         </form>
     </div>

@@ -15,11 +15,13 @@ public class DoneRentalServlet extends RentalServlet {
 	private static final long serialVersionUID = 1L;
 	private static final int MAX_RENTAL_NUM = 5;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/jsp/doneRental.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String mode = request.getParameter("mode");
 		String action = request.getParameter("action");
@@ -41,37 +43,40 @@ public class DoneRentalServlet extends RentalServlet {
 
 			int memberId = Integer.parseInt(strMemberId);
 			ArrayList<Integer> bookId = new ArrayList<Integer>();
-			for(String str:strBookId) {
+			for (String str : strBookId) {
 				bookId.add(Integer.parseInt(str));
 			}
 
-			//Rental rental = new Rental(memberId, bookId);
+			// Rental rental = new Rental(memberId, bookId);
 			PostgreSQLRentalDao dao = new PostgreSQLRentalDao();
+			if (action.equals("rental")) {
+				int delayedRentalBookNum = dao.countDelayedRentalBookNum(memberId);
+				if (delayedRentalBookNum > 0) {
+					request.setAttribute("title", "貸出期限超過");
+					request.setAttribute("body", "会員ID" + memberId + "：貸出期限を超過した資料が" + delayedRentalBookNum + "冊あります");
+					forward(request, response, "Error");
+					return;
+				}
 
-			int delayedRentalBookNum = dao.countDelayedRentalBookNum(memberId);
-			if(delayedRentalBookNum > 0) {
-				request.setAttribute("title", "貸出期限超過");
-				request.setAttribute("body", "貸出期限を超過した資料が" + delayedRentalBookNum + "冊あります");
-				forward(request, response, "Error");
-				return;
+				int sumRentalBookNum = bookId.size() + dao.countRentalBookNum(memberId);
+				if (sumRentalBookNum > MAX_RENTAL_NUM) {
+					request.setAttribute("title", "貸出可能冊数超過");
+					request.setAttribute("body", "会員ID" + memberId + "：貸出可能冊数を" + (sumRentalBookNum - MAX_RENTAL_NUM) + "冊超過します");
+					forward(request, response, "Error");
+					return;
+				}
+
+				for (int id : bookId) {
+					dao.insert(memberId, id);
+				}
+			} else if(action.equals("return")) {
+				for (int id : bookId) {
+					dao.delete(memberId, id);
+				}
+
 			}
-
-			int sumRentalBookNum = bookId.size() + dao.countRentalBookNum(memberId);
-			if (sumRentalBookNum > MAX_RENTAL_NUM) {
-				request.setAttribute("title", "貸出可能冊数超過");
-				request.setAttribute("body", "貸出可能冊数を" + (sumRentalBookNum - MAX_RENTAL_NUM) + "冊超過します");
-				forward(request, response, "Error");
-				return;
-			}
-
-			ArrayList<Integer> rentalId = new ArrayList<Integer>();
-			for(int id: bookId) {
-				rentalId.add(dao.insert(memberId, id));
-			}
-
 			request.setAttribute("memberId", memberId);
 			request.setAttribute("bookId", bookId);
-			request.setAttribute("rentalId", rentalId);
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 			forward(request, response, "WEB-INF/jsp/doneRental.jsp");
@@ -86,8 +91,6 @@ public class DoneRentalServlet extends RentalServlet {
 			forward(request, response, "Error");
 			return;
 		}
-
-
 
 	}
 
