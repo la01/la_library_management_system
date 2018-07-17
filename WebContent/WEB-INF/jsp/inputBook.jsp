@@ -74,7 +74,7 @@
         </div>
         <c:if test="${action == 'delete'}">
          <div class="row">
-           <div class="col-xs-8">
+           <div class="col-xs-12">
              <label for="note">廃棄理由</label>
              <input type="text" class="form-control" name="note" autocomplete="off" maxlength="100" title="100文字以内で入力してください。">
            </div>

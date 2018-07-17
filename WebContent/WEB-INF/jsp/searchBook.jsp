@@ -123,6 +123,8 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="container-fluid">
       <div class="search__table--margin">
         <c:if test="${!empty result}">
           <h5>
