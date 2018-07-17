@@ -1,10 +1,11 @@
 package la.bean.member;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Member implements Serializable{
-
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private String familyName;
 	private String name;
@@ -17,34 +18,37 @@ public class Member implements Serializable{
 	private char role;
 	private Date join;
 	private Date leave;
-	private boolean delete_flag;
+	private boolean deleteFlag;
 
-	public Member(int id, String familyName, String name){
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Member(String familyName, String name, String postal, String address, String tel, String email,
-			Date birthday) {
-		this.familyName = familyName;
-		this.name = name;
+	public void setPostal(String postal) {
 		this.postal = postal;
-		this.address = address;
-		this.tel = tel;
-		this.email = email;
-		this.birthday = birthday;
 	}
 
-	public Member(int id, String familyName, String name, String postal, String address, String tel, String email,
-			Date birthday) {
-		this.id = id;
-		this.familyName = familyName;
-		this.name = name;
-		this.postal = postal;
+	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public void setTel(String tel) {
 		this.tel = tel;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
@@ -80,12 +84,12 @@ public class Member implements Serializable{
 		this.leave = leave;
 	}
 
-	public boolean isDelete_flag() {
-		return delete_flag;
+	public boolean isDeleteFlag() {
+		return deleteFlag;
 	}
 
-	public void setDelete_flag(boolean delete_flag) {
-		this.delete_flag = delete_flag;
+	public void setDeleteFlag(boolean delete_flag) {
+		this.deleteFlag = delete_flag;
 	}
 
 	public int getId() {

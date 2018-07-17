@@ -14,51 +14,6 @@ import la.exception.DataAccessException;
 
 public class PostgreSQLBookDao extends DBManager {
 
-	public List<Book> select() throws DataAccessException {
-		Connection conn = getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		List<Book> list = new ArrayList<Book>();
-		try {
-			String sql = "SELECT \n" + "  bs.bookstate_id, \n" + "  bi.bookinfo_isbn, \n" + "  bi.bookinfo_name, \n"
-					+ "  c.category_code, \n" + "  c.category_name, \n" + "  bi.bookinfo_author, \n"
-					+ "  p.publisher_name, \n" + "  bi.bookinfo_date, \n" + "  bs.bookstate_add,\n"
-					+ "  bs.bookstate_remove,\n"
-					+ "  CASE WHEN r.rental IS FALSE THEN '2' ELSE '1' END AS rental_code,\n"
-					+ "  CASE WHEN (r.rental IS NULL OR r.rental IS TRUE) AND delete_flag IS FALSE THEN '1' ELSE '2' END AS status_code\n"
-					+ "FROM \n" + "  bookinfo bi \n" + "  JOIN bookstate bs ON bi.bookinfo_isbn = bs.bookinfo_isbn \n"
-					+ "  JOIN category c ON bi.category_code = c.category_code \n"
-					+ "  JOIN publisher p ON bi.publisher_code = p.publisher_code \n" + "  LEFT JOIN (\n"
-					+ "    SELECT \n" + "      a.bookstate_id, \n" + "      a.rental_rent, \n"
-					+ "      a.rental_return, \n" + "      CASE WHEN a.rental_rent IS NOT NULL \n"
-					+ "      AND a.rental_return IS NULL THEN FALSE ELSE TRUE END AS rental \n" + "    FROM \n"
-					+ "      rental a \n" + "      INNER JOIN (\n" + "        SELECT \n" + "          bookstate_id, \n"
-					+ "          max(rental_rent) AS rental_rent \n" + "        FROM \n" + "          rental \n"
-					+ "        GROUP BY \n" + "          bookstate_id\n"
-					+ "      ) b ON a.bookstate_id = b.bookstate_id \n" + "      AND a.rental_rent = b.rental_rent\n"
-					+ "  ) r ON bs.bookstate_id = r.bookstate_id";
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				list.add(createBookFromResultSet(rs));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DataAccessException("SQLの実行中にエラーが発生しました");
-		} finally {
-			try {
-				close(rs, stmt, conn);
-			} catch (SQLException e) {
-				e.printStackTrace();
-				throw new DataAccessException("SQLの終了中にエラーが発生しました");
-			}
-		}
-
-		return list;
-	}
-
 	public List<Book> selectByCondition(Book book) throws DataAccessException {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
@@ -345,6 +300,7 @@ public class PostgreSQLBookDao extends DBManager {
 			stmt.setString(5, book.getAuthor());
 			stmt.setString(6, book.getISBNCode());
 			stmt.executeUpdate();
+			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DataAccessException("SQLの実行中にエラーが発生しました");

@@ -3,15 +3,11 @@ package la.bean.book;
 import java.io.Serializable;
 
 public class Category implements Serializable{
-
+	private static final long serialVersionUID = 1L;
+	
 	private int categoryCode;
 	private String categoryName;
-
-	public Category(int categoryCode, String categoryName) {
-		this.categoryCode = categoryCode;
-		this.categoryName = categoryName;
-	}
-
+	
 	public int getCategoryCode() {
 		return categoryCode;
 	}
@@ -24,6 +20,4 @@ public class Category implements Serializable{
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
-
 }

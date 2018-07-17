@@ -1,9 +1,10 @@
 package la.bean.book;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class BookInfo implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private String ISBN;
 	private String name;
@@ -48,7 +49,4 @@ public class BookInfo implements Serializable{
 	public void setPublishedDay(Date publishedDay) {
 		this.publishedDay = publishedDay;
 	}
-	
-	
-
 }

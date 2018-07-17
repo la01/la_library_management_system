@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Book implements Serializable{
-
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private String ISBNCode;
 	private String name;
@@ -23,9 +24,6 @@ public class Book implements Serializable{
 	private Date toAddedDate;
 	private Date fromRemovedDate;
 	private Date toRemovedDate;
-
-	public Book() {
-	}
 
 	public int getId() {
 		return id;

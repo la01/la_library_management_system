@@ -13,35 +13,6 @@ import la.exception.DataAccessException;
 
 public class PostgreSQLMemberDao extends DBManager {
 
-	public List<Member> select() throws DataAccessException {
-		Connection conn = getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		List<Member> list = new ArrayList<Member>();
-		try {
-			String sql = "select * from member";
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				list.add(createMemberFromResultSet(rs));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DataAccessException("SQLの実行中にエラーが発生しました");
-		} finally {
-			try {
-				close(rs, stmt, conn);
-			} catch (SQLException e) {
-				e.printStackTrace();
-				throw new DataAccessException("SQLの終了中にエラーが発生しました");
-			}
-		}
-
-		return list;
-	}
-
 	public List<Member> selectByCondition(Member member) throws DataAccessException {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
@@ -56,27 +27,27 @@ public class PostgreSQLMemberDao extends DBManager {
 				queryList.add("user_id=?");
 				queryList.add("and");
 			}
-			if (member.getFamilyName() != null) {
+			if (member.getFamilyName() != null && member.getFamilyName().length() != 0) {
 				queryList.add("user_family_name like ?");
 				queryList.add("and");
 			}
-			if (member.getName() != null) {
+			if (member.getName() != null && member.getFamilyName().length() != 0) {
 				queryList.add("user_name like ?");
 				queryList.add("and");
 			}
-			if (member.getPostal() != null) {
+			if (member.getPostal() != null && member.getPostal().length() != 0) {
 				queryList.add("user_postal like ?");
 				queryList.add("and");
 			}
-			if (member.getAddress() != null) {
+			if (member.getAddress() != null && member.getAddress().length() != 0) {
 				queryList.add("user_address like ?");
 				queryList.add("and");
 			}
-			if (member.getTel() != null) {
+			if (member.getTel() != null && member.getTel().length() != 0) {
 				queryList.add("user_tel like ?");
 				queryList.add("and");
 			}
-			if (member.getEmail() != null) {
+			if (member.getEmail() != null && member.getEmail().length() != 0) {
 				queryList.add("user_email like ?");
 				queryList.add("and");
 			}
@@ -143,7 +114,7 @@ public class PostgreSQLMemberDao extends DBManager {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
 		try {
-			String sql = "UPDATE  member SET user_family_name = ?,  user_name = ?, user_postal = ?, user_address = ?, user_tel = ?,  user_email = ?, user_birthday = ? WHERE user_id =  ?";
+			String sql = "UPDATE member SET user_family_name = ?,  user_name = ?, user_postal = ?, user_address = ?, user_tel = ?,  user_email = ?, user_birthday = ? WHERE user_id =  ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getFamilyName());
 			stmt.setString(2, member.getName());
@@ -151,7 +122,7 @@ public class PostgreSQLMemberDao extends DBManager {
 			stmt.setString(4, member.getAddress());
 			stmt.setString(5, member.getTel());
 			stmt.setString(6, member.getEmail());
-			stmt.setDate(7, member.getBirthday());
+			stmt.setDate(7, new java.sql.Date(member.getBirthday().getTime()));
 			stmt.setInt(8, member.getId());
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -203,7 +174,16 @@ public class PostgreSQLMemberDao extends DBManager {
 			String email = rs.getString("user_email");
 			Date date = rs.getDate("user_birthday");
 
-			Member member = new Member(id, familyName, name, postal, address, tel, email, date);
+			Member member = new Member();
+			member.setId(id);
+			member.setFamilyName(familyName);
+			member.setName(name);
+			member.setPostal(postal);
+			member.setAddress(address);
+			member.setTel(tel);
+			member.setEmail(email);
+			member.setBirthday(date);
+			
 			return member;
 
 		} catch (Exception e) {
