@@ -53,11 +53,6 @@
               <button type="button" onclick="getDataFromMemberId()" class="btn btn-primary form__button--margin btn-block">会員IDから取得</button>
             </div>
           </c:if>
-          <c:if test="${action == 'rental'}">
-            <div class="col-xs-2">
-              <button type="button" onclick="history.back()" class="btn btn-default form__button--margin btn-block">戻る</button>
-            </div>
-          </c:if>
         </div>
       </form>
       <form action="InputReturn" method="post" name="memberIdForm">
