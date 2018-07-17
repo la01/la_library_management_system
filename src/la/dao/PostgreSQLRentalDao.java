@@ -20,7 +20,7 @@ public class PostgreSQLRentalDao extends DBManager {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		Rental rental;
+		Rental rental = new Rental();
 		try {
 			String sql = "select bookstate_id from rental where user_id = ? and rental_return is null;";
 			stmt = conn.prepareStatement(sql);
@@ -29,7 +29,8 @@ public class PostgreSQLRentalDao extends DBManager {
 			while (rs.next()) {
 				list.add(rs.getInt(1));
 			}
-			rental = new Rental(memberId, list);
+			rental.setMemberId(memberId);
+			rental.setBookId(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DataAccessException("SQLの実行中にエラーが発生しました");

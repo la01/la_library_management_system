@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class RentalHistory implements Serializable {
-
+	private static final long serialVersionUID = 1L;
+	
 	private int rentalId;
 	private int memberId;
 	private int bookId;
@@ -113,6 +114,4 @@ public class RentalHistory implements Serializable {
 	public void setToDay(Date toDay) {
 		this.toDay = toDay;
 	}
-	
-	
 }

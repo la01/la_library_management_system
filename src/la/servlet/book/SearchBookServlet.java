@@ -58,8 +58,7 @@ public class SearchBookServlet extends BookServlet {
 		List<Category> categoryList = new ArrayList<Category>();
 
 		try {
-			// get post request parameter
-			// search action is not validate parameter
+			// get parameter
 			String bookId = request.getParameter("id");
 			String ISBNCode = request.getParameter("isbn");
 			String name = request.getParameter("name");

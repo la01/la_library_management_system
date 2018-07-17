@@ -1,7 +1,7 @@
 package la.servlet.book;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,7 @@ import la.bean.book.Category;
 import la.dao.PostgreSQLCategoryDao;
 import la.dao.PostgreSQLISBNDao;
 import la.exception.DataAccessException;
+import la.exception.LoginException;
 
 @WebServlet("/ISBNSearch")
 public class ISBNSearchServlet extends BookServlet {
@@ -25,6 +26,11 @@ public class ISBNSearchServlet extends BookServlet {
 		List<Category> categoryList = new ArrayList<Category>();
 		
 		try {
+			if(!loginCheck(request)) {
+				throw new LoginException("access dinied.");
+			}
+			
+			// get parameter
 			String isbn = request.getParameter("searchISBN");
 			
 			// dao
@@ -50,17 +56,26 @@ public class ISBNSearchServlet extends BookServlet {
 			PostgreSQLCategoryDao categoryDao = new PostgreSQLCategoryDao();
 			categoryList = categoryDao.select();
 			
+		} catch(LoginException e) {
+			e.printStackTrace();
+			request.setAttribute("title", "ログインが必要なページです");
+			request.setAttribute("body", "");
+			forward(request, response, "Error");
+			return;
 		} catch(DataAccessException e) {
-			request.setAttribute("title", "検索に失敗しました");
+			e.printStackTrace();
+			request.setAttribute("title", "データの操作に失敗しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
 		} catch(NullPointerException e) {
+			e.printStackTrace();
 			request.setAttribute("title", "予期せぬエラーが発生しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
 		} catch(Exception e) {
+			e.printStackTrace();
 			request.setAttribute("title", "内部エラーが発生しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");

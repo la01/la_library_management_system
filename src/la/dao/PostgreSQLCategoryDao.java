@@ -46,7 +46,9 @@ public class PostgreSQLCategoryDao extends DBManager{
 			int categoryCode = rs.getInt("category_code");
 			String categoryName = rs.getString("category_name");
 
-			Category category = new Category(categoryCode, categoryName);
+			Category category = new Category();
+			category.setCategoryCode(categoryCode);
+			category.setCategoryName(categoryName);
 			return category;
 
 		} catch(Exception e) {
