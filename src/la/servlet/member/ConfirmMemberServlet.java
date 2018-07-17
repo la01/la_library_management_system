@@ -1,17 +1,11 @@
 package la.servlet.member;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import la.bean.ValidationErrors;
-import la.bean.member.InputMemberForm;
 
 @WebServlet("/ConfirmMember")
 public class ConfirmMemberServlet extends MemberServlet {
@@ -44,38 +38,26 @@ public class ConfirmMemberServlet extends MemberServlet {
 			String tel = request.getParameter("tel");
 			String email = request.getParameter("email");
 			String birthday = request.getParameter("birthday");
-			String year = request.getParameter("year");
-			String month = request.getParameter("month");
-			String date = request.getParameter("date");
 
-
-
-			if (!(action.equals("delete"))) {
-				InputMemberForm memberForm = new InputMemberForm(memberId, familyName, name, postal, address, tel,
-						email, year, month, date);
-				ValidationErrors errors = memberForm.validate();
-
-				if (errors.getSize() != 0) {
-					request.setAttribute("title", "入力フォームエラー");
-					request.setAttribute("body", errors);
-					forward(request, response, "Error");
-				}
-			} else {
-				try {
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					Date formatDate = sdf.parse(birthday);
-
-					SimpleDateFormat ysdf = new SimpleDateFormat("yyyy");
-					year = ysdf.format(formatDate);
-					SimpleDateFormat msdf = new SimpleDateFormat("MM");
-					month = msdf.format(formatDate);
-					SimpleDateFormat dsdf = new SimpleDateFormat("dd");
-					date = dsdf.format(formatDate);
-				} catch (ParseException e) {
-					e.printStackTrace();
-					return;
-				}
-			}
+			/*
+			 * if (!(action.equals("delete"))) { InputMemberForm memberForm =
+			 * new InputMemberForm(memberId, familyName, name, postal, address,
+			 * tel, email, year, month, date); ValidationErrors errors =
+			 * memberForm.validate();
+			 *
+			 * if (errors.getSize() != 0) { request.setAttribute("title",
+			 * "入力フォームエラー"); request.setAttribute("body", errors);
+			 * forward(request, response, "Error"); } } else { try {
+			 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); Date
+			 * formatDate = sdf.parse(birthday);
+			 *
+			 * SimpleDateFormat ysdf = new SimpleDateFormat("yyyy"); year =
+			 * ysdf.format(formatDate); SimpleDateFormat msdf = new
+			 * SimpleDateFormat("MM"); month = msdf.format(formatDate);
+			 * SimpleDateFormat dsdf = new SimpleDateFormat("dd"); date =
+			 * dsdf.format(formatDate); } catch (ParseException e) {
+			 * e.printStackTrace(); return; } }
+			 */
 
 			request.setAttribute("memberId", memberId);
 			request.setAttribute("familyName", familyName);
@@ -84,10 +66,7 @@ public class ConfirmMemberServlet extends MemberServlet {
 			request.setAttribute("address", address);
 			request.setAttribute("tel", tel);
 			request.setAttribute("email", email);
-			request.setAttribute("year", year);
-			request.setAttribute("month", month);
 			request.setAttribute("birthday", birthday);
-			request.setAttribute("date", date);
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 
