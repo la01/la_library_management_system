@@ -52,8 +52,8 @@ public class DoneMemberServlet extends MemberServlet {
 				member.setTel(tel);
 				member.setEmail(email);
 				member.setBirthday(Date.valueOf(birthday));
-				PasswordGenerator pass = new PasswordGenerator();
-				String password = pass.randomPasswordGenerator();
+				PasswordGenerator passwordGenerator = new PasswordGenerator();
+				String password = passwordGenerator.getRandomPassword();
 				member.setPassword(password);
 				
 				int retId = dao.insert(member);

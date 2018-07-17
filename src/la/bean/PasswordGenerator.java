@@ -4,48 +4,26 @@ import java.util.Random;
 
 public class PasswordGenerator {
 
-	public String randomPasswordGenerator() {
-
-		int length = 8;
-
-		boolean useSign = false;
-
-		String style = "normal";
-
-		StringBuilder result = new StringBuilder();
-
+	public String getRandomPassword() {
 		StringBuilder source = new StringBuilder();
-
+		
+		// 0-9
 		for (int i = 0x30; i < 0x3A; i++) {
 			source.append((char) i);
 		}
-
-		if (useSign) {
-			for (int i = 0x21; i < 0x30; i++) {
-				source.append((char) i);
-			}
+		
+		//A-Z
+		for (int i = 0x41; i < 0x5b; i++) {
+			source.append((char) i);
+		}
+		
+		//a-z
+		for (int i = 0x61; i < 0x7b; i++) {
+			source.append((char) i);
 		}
 
-		switch (style) {
-		case "lowerCase":
-			break;
-		default:
-			for (int i = 0x41; i < 0x5b; i++) {
-				source.append((char) i);
-			}
-			break;
-		}
-
-		switch (style) {
-		case "upperCase":
-			break;
-		default:
-			for (int i = 0x61; i < 0x7b; i++) {
-				source.append((char) i);
-			}
-			break;
-		}
-
+		StringBuilder result = new StringBuilder();
+		int length = 8;
 		int sourceLength = source.length();
 		Random random = new Random();
 		while (result.length() < length) {
@@ -53,6 +31,5 @@ public class PasswordGenerator {
 		}
 
 		return result.toString();
-
 	}
 }
