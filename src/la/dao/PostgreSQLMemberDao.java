@@ -52,6 +52,15 @@ public class PostgreSQLMemberDao extends DBManager {
 				queryList.add("user_email like ?");
 				queryList.add("and");
 			}
+			if (member.getStateCode() != null && member.getStateCode().length() != 0) {
+				if(member.getStateCode().equals("1")) {
+					queryList.add("delete_flag IS TRUE");
+					queryList.add("and");
+				} else if(member.getStateCode().equals("2")) {
+					queryList.add("delete_flag IS FALSE");
+					queryList.add("and");
+				}
+			}
 			queryList.remove(queryList.size() - 1);
 			sql += " " + String.join(" ", queryList);
 
@@ -209,6 +218,7 @@ public class PostgreSQLMemberDao extends DBManager {
 			String tel = rs.getString("user_tel");
 			String email = rs.getString("user_email");
 			Date date = rs.getDate("user_birthday");
+			boolean deleteFlag = rs.getBoolean("delete_flag");
 
 			Member member = new Member();
 			member.setId(id);
@@ -219,6 +229,7 @@ public class PostgreSQLMemberDao extends DBManager {
 			member.setTel(tel);
 			member.setEmail(email);
 			member.setBirthday(date);
+			member.setDeleteFlag(deleteFlag);
 
 			return member;
 

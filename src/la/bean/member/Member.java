@@ -19,6 +19,7 @@ public class Member implements Serializable{
 	private Date join;
 	private Date leave;
 	private boolean deleteFlag;
+	private String stateCode;
 
 	public void setId(int id) {
 		this.id = id;
@@ -123,5 +124,12 @@ public class Member implements Serializable{
 	public Date getBirthday() {
 		return birthday;
 	}
+	
+	public String getStateCode() {
+		return stateCode;
+	}
 
+	public void setStateCode(String stateCode) {
+		this.stateCode = stateCode;
+	}
 }

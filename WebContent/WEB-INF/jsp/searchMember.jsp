@@ -47,6 +47,20 @@
             <label for="address">住所</label>
             <input type="text" class="form-control" name="address" value="${address }" autocomplete="off">
           </div>
+          <div class="col-xs-3">
+            <label for="date">会員状況</label>
+            <select class="form-control" name="state">
+              <option value="0" 
+                <c:if test="${state == 0}">selected="selected"</c:if>>全て
+              </option>
+              <option value="1" 
+                <c:if test="${state == 1}">selected="selected"</c:if>>会員のみ
+              </option>
+              <option value="2" 
+                <c:if test="${state == 2}">selected="selected"</c:if>>退会済み
+              </option>
+            </select>
+          </div>
         </div>
         <div class="row">
           <div class="col-xs-2">
@@ -68,6 +82,7 @@
                 <th>郵便番号</th>
                 <th>電話番号</th>
                 <th>メールアドレス</th>
+                <th>会員状況</th>
                 <th>操作</th>
               </tr>
             </thead>
@@ -89,6 +104,10 @@
                   </td>
                   <td>
                     <c:out value="${member.email}" />
+                  </td>
+                  <td>
+                    <c:if test="${member.deleteFlag }">会員</c:if>
+                    <c:if test="${!member.deleteFlag }">退会済み</c:if>
                   </td>
                   <td>
                     <form action="InputMember" method="post" style="display: inline">

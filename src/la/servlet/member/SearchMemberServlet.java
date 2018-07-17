@@ -43,6 +43,7 @@ public class SearchMemberServlet extends MemberServlet {
 			String address = request.getParameter("address");
 			String tel  = request.getParameter("tel");
 			String email = request.getParameter("email");
+			String stateCode = request.getParameter("state");
 
 			// set parameter for input form
 			request.setAttribute("memberId", memberId);
@@ -52,6 +53,7 @@ public class SearchMemberServlet extends MemberServlet {
 			request.setAttribute("address", address);
 			request.setAttribute("tel", tel);
 			request.setAttribute("email", email);
+			request.setAttribute("state", stateCode);
 
 			// create member
 			Member member = new Member();
@@ -64,6 +66,7 @@ public class SearchMemberServlet extends MemberServlet {
 			member.setAddress(address);
 			member.setTel(tel);
 			member.setEmail(email);
+			member.setStateCode(stateCode);
 
 			// dao
 			PostgreSQLMemberDao memberDao = new PostgreSQLMemberDao();
