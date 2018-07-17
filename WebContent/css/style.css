@@ -1,9 +1,13 @@
+.container {
+    padding-top: 70px;
+}
+
 .search__table--margin {
     margin-top: 20px;
 }
 
 .form__button--margin {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .form__button--padding {
@@ -12,9 +16,5 @@
 }
 
 .table__button--margin {
-    margin-right: 10px;
-}
-
-.navbar__dropdown--margin {
     margin-right: 10px;
 }

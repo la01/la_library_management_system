@@ -10,23 +10,23 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
-    <div class="page-content-wrapper">
+    <div class="container">
       <h1>職員ログイン</h1>
-      <form action="Login" method="post">
-        <div class="row">
-          <div class="col-xs-2">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" name="id" autocomplete="off">
+      <form action="Login" method="post" class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="id">ID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="id" name="id" autocomplete="off">
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-2">
-            <label for="passwd">パスワード</label>
-            <input type="password" class="form-control" name="passwd" autocomplete="off">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="password">パスワード</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="password" name="passwd" autocomplete="off">
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-2">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-2">
             <button class="btn btn-primary form__button--margin btn-block">ログイン</button>
           </div>
         </div>
