@@ -9,9 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.dao.PostgreSQLRentalDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/DoneRental")
 public class DoneRentalServlet extends RentalServlet {
@@ -21,10 +21,14 @@ public class DoneRentalServlet extends RentalServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
-			
+
 			String mode = request.getParameter("mode");
 			String action = request.getParameter("action");
 			int memberId = Integer.parseInt(request.getParameter("memberId"));
@@ -67,12 +71,6 @@ public class DoneRentalServlet extends RentalServlet {
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");
@@ -92,7 +90,7 @@ public class DoneRentalServlet extends RentalServlet {
 			forward(request, response, "Error");
 			return;
 		}
-		
+
 		forward(request, response, "WEB-INF/jsp/doneRental.jsp");
 	}
 }

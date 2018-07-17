@@ -10,22 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.rental.RentalHistory;
 import la.dao.PostgreSQLRentalDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/SearchRental")
 public class SearchRentalServlet extends RentalServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
-			}
-		} catch(LoginException e) {
-			e.printStackTrace();
+		LoginCheck loginCheck = new LoginCheck();
+		if(!loginCheck.check(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");
@@ -40,8 +36,12 @@ public class SearchRentalServlet extends RentalServlet {
 		List<RentalHistory> historyList = new ArrayList<RentalHistory>();
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			// get parameter
@@ -90,12 +90,6 @@ public class SearchRentalServlet extends RentalServlet {
 			PostgreSQLRentalDao dao = new PostgreSQLRentalDao();
 			historyList = dao.selectByCondition(history);
 
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "検索に失敗しました");

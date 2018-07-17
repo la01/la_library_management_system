@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import la.exception.DataAccessException;
-import la.exception.LoginException;
+import la.bean.LoginCheck;
 
 @WebServlet("/ConfirmRental")
 public class ConfirmRentalServlet extends RentalServlet {
@@ -19,8 +18,12 @@ public class ConfirmRentalServlet extends RentalServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			String mode = request.getParameter("mode");
@@ -39,12 +42,6 @@ public class ConfirmRentalServlet extends RentalServlet {
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(NullPointerException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "予期せぬエラーが発生しました");

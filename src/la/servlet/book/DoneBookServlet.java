@@ -11,10 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.book.Book;
 import la.dao.PostgreSQLBookDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/DoneBook")
 public class DoneBookServlet extends BookServlet {
@@ -24,8 +24,12 @@ public class DoneBookServlet extends BookServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 
 			// get request parameter
@@ -81,12 +85,6 @@ public class DoneBookServlet extends BookServlet {
 			request.setAttribute("name", name);
 			request.setAttribute("result", result);
 
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");

@@ -7,22 +7,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.rental.Rental;
 import la.dao.PostgreSQLRentalDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/InputReturn")
 public class InputReturnServlet extends RentalServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
-			}
-		} catch(LoginException e) {
-			e.printStackTrace();
+		LoginCheck loginCheck = new LoginCheck();
+		if(!loginCheck.check(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");
@@ -39,8 +35,12 @@ public class InputReturnServlet extends RentalServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			String memberId = request.getParameter("searchMemberId");
@@ -49,12 +49,6 @@ public class InputReturnServlet extends RentalServlet {
 			Rental rental = rentalDao.select(Integer.parseInt(memberId));
 
 			request.setAttribute("rental", rental);
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");

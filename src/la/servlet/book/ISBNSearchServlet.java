@@ -10,12 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.book.BookInfo;
 import la.bean.book.Category;
 import la.dao.PostgreSQLCategoryDao;
 import la.dao.PostgreSQLISBNDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/ISBNSearch")
 public class ISBNSearchServlet extends BookServlet {
@@ -26,8 +26,12 @@ public class ISBNSearchServlet extends BookServlet {
 		List<Category> categoryList = new ArrayList<Category>();
 		
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			// get parameter
@@ -56,12 +60,6 @@ public class ISBNSearchServlet extends BookServlet {
 			PostgreSQLCategoryDao categoryDao = new PostgreSQLCategoryDao();
 			categoryList = categoryDao.select();
 			
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");

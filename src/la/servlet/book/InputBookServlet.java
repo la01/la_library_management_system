@@ -9,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.book.Category;
 import la.dao.PostgreSQLCategoryDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/InputBook")
 public class InputBookServlet extends BookServlet {
@@ -23,20 +23,18 @@ public class InputBookServlet extends BookServlet {
 		List<Category> categoryList = new ArrayList<Category>();
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			// get category list
 			PostgreSQLCategoryDao dao = new PostgreSQLCategoryDao();
 			categoryList = dao.select();
 
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");
@@ -70,8 +68,12 @@ public class InputBookServlet extends BookServlet {
 		List<Category> categoryList = new ArrayList<Category>();
 		
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 			
 			// request parameterをattributeに詰め替える
@@ -95,12 +97,6 @@ public class InputBookServlet extends BookServlet {
 			PostgreSQLCategoryDao dao = new PostgreSQLCategoryDao();
 			categoryList = dao.select();
 			
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");

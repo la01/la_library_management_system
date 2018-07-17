@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.book.Category;
 import la.dao.PostgreSQLCategoryDao;
 import la.exception.DataAccessException;
-import la.exception.LoginException;
 
 @WebServlet("/ConfirmBook")
 public class ConfirmBookServlet extends BookServlet {
@@ -21,8 +21,12 @@ public class ConfirmBookServlet extends BookServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			if(!loginCheck(request)) {
-				throw new LoginException("access dinied.");
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
 			}
 
 			// request parameterをattributeに詰め替える
@@ -55,13 +59,7 @@ public class ConfirmBookServlet extends BookServlet {
 					.filter(cat -> cat.getCategoryCode() == Integer.parseInt(categoryCode)).findFirst()
 					.orElse(new Category());
 			request.setAttribute("categoryName", category.getCategoryName());
-			
-		} catch(LoginException e) {
-			e.printStackTrace();
-			request.setAttribute("title", "ログインが必要なページです");
-			request.setAttribute("body", "");
-			forward(request, response, "Error");
-			return;
+
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "データの操作に失敗しました");
