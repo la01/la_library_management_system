@@ -3,18 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <title></title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
-</head>
-<body>
+  </head>
+  <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>${mode}完了</h1>
-        <h3>会員ID : <span>${member.id}</span></h3>
-        <h3>会員名 : <span>${member.familyName}　${member.name}</span></h3>
-        <h3>の${mode}を行いました</h3>
+      <h1>${mode}完了</h1>
+      <h3>会員ID : 
+        <span>${member.id}</span>
+      </h3>
+      <h3>会員名 : 
+        <span>${member.familyName}　${member.name}</span>
+      </h3>
+      <h3>の${mode}を行いました</h3>
     </div>
-</body>
+  </body>
 </html>

@@ -3,15 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <title></title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
-</head>
-<body>
+  </head>
+  <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
     <div class="page-content-wrapper">
-        <h1>メニューから選択してください</h1>
+      <h1>メニューから選択してください</h1>
     </div>
-</body>
+  </body>
 </html>
