@@ -62,7 +62,7 @@
         </div>
         <div class="row">
           <div class="col-xs-3">
-            <label for="publishedDay">出版日(From)</label>
+            <label for="publishedDay">出版日</label>
             <input type="date" class="form-control" name="publishedDay" value="${publishedDay }" <c:if test="${action == 'delete'}">readonly</c:if> required>
           </div>
           <c:if test="${action == 'insert'}">
