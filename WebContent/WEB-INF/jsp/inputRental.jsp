@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>入力</title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/inputRental.js"></script>
   </head>

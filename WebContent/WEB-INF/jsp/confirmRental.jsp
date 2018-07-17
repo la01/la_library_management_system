@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>確認</title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
   </head>
   <body>

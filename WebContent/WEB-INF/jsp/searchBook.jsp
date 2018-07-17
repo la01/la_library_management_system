@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>検索</title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="./js/tablesorter.js"></script>
@@ -127,6 +127,7 @@
           <h5>
             <span>${ fn:length( bookList ) }</span>件のデータが見つかりました
           </h5>
+          <h5>項目名をクリックすることでソートされます</h5>
           <table class="table table-condensed" id="resultTable">
             <thead>
               <tr>
