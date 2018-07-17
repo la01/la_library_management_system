@@ -19,19 +19,19 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="memberId">会員ID</label>
-            <input type="text" class="form-control" name="memberId" value="${memberId}" autocomplete="off">
+            <input type="text" class="form-control" name="memberId" value="${memberId}" autocomplete="off" pattern="^[0-9]+$" title="半角数字で入力してください。">
           </div>
           <div class="col-xs-2">
             <label for="bookId">資料ID</label>
-            <input type="text" class="form-control" name="bookId" value="${bookId}" autocomplete="off">
+            <input type="text" class="form-control" name="bookId" value="${bookId}" autocomplete="off" pattern="^[0-9]+$" title="半角数字で入力してください。">
           </div>
           <div class="col-xs-2">
             <label for="isbn">ISBN番号</label>
-            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off">
+            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off" pattern="^[0-9]+$" maxlength="13"title="半角数字13文字以内で入力してください。">
           </div>
           <div class="col-xs-6">
             <label for="name">資料名</label>
-            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off">
+            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
@@ -48,7 +48,7 @@
           <div class="col-xs-2">
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="later" name="later" 
+                <input type="checkbox" value="later" name="later"
                 <c:if test="${!empty later }">checked</c:if>>返却遅延
               </label>
             </div>
@@ -56,7 +56,7 @@
           <div class="col-xs-2">
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="noReturn" name="noReturn" 
+                <input type="checkbox" value="noReturn" name="noReturn"
                 <c:if test="${!empty noReturn }">checked</c:if>>未返却
               </label>
             </div>

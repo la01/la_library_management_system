@@ -17,35 +17,35 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="memberId">会員ID</label>
-            <input type="text" class="form-control" name="memberId" value="${memberId }" autocomplete="off">
+            <input type="text" class="form-control" name="memberId" value="${memberId }" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off">
           </div>
           <div class="col-xs-3">
             <label for="familyName">苗字</label>
-            <input type="text" class="form-control" name="familyName" value="${familyName }" autocomplete="off">
+            <input type="text" class="form-control" name="familyName" value="${familyName }" autocomplete="off" maxlength='10' title="10文字以内で入力してください。">
           </div>
           <div class="col-xs-3">
             <label for="name">名前</label>
-            <input type="text" class="form-control" name="name" value="${name }" autocomplete="off">
+            <input type="text" class="form-control" name="name" value="${name }" autocomplete="off" maxlength='10' title="10文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-2">
             <label for="postal">郵便番号</label>
-            <input type="text" class="form-control" name="postal" value="${postal }" placeholder="0000000" autocomplete="off">
+            <input type="text" class="form-control" name="postal" value="${postal }" placeholder="0000000" autocomplete="off" pattern="^[0-9]+$" maxlength="7" title="半角数字7文字以内で入力してください。">
           </div>
           <div class="col-xs-6">
             <label for="address">住所</label>
-            <input type="text" class="form-control" name="address" value="${address }" autocomplete="off">
+            <input type="text" class="form-control" name="address" value="${address }" autocomplete="off" maxlength="100" title="100文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-2">
             <label for="tel">電話番号</label>
-            <input type="text" class="form-control" name="tel" value="${tel }" placeholder="000-0000-0000" autocomplete="off">
+            <input type="text" class="form-control" name="tel" value="${tel }" placeholder="000-0000-0000" autocomplete="off" pattern="[0-9-]" maxlength="20" title="半角数字(-(ハイフン)区切り)で入力してください。">
           </div>
           <div class="col-xs-3">
             <label for="email">メールアドレス</label>
-            <input type="text" class="form-control" name="email" value="${email }" autocomplete="off">
+            <input type="text" class="form-control" name="email" value="${email }" autocomplete="off" pattern="^[a-z0-9@._%+-]+$" title="半角英数字,記号(.(ドット)_(アンダーバー)-(ハイフン)@)100文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
