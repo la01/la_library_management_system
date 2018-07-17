@@ -20,16 +20,20 @@ public class UpdateMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String mode = request.getParameter("mode");
 		String action = request.getParameter("action");
@@ -45,10 +49,17 @@ public class UpdateMemberServlet extends MemberServlet {
 			String email = request.getParameter("email");
 			String strBirthday = request.getParameter("birthday");
 			int memberId = Integer.parseInt(strMemberId);
-
 			Date birthday = Date.valueOf(strBirthday);
 
-			Member member = new Member(memberId, familyName, name, postal, address, tel, email, birthday);
+			Member member = new Member();
+			member.setId(memberId);
+			member.setFamilyName(familyName);
+			member.setName(name);
+			member.setPostal(postal);
+			member.setAddress(address);
+			member.setTel(tel);
+			member.setEmail(email);
+			member.setBirthday(birthday);
 
 			PostgreSQLMemberDao dao = new PostgreSQLMemberDao();
 			dao.update(member);

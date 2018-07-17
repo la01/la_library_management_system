@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,27 +62,27 @@ public class PostgreSQLMemberDao extends DBManager {
 				stmt.setInt(count, member.getId());
 				count++;
 			}
-			if (member.getFamilyName() != null) {
+			if (member.getFamilyName() != null && member.getFamilyName().length() != 0) {
 				stmt.setString(count, "%" + member.getFamilyName() + "%");
 				count++;
 			}
-			if (member.getName() != null) {
+			if (member.getName() != null && member.getFamilyName().length() != 0) {
 				stmt.setString(count, "%" + member.getName() + "%");
 				count++;
 			}
-			if (member.getPostal() != null) {
+			if (member.getPostal() != null && member.getPostal().length() != 0) {
 				stmt.setString(count, "%" + member.getPostal() + "%");
 				count++;
 			}
-			if (member.getAddress() != null) {
+			if (member.getAddress() != null && member.getAddress().length() != 0) {
 				stmt.setString(count, "%" + member.getAddress() + "%");
 				count++;
 			}
-			if (member.getTel() != null) {
+			if (member.getTel() != null && member.getTel().length() != 0) {
 				stmt.setString(count, "%" + member.getTel() + "%");
 				count++;
 			}
-			if (member.getEmail() != null) {
+			if (member.getEmail() != null && member.getEmail().length() != 0) {
 				stmt.setString(count, "%" + member.getEmail() + "%");
 				count++;
 			}
@@ -107,12 +108,45 @@ public class PostgreSQLMemberDao extends DBManager {
 	}
 
 	public int insert(Member member) throws DataAccessException {
-		return 0;
+		Connection conn = getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			String sql = "INSERT INTO member(user_family_name, user_name, user_postal, user_address, user_tel, user_email, user_birthday, user_password, user_role, user_join, delete_flag) VALUES(?, ?, ?, ?, ?, ?, ?, ?, '1', current_date, false);";
+
+			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, member.getFamilyName());
+			stmt.setString(2, member.getName());
+			stmt.setString(3, member.getPostal());
+			stmt.setString(4, member.getAddress());
+			stmt.setString(5, member.getTel());
+			stmt.setString(6, member.getEmail());
+			stmt.setDate(7, new java.sql.Date(member.getBirthday().getTime()));
+			stmt.setString(8, member.getPassword());
+			stmt.executeUpdate();
+			rs = stmt.getGeneratedKeys();
+			if (rs.next()) {
+				result = Integer.valueOf(rs.getInt(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DataAccessException("会員情報の登録中にエラーが発生しました");
+		} finally {
+			try {
+				close(stmt, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DataAccessException("SQLの終了中にエラーが発生しました");
+			}
+		}
+		return result;
 	}
 
 	public boolean update(Member member) throws DataAccessException {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
+		boolean result = false;
 		try {
 			String sql = "UPDATE member SET user_family_name = ?,  user_name = ?, user_postal = ?, user_address = ?, user_tel = ?,  user_email = ?, user_birthday = ? WHERE user_id =  ?";
 			stmt = conn.prepareStatement(sql);
@@ -125,6 +159,7 @@ public class PostgreSQLMemberDao extends DBManager {
 			stmt.setDate(7, new java.sql.Date(member.getBirthday().getTime()));
 			stmt.setInt(8, member.getId());
 			stmt.executeUpdate();
+			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DataAccessException("会員情報の変更中にエラーが発生しました");
@@ -136,19 +171,20 @@ public class PostgreSQLMemberDao extends DBManager {
 				throw new DataAccessException("SQLの終了中にエラーが発生しました");
 			}
 		}
-		return false;
+		return result;
 	}
 
 	public boolean delete(int id) throws DataAccessException {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
+		boolean result = false;
 		try {
 			// 削除処理
-			String sql = "UPDATE member SET delete_flag = true WHERE user_id = ?";
-			System.out.println(sql);
+			String sql = "UPDATE member SET delete_flag = true, user_leave = current_date WHERE user_id = ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
+			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DataAccessException("会員情報の削除中にエラーが発生しました");
@@ -160,7 +196,7 @@ public class PostgreSQLMemberDao extends DBManager {
 				throw new DataAccessException("SQLの終了中にエラーが発生しました");
 			}
 		}
-		return false;
+		return result;
 	}
 
 	private Member createMemberFromResultSet(ResultSet rs) throws DataAccessException {
@@ -183,7 +219,7 @@ public class PostgreSQLMemberDao extends DBManager {
 			member.setTel(tel);
 			member.setEmail(email);
 			member.setBirthday(date);
-			
+
 			return member;
 
 		} catch (Exception e) {

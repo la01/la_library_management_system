@@ -27,8 +27,11 @@ public class DeleteMemberServlet extends MemberServlet {
 
 			int memberId = Integer.parseInt(strMemberId);
 
-			Member member = new Member(memberId, familyName, name);
-			System.out.println("memberId="+memberId);
+			Member member = new Member();
+			member.setId(memberId);
+			member.setFamilyName(familyName);
+			member.setName(name);
+
 			PostgreSQLMemberDao dao = new PostgreSQLMemberDao();
 			dao.delete(memberId);
 
