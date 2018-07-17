@@ -24,13 +24,13 @@
           </div>
           <div class="col-xs-2">
             <label for="isbn">ISBN番号</label>
-            <input type="text" class="form-control" id="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" required 
+            <input type="text" class="form-control" id="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" title="半角数字13文字で入力してください。"required
             <c:if test="${action == 'update'}">disabled</c:if>>
             <input type="hidden" name="isbn" value="${isbn}">
           </div>
           <div class="col-xs-8">
             <label for="bookName">資料名</label>
-            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" required>
+            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。"required>
           </div>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@
               <div class="col-xs-12">
                 <select class="form-control" name="categoryCode">
                   <c:forEach var="category" items="${categoryList }" varStatus="status">
-                    <option value="${category.categoryCode}" 
+                    <option value="${category.categoryCode}"
                       <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>>
                       <c:out value="${category.categoryName }" />
                     </option>
@@ -51,11 +51,11 @@
           </div>
           <div class="col-xs-5">
             <label for="author">著者</label>
-            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off" maxlength="20" required>
+            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"required>
           </div>
           <div class="col-xs-5">
             <label for="publisher">出版社</label>
-            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off" maxlength="20" required>
+            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"required>
           </div>
         </div>
         <div class="row">
@@ -66,7 +66,7 @@
           <c:if test="${action == 'insert'}">
             <div class="col-xs-3">
               <label for="number">入荷冊数</label>
-              <input type="text" class="form-control" name="number" autocomplete="off" required>
+              <input type="text" class="form-control" name="number" autocomplete="off" pattern="^[0-9]+$" title="半角数字で入力してください。" required>
             </div>
           </c:if>
         </div>

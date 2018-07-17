@@ -19,15 +19,15 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="bookId">資料ID</label>
-            <input type="text" class="form-control" name="id" value="${id}" autocomplete="off">
+            <input type="text" class="form-control" name="id" value="${id}" autocomplete="off" pattern="^[0-9]+$" title="半角数字で入力してください。">
           </div>
           <div class="col-xs-2">
             <label for="isbn">ISBN番号</label>
-            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off">
+            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off" pattern="^[0-9]+$" maxlength="13" title="半角数字13文字以内で入力してください。">
           </div>
           <div class="col-xs-8">
             <label for="bookName">資料名</label>
-            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off">
+            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
@@ -38,7 +38,7 @@
                 <select class="form-control" name="category">
                   <option value="-1"></option>
                   <c:forEach var="category" items="${categoryList}" varStatus="status">
-                    <option value="${category.categoryCode}" 
+                    <option value="${category.categoryCode}"
                       <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>>
                       <c:out value="${category.categoryName }" />
                     </option>
@@ -49,11 +49,11 @@
           </div>
           <div class="col-xs-5">
             <label for="author">著者</label>
-            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off">
+            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。">
           </div>
           <div class="col-xs-5">
             <label for="company">出版社</label>
-            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off">
+            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。">
           </div>
         </div>
         <div class="row">
@@ -68,13 +68,13 @@
           <div class="col-xs-3">
             <label for="date">貸出状況</label>
             <select class="form-control" name="rental">
-              <option value="0" 
+              <option value="0"
                 <c:if test="${rental == 0}">selected="selected"</c:if>>全て
               </option>
-              <option value="1" 
+              <option value="1"
                 <c:if test="${rental == 1}">selected="selected"</c:if>>貸出可能
               </option>
-              <option value="2" 
+              <option value="2"
                 <c:if test="${rental == 2}">selected="selected"</c:if>>貸出不可
               </option>
             </select>
@@ -83,13 +83,13 @@
             <div class="col-xs-3">
               <label for="date">資料の状態</label>
               <select class="form-control" name="status">
-                <option value="0" 
+                <option value="0"
                   <c:if test="${status == 0}">selected="selected"</c:if>>全て
                 </option>
-                <option value="1" 
+                <option value="1"
                   <c:if test="${status == 1}">selected="selected"</c:if>>蔵書のみ
                 </option>
-                <option value="2" 
+                <option value="2"
                   <c:if test="${status == 2}">selected="selected"</c:if>>処分済み
                 </option>
               </select>
@@ -204,7 +204,7 @@
                         <input type="hidden" name="author" value="${book.author }">
                         <input type="hidden" name="publisher" value="${book.publisher }">
                         <input type="hidden" name="publishedDay" value="${book.publishedDay }">
-                        <button class="btn btn-danger table__button--margin" 
+                        <button class="btn btn-danger table__button--margin"
                           <c:if test="${book.removedDay != NULL}">disabled="disabled"</c:if>>削除
                         </button>
                       </form>
