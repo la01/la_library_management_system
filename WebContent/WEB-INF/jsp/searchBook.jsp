@@ -194,7 +194,7 @@
                         <input type="hidden" name="publishedDay" value="${book.publishedDay }">
                         <button class="btn btn-warning table__button--margin">更新</button>
                       </form>
-                      <form action="ConfirmBook" method="post" style="display: inline">
+                      <form action="InputBook" method="post" style="display: inline">
                         <input type="hidden" name="mode" value="削除">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="${book.id }">

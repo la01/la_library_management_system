@@ -19,18 +19,17 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="id">資料ID</label>
-            <input type="text" class="form-control" value="${id}" disabled>
-            <input type="hidden" name="id" value="${id}">
+            <input type="text" class="form-control" name="id" value="${id}" readonly>
           </div>
           <div class="col-xs-2">
             <label for="isbn">ISBN番号</label>
-            <input type="text" class="form-control" id="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" title="半角数字13文字で入力してください。"required
-            <c:if test="${action == 'update'}">disabled</c:if>>
-            <input type="hidden" name="isbn" value="${isbn}">
+            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" title="半角数字13文字で入力してください。" required
+            <c:if test="${action == 'update' || action == 'delete'}">readonly</c:if>>
           </div>
           <div class="col-xs-8">
             <label for="bookName">資料名</label>
-            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。"required>
+            <input type="text" class="form-control" name="name" value="${name}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。"
+            <c:if test="${action == 'delete'}">readonly</c:if> required>
           </div>
         </div>
         <div class="row">
@@ -38,10 +37,11 @@
             <label for="categoryCode">分類コード</label>
             <div class="row">
               <div class="col-xs-12">
-                <select class="form-control" name="categoryCode">
+                <select class="form-control" name="categoryCode" <c:if test="${action == 'delete'}">readonly</c:if>>
                   <c:forEach var="category" items="${categoryList }" varStatus="status">
                     <option value="${category.categoryCode}"
-                      <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>>
+                      <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>
+                      <c:if test="${action == 'delete' && category.categoryCode != categoryCode}">disabled="disabled"</c:if>>
                       <c:out value="${category.categoryName }" />
                     </option>
                   </c:forEach>
@@ -51,17 +51,19 @@
           </div>
           <div class="col-xs-5">
             <label for="author">著者</label>
-            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"required>
+            <input type="text" class="form-control" name="author" value="${author}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"
+            <c:if test="${action == 'delete'}">readonly</c:if> required>
           </div>
           <div class="col-xs-5">
             <label for="publisher">出版社</label>
-            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"required>
+            <input type="text" class="form-control" name="publisher" value="${publisher}" autocomplete="off" maxlength="20" title="20文字以内で入力してください。"
+            <c:if test="${action == 'delete'}">readonly</c:if> required>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-3">
             <label for="publishedDay">出版日(From)</label>
-            <input type="date" class="form-control" name="publishedDay" value="${publishedDay }">
+            <input type="date" class="form-control" name="publishedDay" value="${publishedDay }" <c:if test="${action == 'delete'}">readonly</c:if> required>
           </div>
           <c:if test="${action == 'insert'}">
             <div class="col-xs-3">
@@ -70,6 +72,14 @@
             </div>
           </c:if>
         </div>
+        <c:if test="${action == 'delete'}">
+         <div class="row">
+           <div class="col-xs-8">
+             <label for="note">廃棄理由</label>
+             <input type="text" class="form-control" name="note" autocomplete="off" maxlength="100" title="100文字以内で入力してください。">
+           </div>
+         </div>
+        </c:if>
         <div class="row">
           <div class="col-xs-2">
             <button class="btn btn-primary form__button--margin btn-block">${mode}</button>
@@ -79,7 +89,7 @@
               <button type="button" onclick="getDataFromISBN()" class="btn btn-primary form__button--margin btn-block">ISBN番号から取得</button>
             </div>
           </c:if>
-          <c:if test="${action == 'update'}">
+          <c:if test="${action == 'update'|| action == 'delete'}">
             <div class="col-xs-2">
               <button type="button" onclick="history.back()" class="btn btn-default form__button--margin btn-block">戻る</button>
             </div>
