@@ -8,6 +8,8 @@
     <meta charset="utf-8">
     <title>検索</title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
+    <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="./js/tablesorter.js"></script>
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -60,7 +62,7 @@
             <span>${ fn:length( memberList ) }</span>件のデータが見つかりました
           </h5>
           <h5>項目名をクリックすることでソートされます</h5>
-          <table class="table table-condensed">
+          <table class="table table-condensed" id="resultTable">
             <thead>
               <tr>
                 <th>ID</th>
