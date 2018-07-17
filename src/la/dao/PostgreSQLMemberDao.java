@@ -217,7 +217,9 @@ public class PostgreSQLMemberDao extends DBManager {
 			String address = rs.getString("user_address");
 			String tel = rs.getString("user_tel");
 			String email = rs.getString("user_email");
-			Date date = rs.getDate("user_birthday");
+			Date birthday = rs.getDate("user_birthday");
+			Date join = rs.getDate("user_join");
+			Date leave = rs.getDate("user_leave");
 			boolean deleteFlag = rs.getBoolean("delete_flag");
 
 			Member member = new Member();
@@ -228,7 +230,9 @@ public class PostgreSQLMemberDao extends DBManager {
 			member.setAddress(address);
 			member.setTel(tel);
 			member.setEmail(email);
-			member.setBirthday(date);
+			member.setBirthday(birthday);
+			member.setJoin(join);
+			member.setLeave(leave);
 			member.setDeleteFlag(deleteFlag);
 
 			return member;

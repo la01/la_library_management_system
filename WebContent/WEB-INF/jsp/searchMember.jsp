@@ -10,6 +10,7 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="./js/tablesorter.js"></script>
+    <script type="text/javascript" src="./js/searchMember.js"></script>
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -74,14 +75,18 @@
             <span>${ fn:length( memberList ) }</span>件のデータが見つかりました
           </h5>
           <h5>項目名をクリックすることでソートされます</h5>
+          <h5>郵便番号をクリックすることで住所が表示されます</h5>
           <table class="table table-condensed" id="resultTable">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>姓名</th>
-                <th>郵便番号</th>
+                <th>郵便番号・住所</th>
                 <th>電話番号</th>
                 <th>メールアドレス</th>
+                <th>誕生日</th>
+                <th>入会日</th>
+                <th>退会日</th>
                 <th>会員状況</th>
                 <th>操作</th>
               </tr>
@@ -96,7 +101,8 @@
                     <c:out value="${member.familyName}" />　
                     <c:out value="${member.name}" />
                   </td>
-                  <td>〒
+                  <td data-toggle="popover" data-container="body" title="住所" 
+                  data-content="${member.address }" data-placement="right">〒
                     <c:out value="${member.postal}" />
                   </td>
                   <td>
@@ -104,6 +110,15 @@
                   </td>
                   <td>
                     <c:out value="${member.email}" />
+                  </td>
+                  <td>
+                    <c:out value="${member.birthday }" />
+                  </td>
+                  <td>
+                    <c:out value="${member.join }" />
+                  </td>
+                  <td>
+                    <c:out value="${member.leave }" />
                   </td>
                   <td>
                     <c:if test="${!member.deleteFlag }">会員</c:if>
