@@ -9,12 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.PasswordGenerator;
 import la.bean.member.Member;
 import la.dao.PostgreSQLMemberDao;
 import la.exception.DataAccessException;
 
 
-@WebServlet("/InsertMemberServlet")
+@WebServlet("/InsertMember")
 public class InsertMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,36 +36,43 @@ public class InsertMemberServlet extends MemberServlet {
 			String mode = request.getParameter("mode");
 
 			//Memberに値をつめる
-			String familyname = request.getParameter("user_family_name"); //VARCHAR
-			String name = request.getParameter("user_name");  //VARCHAR
-			String postal = request.getParameter("user_postal");  //CHAR
-			String address = request.getParameter("user_address");  //VARCHAR
-			String tel = request.getParameter("user_tel");  //VARCHAR
-			String email = request.getParameter("user_email");  //VARCHAR
-			String year = request.getParameter("year");
-			String month = request.getParameter("month");
-			String date = request.getParameter("date");
+			String strMemberId = request.getParameter("memberId");
+			String familyName = request.getParameter("familyName");
+			String name = request.getParameter("name");
+			String postal = request.getParameter("postal");
+			String address = request.getParameter("address");
+			String tel = request.getParameter("tel");
+			String email = request.getParameter("email");
+			String strBirthday = request.getParameter("birthday");
+			Date birthday = Date.valueOf(strBirthday);
 
+			Member member = new Member();
+			member.setFamilyName(familyName);
+			member.setName(name);
+			member.setPostal(postal);
+			member.setAddress(address);
+			member.setTel(tel);
+			member.setEmail(email);
+			member.setBirthday(birthday);
 
-			Date birthday = Date.valueOf(year + "-" + month + "-" + date);
-
-			Member member = new Member(familyname, name, postal, address, tel, email, birthday);
+			//RandomStringGeneratorで生成したパスワードを取得
+			//取得したパスワードをuser_passwordに格納
+			String password = PasswordGenerator.randomPasswordGenerator();
+			member.setPassword(password);
 
 			PostgreSQLMemberDao dao = new PostgreSQLMemberDao();
-			dao.insert(member);
-
+			int retId = dao.insert(member);
+			member.setId(retId);
 			request.setAttribute("member", member);
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 			forward(request, response, "WEB-INF/jsp/doneMember.jsp");
 
-			//RandomStringGeneratorで生成したパスワードを取得
-			//取得したパスワードをuser_passwordに格納
-
 	}catch (DataAccessException e) {
 		e.printStackTrace();
-		request.setAttribute("message", "内部エラーが発生しました。");
-		gotoPage(request, response, "/error.jsp");
+		request.setAttribute("title", "内部エラーが発生しました");
+		request.setAttribute("body", e);
+		gotoPage(request, response, "Error");
 	}
 
 	}

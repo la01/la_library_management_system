@@ -48,10 +48,24 @@ public class SearchMemberServlet extends MemberServlet {
 			// create member
 			Member member = null;
 			if(memberId == null || memberId.length() == 0) {
-				member = new Member(familyName, name, postal, address, tel, email, null);
+				member = new Member();
+				member.setFamilyName(familyName);
+				member.setName(name);
+				member.setPostal(postal);
+				member.setAddress(address);
+				member.setTel(tel);
+				member.setEmail(email);
+
 			} else {
 				int id = Integer.parseInt(memberId);
-				member = new Member(id, familyName, name, postal, address, tel, email, null);
+				member = new Member();
+				member.setId(id);
+				member.setFamilyName(familyName);
+				member.setName(name);
+				member.setPostal(postal);
+				member.setAddress(address);
+				member.setTel(tel);
+				member.setEmail(email);
 			}
 
 			// dao
