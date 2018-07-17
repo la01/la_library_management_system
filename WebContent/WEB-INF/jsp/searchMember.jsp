@@ -106,8 +106,8 @@
                     <c:out value="${member.email}" />
                   </td>
                   <td>
-                    <c:if test="${member.deleteFlag }">会員</c:if>
-                    <c:if test="${!member.deleteFlag }">退会済み</c:if>
+                    <c:if test="${!member.deleteFlag }">会員</c:if>
+                    <c:if test="${member.deleteFlag }">退会済み</c:if>
                   </td>
                   <td>
                     <form action="InputMember" method="post" style="display: inline">
