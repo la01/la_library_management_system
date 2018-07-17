@@ -10,6 +10,7 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="./js/tablesorter.js"></script>
+    <script type="text/javascript" src="./js/popover.js"></script>
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -128,6 +129,7 @@
             <span>${ fn:length( bookList ) }</span>件のデータが見つかりました
           </h5>
           <h5>項目名をクリックすることでソートされます</h5>
+          <h5>処分日をクリックすることで廃棄理由が表示されます</h5>
           <table class="table table-condensed" id="resultTable">
             <thead>
               <tr>
@@ -178,7 +180,8 @@
                     <td>
                       <c:out value="${book.addedDay }" />
                     </td>
-                    <td>
+                    <td data-toggle="popover" data-container="body" title="廃棄理由" 
+                    data-content="${book.note }" data-placement="left">
                       <c:out value="${book.removedDay }" />
                     </td>
                     <td>

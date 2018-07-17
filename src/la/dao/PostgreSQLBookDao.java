@@ -24,7 +24,7 @@ public class PostgreSQLBookDao extends DBManager {
 			String sql = "SELECT \n" + "  bs.bookstate_id, \n" + "  bi.bookinfo_isbn, \n" + "  bi.bookinfo_name, \n"
 					+ "  c.category_code, \n" + "  c.category_name, \n" + "  bi.bookinfo_author, \n"
 					+ "  p.publisher_name, \n" + "  bi.bookinfo_date, \n" + "  bs.bookstate_add,\n"
-					+ "  bs.bookstate_remove,\n"
+					+ "  bs.bookstate_remove, bs.bookstate_note, \n"
 					+ "  CASE WHEN r.rental IS FALSE THEN '2' ELSE '1' END AS rental_code,\n"
 					+ "  CASE WHEN (r.rental IS NULL OR r.rental IS TRUE) AND delete_flag IS FALSE THEN '1' ELSE '2' END AS status_code\n"
 					+ "FROM \n" + "  bookinfo bi \n" + "  JOIN bookstate bs ON bi.bookinfo_isbn = bs.bookinfo_isbn \n"
@@ -355,6 +355,7 @@ public class PostgreSQLBookDao extends DBManager {
 			Date removedDay = rs.getDate("bookstate_remove");
 			String rentalCode = rs.getString("rental_code");
 			String statusCode = rs.getString("status_code");
+			String note = rs.getString("bookstate_note");
 
 			Book book = new Book();
 			book.setId(id);
@@ -369,6 +370,7 @@ public class PostgreSQLBookDao extends DBManager {
 			book.setRemovedDay(removedDay);
 			book.setRentalCode(rentalCode);
 			book.setStatusCode(statusCode);
+			book.setNote(note);
 			return book;
 
 		} catch (Exception e) {

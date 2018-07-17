@@ -24,6 +24,7 @@ public class Book implements Serializable{
 	private Date toAddedDate;
 	private Date fromRemovedDate;
 	private Date toRemovedDate;
+	private String note;
 
 	public int getId() {
 		return id;
@@ -167,5 +168,13 @@ public class Book implements Serializable{
 
 	public void setToRemovedDate(Date toRemovedDate) {
 		this.toRemovedDate = toRemovedDate;
+	}
+	
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 }

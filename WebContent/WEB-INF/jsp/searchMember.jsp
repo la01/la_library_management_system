@@ -10,7 +10,7 @@
     <jsp:include page="../../jsp/include.jsp" flush="true" />
     <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="./js/tablesorter.js"></script>
-    <script type="text/javascript" src="./js/searchMember.js"></script>
+    <script type="text/javascript" src="./js/popover.js"></script>
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
