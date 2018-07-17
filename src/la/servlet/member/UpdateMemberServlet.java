@@ -43,13 +43,10 @@ public class UpdateMemberServlet extends MemberServlet {
 			String address = request.getParameter("address");
 			String tel = request.getParameter("tel");
 			String email = request.getParameter("email");
-			String year = request.getParameter("year");
-			String month = request.getParameter("month");
-			String date = request.getParameter("date");
-
+			String strBirthday = request.getParameter("birthday");
 			int memberId = Integer.parseInt(strMemberId);
 
-			Date birthday = Date.valueOf(year + "-" + month + "-" + date);
+			Date birthday = Date.valueOf(strBirthday);
 
 			Member member = new Member(memberId, familyName, name, postal, address, tel, email, birthday);
 

@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <th>生年月日</th>
-                        <td><c:out value="${year}" /><input type="hidden" name="year" value="${year}">/<c:out value="${month}" /><input type="hidden" name="month" value="${month}">/<c:out value="${date}" /><input type="hidden" name="date" value="${date}"></td>
+                        <td><c:out value="${birthday}" /><input type="hidden" name="birthday" value="${birthday}"></td>
                     </tr>
                 </tbody>
             </table>
