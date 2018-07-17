@@ -11,16 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import la.bean.book.Category;
 import la.dao.PostgreSQLCategoryDao;
 import la.exception.DataAccessException;
+import la.exception.LoginException;
 
 @WebServlet("/ConfirmBook")
 public class ConfirmBookServlet extends BookServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
+			if(!loginCheck(request)) {
+				throw new LoginException("access dinied.");
+			}
+
 			// request parameterをattributeに詰め替える
 			String action = request.getParameter("action");
 			String mode = request.getParameter("mode");
@@ -32,8 +36,6 @@ public class ConfirmBookServlet extends BookServlet {
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
 			String number = request.getParameter("number");
-
-			// TODO: validation
 
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
@@ -51,22 +53,28 @@ public class ConfirmBookServlet extends BookServlet {
 			List<Category> categoryList = dao.select();
 			Category category = categoryList.stream()
 					.filter(cat -> cat.getCategoryCode() == Integer.parseInt(categoryCode)).findFirst()
-					.orElse(new Category(0, ""));
+					.orElse(new Category());
 			request.setAttribute("categoryName", category.getCategoryName());
-
-		} catch (DataAccessException e) {
+			
+		} catch(LoginException e) {
 			e.printStackTrace();
-			request.setAttribute("title", "検索に失敗しました");
+			request.setAttribute("title", "ログインが必要なページです");
+			request.setAttribute("body", "");
+			forward(request, response, "Error");
+			return;
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			request.setAttribute("title", "データの操作に失敗しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
-		} catch (NullPointerException e) {
+		} catch(NullPointerException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "予期せぬエラーが発生しました");
 			request.setAttribute("body", e);
 			forward(request, response, "Error");
 			return;
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("title", "内部エラーが発生しました");
 			request.setAttribute("body", e);
