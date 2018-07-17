@@ -7,28 +7,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
+
 @WebServlet("/ConfirmMember")
 public class ConfirmMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/jsp/confirmMember.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String mode = request.getParameter("mode");
-		String action = request.getParameter("action");
-
-		if (action == null || action.length() == 0) {
-			request.setAttribute("title", "不正な操作が実行されました");
-			forward(request, response, "Error");
-			return;
-		}
-
+		
 		try {
-
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
+			}
+			
+			String mode = request.getParameter("mode");
+			String action = request.getParameter("action");
 			String memberId = request.getParameter("memberId");
 			String familyName = request.getParameter("familyName");
 			String name = request.getParameter("name");
@@ -37,26 +35,6 @@ public class ConfirmMemberServlet extends MemberServlet {
 			String tel = request.getParameter("tel");
 			String email = request.getParameter("email");
 			String birthday = request.getParameter("birthday");
-
-			/*
-			 * if (!(action.equals("delete"))) { InputMemberForm memberForm =
-			 * new InputMemberForm(memberId, familyName, name, postal, address,
-			 * tel, email, year, month, date); ValidationErrors errors =
-			 * memberForm.validate();
-			 *
-			 * if (errors.getSize() != 0) { request.setAttribute("title",
-			 * "入力フォームエラー"); request.setAttribute("body", errors);
-			 * forward(request, response, "Error"); } } else { try {
-			 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); Date
-			 * formatDate = sdf.parse(birthday);
-			 *
-			 * SimpleDateFormat ysdf = new SimpleDateFormat("yyyy"); year =
-			 * ysdf.format(formatDate); SimpleDateFormat msdf = new
-			 * SimpleDateFormat("MM"); month = msdf.format(formatDate);
-			 * SimpleDateFormat dsdf = new SimpleDateFormat("dd"); date =
-			 * dsdf.format(formatDate); } catch (ParseException e) {
-			 * e.printStackTrace(); return; } }
-			 */
 
 			request.setAttribute("memberId", memberId);
 			request.setAttribute("familyName", familyName);
@@ -69,7 +47,6 @@ public class ConfirmMemberServlet extends MemberServlet {
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
 
-			forward(request, response, "WEB-INF/jsp/confirmMember.jsp");
 		} catch (NullPointerException e) {
 			request.setAttribute("title", "予期せぬエラーが発生しました");
 			request.setAttribute("body", e);
@@ -81,5 +58,7 @@ public class ConfirmMemberServlet extends MemberServlet {
 			forward(request, response, "Error");
 			return;
 		}
+		
+		forward(request, response, "WEB-INF/jsp/confirmMember.jsp");
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class PasswordGenerator {
 
-	public static String randomPasswordGenerator() {
+	public String randomPasswordGenerator() {
 
 		int length = 8;
 

@@ -47,7 +47,6 @@ public class DoneBookServlet extends BookServlet {
 			// SQL
 			Book book = new Book();
 			PostgreSQLBookDao dao = new PostgreSQLBookDao();
-			boolean result = false;
 			if(action.equals("insert")) {
 				// set parameter
 				book.setISBNCode(isbn);
@@ -59,7 +58,6 @@ public class DoneBookServlet extends BookServlet {
 
 				List<Integer> list = dao.insert(book, Integer.parseInt(number));
 				request.setAttribute("id", list);
-				result = true;
 			} else if(action.equals("update")) {
 				// set parameter
 				book.setId(Integer.parseInt(id));
@@ -69,21 +67,20 @@ public class DoneBookServlet extends BookServlet {
 				book.setAuthor(author);
 				book.setPublisher(publisher);
 				book.setPublishedDay(Date.valueOf(publishedDay));
-
-				result = dao.update(book);
+				
 				request.setAttribute("id",  Arrays.asList(id));
 			} else if(action.equals("delete")) {
-				result = dao.delete(Integer.parseInt(id));
+				
 				request.setAttribute("id",  Arrays.asList(id));
 			} else {
-				throw new DataAccessException("不正なパラメータです");
+				request.setAttribute("title", "不正な操作が実行されました");
+				forward(request, response, "Error");
 			}
 
 			// set request attribute
 			request.setAttribute("action", action);
 			request.setAttribute("mode", mode);
 			request.setAttribute("name", name);
-			request.setAttribute("result", result);
 
 		} catch(DataAccessException e) {
 			e.printStackTrace();
@@ -107,5 +104,4 @@ public class DoneBookServlet extends BookServlet {
 
 		forward(request, response, "WEB-INF/jsp/doneBook.jsp");
 	}
-
 }

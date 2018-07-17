@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.member.Member;
 import la.dao.PostgreSQLMemberDao;
 import la.exception.DataAccessException;
@@ -18,6 +19,14 @@ public class SearchMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LoginCheck loginCheck = new LoginCheck();
+		if(!loginCheck.check(request)) {
+			request.setAttribute("title", "ログインが必要なページです");
+			request.setAttribute("body", "");
+			forward(request, response, "Error");
+			return;
+		}
+		
 		forward(request, response, "WEB-INF/jsp/searchMember.jsp");
 	}
 
@@ -26,8 +35,7 @@ public class SearchMemberServlet extends MemberServlet {
 		List<Member> memberList = new ArrayList<Member>();
 
 		try {
-			// get post request parameter
-			// search action is not validate parameter
+			// get parameter
 			String memberId = request.getParameter("memberId");
 			String familyName = request.getParameter("familyName");
 			String name = request.getParameter("name");
@@ -46,27 +54,16 @@ public class SearchMemberServlet extends MemberServlet {
 			request.setAttribute("email", email);
 
 			// create member
-			Member member = null;
-			if(memberId == null || memberId.length() == 0) {
-				member = new Member();
-				member.setFamilyName(familyName);
-				member.setName(name);
-				member.setPostal(postal);
-				member.setAddress(address);
-				member.setTel(tel);
-				member.setEmail(email);
-
-			} else {
-				int id = Integer.parseInt(memberId);
-				member = new Member();
-				member.setId(id);
-				member.setFamilyName(familyName);
-				member.setName(name);
-				member.setPostal(postal);
-				member.setAddress(address);
-				member.setTel(tel);
-				member.setEmail(email);
+			Member member = new Member();
+			if(memberId != null && memberId.length() != 0) {
+				member.setId(Integer.parseInt(memberId));
 			}
+			member.setFamilyName(familyName);
+			member.setName(name);
+			member.setPostal(postal);
+			member.setAddress(address);
+			member.setTel(tel);
+			member.setEmail(email);
 
 			// dao
 			PostgreSQLMemberDao memberDao = new PostgreSQLMemberDao();

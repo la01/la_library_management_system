@@ -8,32 +8,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.bean.LoginCheck;
 import la.bean.PasswordGenerator;
 import la.bean.member.Member;
 import la.dao.PostgreSQLMemberDao;
+import la.exception.DataAccessException;
 
 @WebServlet("/DoneMember")
 public class DoneMemberServlet extends MemberServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/jsp/doneMember.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String mode = request.getParameter("mode");
-		String action = request.getParameter("action");
-
-		if (action == null || action.length() == 0) {
-			request.setAttribute("title", "不正な操作が実行されました");
-			forward(request, response, "Error");
-			return;
-		}
-
+		
 		try {
+			LoginCheck loginCheck = new LoginCheck();
+			if(!loginCheck.check(request)) {
+				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("body", "");
+				forward(request, response, "Error");
+				return;
+			}
+			
+			// get request parameter
+			String mode = request.getParameter("mode");
+			String action = request.getParameter("action");
 			String memberId = request.getParameter("memberId");
 			String familyName = request.getParameter("familyName");
 			String name = request.getParameter("name");
@@ -45,9 +44,7 @@ public class DoneMemberServlet extends MemberServlet {
 
 			PostgreSQLMemberDao dao = new PostgreSQLMemberDao();
 			Member member = new Member();
-
-			switch (action) {
-			case "insert":
+			if(action.equals("insert")) {
 				member.setFamilyName(familyName);
 				member.setName(name);
 				member.setPostal(postal);
@@ -55,15 +52,13 @@ public class DoneMemberServlet extends MemberServlet {
 				member.setTel(tel);
 				member.setEmail(email);
 				member.setBirthday(Date.valueOf(birthday));
-
-				// RandomStringGeneratorで生成したパスワードを取得
-				// 取得したパスワードをuser_passwordに格納
-				String password = PasswordGenerator.randomPasswordGenerator();
+				PasswordGenerator pass = new PasswordGenerator();
+				String password = pass.randomPasswordGenerator();
 				member.setPassword(password);
+				
 				int retId = dao.insert(member);
 				member.setId(retId);
-				break;
-			case "update":
+			} else if(action.equals("update")) {
 				member.setId(Integer.parseInt(memberId));
 				member.setFamilyName(familyName);
 				member.setName(name);
@@ -72,24 +67,25 @@ public class DoneMemberServlet extends MemberServlet {
 				member.setTel(tel);
 				member.setEmail(email);
 				member.setBirthday(Date.valueOf(birthday));
+				
 				dao.update(member);
-				break;
-			case "delete":
+			} else if(action.equals("delete")) {
 				member.setId(Integer.parseInt(memberId));
 				member.setFamilyName(familyName);
 				member.setName(name);
+				
 				dao.delete(Integer.parseInt(memberId));
-				break;
-			default:
+			} else {
 				request.setAttribute("title", "不正な操作が実行されました");
 				forward(request, response, "Error");
 				return;
 			}
 
+			// set request attribute
 			request.setAttribute("member", member);
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
-			forward(request, response, "WEB-INF/jsp/doneMember.jsp");
+			
 		} catch (NumberFormatException e) {
 			request.setAttribute("title", "予期せぬエラーが発生しました");
 			request.setAttribute("body", e);
@@ -102,5 +98,6 @@ public class DoneMemberServlet extends MemberServlet {
 			return;
 		}
 
+		forward(request, response, "WEB-INF/jsp/doneMember.jsp");
 	}
 }

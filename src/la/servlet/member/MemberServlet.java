@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MemberServlet extends HttpServlet {
 
-	protected void forward(HttpServletRequest request, HttpServletResponse response, String path)
-			throws ServletException, IOException {
+	protected void forward(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 }
