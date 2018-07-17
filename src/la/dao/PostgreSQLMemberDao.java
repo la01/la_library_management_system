@@ -32,7 +32,7 @@ public class PostgreSQLMemberDao extends DBManager {
 				queryList.add("user_family_name like ?");
 				queryList.add("and");
 			}
-			if (member.getName() != null && member.getFamilyName().length() != 0) {
+			if (member.getName() != null && member.getName().length() != 0) {
 				queryList.add("user_name like ?");
 				queryList.add("and");
 			}
@@ -75,7 +75,7 @@ public class PostgreSQLMemberDao extends DBManager {
 				stmt.setString(count, "%" + member.getFamilyName() + "%");
 				count++;
 			}
-			if (member.getName() != null && member.getFamilyName().length() != 0) {
+			if (member.getName() != null && member.getName().length() != 0) {
 				stmt.setString(count, "%" + member.getName() + "%");
 				count++;
 			}
