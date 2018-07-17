@@ -2,7 +2,6 @@ package la.servlet.book;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,6 +42,7 @@ public class DoneBookServlet extends BookServlet {
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
 			String number = request.getParameter("number");
+			String note = request.getParameter("note");
 
 			// SQL
 			Book book = new Book();
@@ -67,10 +67,12 @@ public class DoneBookServlet extends BookServlet {
 				book.setAuthor(author);
 				book.setPublisher(publisher);
 				book.setPublishedDay(Date.valueOf(publishedDay));
-				
+
+				dao.update(book);
+
 				request.setAttribute("id",  Arrays.asList(id));
 			} else if(action.equals("delete")) {
-				
+				dao.delete(Integer.parseInt(id), note);
 				request.setAttribute("id",  Arrays.asList(id));
 			} else {
 				request.setAttribute("title", "不正な操作が実行されました");

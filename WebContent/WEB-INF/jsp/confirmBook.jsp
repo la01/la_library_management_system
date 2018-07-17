@@ -26,7 +26,7 @@
             <c:if test="${!action.equals('insert')}">
               <tr>
                 <th>資料ID</th>
-                <td>${id} 
+                <td>${id}
                 <input type="hidden" name="id" value="${id}">
                 </td>
               </tr>
@@ -79,6 +79,15 @@
                 <td>
                 <c:out value="${number}" />
                 <input type="hidden" name="number" value="${number}">
+                </td>
+              </tr>
+            </c:if>
+            <c:if test="${action.equals('delete')}">
+              <tr>
+                <th>廃棄理由</th>
+                <td>
+                <c:out value="${note}" />
+                <input type="hidden" name="note" value="${note}">
                 </td>
               </tr>
             </c:if>

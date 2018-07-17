@@ -315,15 +315,16 @@ public class PostgreSQLBookDao extends DBManager {
 		return result;
 	}
 
-	public boolean delete(int id) throws DataAccessException {
+	public boolean delete(int id, String note) throws DataAccessException {
 		Connection conn = getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		boolean result = false;
 		try {
-			String sql = "update bookstate set bookstate_remove = current_date, delete_flag = true where bookstate_id = ?";
+			String sql = "update bookstate set bookstate_remove = current_date, bookstate_note = ?, delete_flag = true where bookstate_id = ?";
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, id);
+			stmt.setString(1, note);
+			stmt.setInt(2, id);
 			stmt.executeUpdate();
 			result = true;
 		} catch (Exception e) {

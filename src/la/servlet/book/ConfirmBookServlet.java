@@ -40,6 +40,7 @@ public class ConfirmBookServlet extends BookServlet {
 			String publisher = request.getParameter("publisher");
 			String publishedDay = request.getParameter("publishedDay");
 			String number = request.getParameter("number");
+			String note = request.getParameter("note");
 
 			request.setAttribute("mode", mode);
 			request.setAttribute("action", action);
@@ -51,6 +52,7 @@ public class ConfirmBookServlet extends BookServlet {
 			request.setAttribute("publisher", publisher);
 			request.setAttribute("publishedDay", publishedDay);
 			request.setAttribute("number", number);
+			request.setAttribute("note", note);
 
 			// get category name
 			PostgreSQLCategoryDao dao = new PostgreSQLCategoryDao();

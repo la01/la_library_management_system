@@ -18,8 +18,7 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="memberId">会員ID</label>
-            <input type="text" class="form-control" value="${memberId}" disabled>
-            <input type="hidden" name="memberId" value="${memberId}">
+            <input type="text" class="form-control" name="memberId" value="${memberId}" readonly>
           </div>
           <div class="col-xs-2">
             <label for="familyName">苗字</label>
