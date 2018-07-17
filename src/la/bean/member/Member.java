@@ -17,7 +17,7 @@ public class Member implements Serializable{
 	private char role;
 	private Date join;
 	private Date leave;
-	private boolean delete_flag;
+	private boolean deleteFlag;
 
 	public Member(String familyName, String name, String postal, String address, String tel, String email,
 			Date birthday) {
@@ -74,12 +74,12 @@ public class Member implements Serializable{
 		this.leave = leave;
 	}
 
-	public boolean isDelete_flag() {
-		return delete_flag;
+	public boolean isDeleteFlag() {
+		return deleteFlag;
 	}
 
-	public void setDelete_flag(boolean delete_flag) {
-		this.delete_flag = delete_flag;
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	public int getId() {
