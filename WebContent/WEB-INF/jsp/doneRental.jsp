@@ -10,7 +10,7 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
-    <div class="page-content-wrapper">
+    <div class="container">
       <h1>${mode}完了</h1>
       <h3>会員ID : 
         <span>${memberId}</span>

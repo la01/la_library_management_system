@@ -13,7 +13,7 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
-    <div class="page-content-wrapper">
+    <div class="container">
       <h1>履歴検索</h1>
       <form action="SearchRental" method="post">
         <div class="row">

@@ -11,7 +11,7 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
-    <div class="page-content-wrapper">
+    <div class="container">
       <h1>資料${mode}</h1>
       <form action="ConfirmBook" method="post">
         <input type="hidden" name="mode" value="${mode }">

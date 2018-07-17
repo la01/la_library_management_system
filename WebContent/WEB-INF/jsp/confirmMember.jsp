@@ -10,7 +10,7 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
-    <div class="page-content-wrapper">
+    <div class="container">
       <h1>${mode}確認</h1>
       <form action="DoneMember" method="post">
         <input type="hidden" name="mode" value="${mode}">
