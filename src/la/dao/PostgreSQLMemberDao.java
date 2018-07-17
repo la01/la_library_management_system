@@ -145,7 +145,6 @@ public class PostgreSQLMemberDao extends DBManager {
 		try {
 			// 削除処理
 			String sql = "UPDATE member SET delete_flag = true WHERE user_id = ?";
-			System.out.println(sql);
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();

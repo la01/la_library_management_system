@@ -13,12 +13,25 @@ import javax.servlet.http.HttpServletResponse;
 import la.bean.rental.RentalHistory;
 import la.dao.PostgreSQLRentalDao;
 import la.exception.DataAccessException;
+import la.exception.LoginException;
 
 @WebServlet("/SearchRental")
 public class SearchRentalServlet extends RentalServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			if(!loginCheck(request)) {
+				throw new LoginException("access dinied.");
+			}
+		} catch(LoginException e) {
+			e.printStackTrace();
+			request.setAttribute("title", "ログインが必要なページです");
+			request.setAttribute("body", "");
+			forward(request, response, "Error");
+			return;
+		}
+		
 		forward(request, response, "WEB-INF/jsp/searchRental.jsp");
 	}
 
@@ -27,6 +40,10 @@ public class SearchRentalServlet extends RentalServlet {
 		List<RentalHistory> historyList = new ArrayList<RentalHistory>();
 
 		try {
+			if(!loginCheck(request)) {
+				throw new LoginException("access dinied.");
+			}
+			
 			// get parameter
 			String memberId = request.getParameter("memberId");
 			String bookId = request.getParameter("bookId");
@@ -39,8 +56,6 @@ public class SearchRentalServlet extends RentalServlet {
 			boolean later = s_later != null && s_later.length() != 0 ? true : false;
 			boolean noReturn = s_noReturn != null && s_noReturn.length() != 0 ? true : false;
 			
-			System.out.println("later:"+later+" noReturn:"+noReturn);
-
 			// set parameter
 			request.setAttribute("memberId", memberId);
 			request.setAttribute("bookId", bookId);
@@ -75,6 +90,12 @@ public class SearchRentalServlet extends RentalServlet {
 			PostgreSQLRentalDao dao = new PostgreSQLRentalDao();
 			historyList = dao.selectByCondition(history);
 
+		} catch(LoginException e) {
+			e.printStackTrace();
+			request.setAttribute("title", "ログインが必要なページです");
+			request.setAttribute("body", "");
+			forward(request, response, "Error");
+			return;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			request.setAttribute("title", "検索に失敗しました");

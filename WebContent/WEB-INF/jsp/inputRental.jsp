@@ -68,7 +68,7 @@
 				</c:if>
             </div>
         </form>
-        <form action="MemberIdSearch" method="post" name="memberIdForm">
+        <form action="InputReturn" method="post" name="memberIdForm">
 			<input type="hidden" id="searchMemberId" name="searchMemberId">
 		</form>
     </div>
