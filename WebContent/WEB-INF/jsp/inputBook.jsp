@@ -23,7 +23,7 @@
           </div>
           <div class="col-xs-2">
             <label for="isbn">ISBN番号</label>
-            <input type="text" class="form-control" name="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" title="半角数字13文字で入力してください。" required
+            <input type="text" class="form-control" id="isbn" name="isbn" value="${isbn}" autocomplete="off" pattern="[0-9]{13}" maxlength="13" title="半角数字13文字で入力してください。" required
             <c:if test="${action == 'update' || action == 'delete'}">readonly</c:if>>
           </div>
           <div class="col-xs-8">
