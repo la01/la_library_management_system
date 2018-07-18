@@ -199,7 +199,8 @@
                         <input type="hidden" name="author" value="${book.author }">
                         <input type="hidden" name="publisher" value="${book.publisher }">
                         <input type="hidden" name="publishedDay" value="${book.publishedDay }">
-                        <button class="btn btn-warning table__button--margin">更新</button>
+                        <button class="btn btn-warning table__button--margin"
+                          <c:if test="${book.removedDay != NULL}">disabled="disabled"</c:if>>更新</button>
                       </form>
                       <form action="InputBook" method="post" style="display: inline">
                         <input type="hidden" name="mode" value="削除">
