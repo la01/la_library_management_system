@@ -19,29 +19,29 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="memberId">会員ID</label>
-            <input type="text" class="form-control" id="memberId" name="memberId" value="${rental.memberId}" pattern="^[0-9]+$" title="半角数字で入力してください。" required>
+            <input type="text" class="form-control" id="memberId" name="memberId" value="${rental.memberId}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off" required>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-2">
             <label for="bookId1">資料ID</label>
-            <input type="text" class="form-control" name="bookId1" value="${rental.bookId[0]}" pattern="^[0-9]+$" title="半角数字で入力してください。" required>
+            <input type="text" class="form-control" name="bookId1" value="${rental.bookId[0]}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off" required>
           </div>
           <div class="col-xs-2">
             <label for="bookId2">資料ID</label>
-            <input type="text" class="form-control" name="bookId2" value="${rental.bookId[1]}" pattern="^[0-9]+$" title="半角数字で入力してください。">
+            <input type="text" class="form-control" name="bookId2" value="${rental.bookId[1]}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off">
           </div>
           <div class="col-xs-2">
             <label for="bookId3">資料ID</label>
-            <input type="text" class="form-control" name="bookId3" value="${rental.bookId[2]}" pattern="^[0-9]+$" title="半角数字で入力してください。">
+            <input type="text" class="form-control" name="bookId3" value="${rental.bookId[2]}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off">
           </div>
           <div class="col-xs-2">
             <label for="bookId4">資料ID</label>
-            <input type="text" class="form-control" name="bookId4" value="${rental.bookId[3]}" pattern="^[0-9]+$" title="半角数字で入力してください。">
+            <input type="text" class="form-control" name="bookId4" value="${rental.bookId[3]}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off">
           </div>
           <div class="col-xs-2">
             <label for="bookId5">資料ID</label>
-            <input type="text" class="form-control" name="bookId5" value="${rental.bookId[4]}" pattern="^[0-9]+$" title="半角数字で入力してください。">
+            <input type="text" class="form-control" name="bookId5" value="${rental.bookId[4]}" pattern="^[0-9]+$" title="半角数字で入力してください。" autocomplete="off">
           </div>
         </div>
         <div class="row">
