@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+遅延者のリストを表示
 </body>
 </html>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+プリント用の画面を表示
+印刷画面に含まれない戻るボタン等
 </body>
 </html>

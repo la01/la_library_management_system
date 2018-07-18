@@ -65,6 +65,9 @@
               <li>
                 <a href="SearchRental">履歴</a>
               </li>
+              <li>
+                <a href="Later">遅延対応</a>
+              </li>
             </ul>
           </li>
         </ul>
