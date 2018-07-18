@@ -94,8 +94,8 @@
               <c:forEach var="history" items="${historyList }" varStatus="status">
                 <tr>
                 <td>${history.rentalId }</td>
-                <td>${history.bookId }</td>
                 <td>${history.memberId }</td>
+                <td>${history.bookId }</td>
                 <td>${history.name }</td>
                 <td>${history.rentalDate }</td>
                 <td>${history.limitDate }</td>
