@@ -1,6 +1,7 @@
 package la.servlet.rental;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class InputReturnServlet extends RentalServlet {
 			forward(request, response, "Error");
 			return;
 		}
-		
+
 		request.setAttribute("mode", "返却");
 		request.setAttribute("action", "return");
 
@@ -33,7 +34,7 @@ public class InputReturnServlet extends RentalServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		try {
 			LoginCheck loginCheck = new LoginCheck();
 			if(!loginCheck.check(request)) {
@@ -42,11 +43,14 @@ public class InputReturnServlet extends RentalServlet {
 				forward(request, response, "Error");
 				return;
 			}
-			
+
 			String memberId = request.getParameter("searchMemberId");
-			// dao
-			PostgreSQLRentalDao rentalDao = new PostgreSQLRentalDao();
-			Rental rental = rentalDao.select(Integer.parseInt(memberId));
+			Rental rental = null;
+			if(memberId != null && memberId.length() != 0 && Pattern.matches("^[0-9]*$", memberId)) {
+				// dao
+				PostgreSQLRentalDao rentalDao = new PostgreSQLRentalDao();
+				rental = rentalDao.select(Integer.parseInt(memberId));
+			}
 
 			request.setAttribute("rental", rental);
 		} catch(DataAccessException e) {
