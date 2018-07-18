@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <select class="form-control" name="category">
-                  <option value="-1"></option>
+                  <option value="-1">全て</option>
                   <c:forEach var="category" items="${categoryList}" varStatus="status">
                     <option value="${category.categoryCode}"
                       <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>>
