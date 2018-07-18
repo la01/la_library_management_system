@@ -30,7 +30,7 @@
           </div>
           <div class="col-xs-3">
             <label for="tel">電話番号</label>
-            <input type="text" class="form-control" name="tel" value="${tel}" placeholder="000-0000-0000" autocomplete="off" pattern="\d{2,4}-\d{3,4}-\d{3,4}" maxlength="20" required>
+            <input type="text" class="form-control" name="tel" value="${tel}" placeholder="000-0000-0000" autocomplete="off" pattern="\d{2,5}-\d{1,4}-\d{3,4}" maxlength="20" required>
           </div>
           <div class="col-xs-3">
             <label for="email">メールアドレス</label>
