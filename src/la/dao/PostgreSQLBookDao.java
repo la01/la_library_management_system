@@ -49,7 +49,7 @@ public class PostgreSQLBookDao extends DBManager {
 				queryList.add("and");
 			}
 			if (book.getName() != null && book.getName().length() != 0) {
-				queryList.add("bi.bookinfo_name like ?");
+				queryList.add("lower(bi.bookinfo_name) like lower(?)");
 				queryList.add("and");
 			}
 			if (book.getCategoryCode() != -1) {
