@@ -131,7 +131,9 @@
             <span>${ fn:length( bookList ) }</span>件のデータが見つかりました
           </h5>
           <h5>項目名をクリックすることでソートされます</h5>
-          <h5>処分日をクリックすることで廃棄理由が表示されます</h5>
+          <c:if test="${!empty login }">
+            <h5>処分日をクリックすることで廃棄理由が表示されます</h5>
+          </c:if>
           <table class="table table-condensed" id="resultTable">
             <thead>
               <tr>
