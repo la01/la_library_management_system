@@ -18,3 +18,9 @@
 .table__button--margin {
     margin-right: 10px;
 }
+
+.checkbox--height {
+	height:34px;
+	display: flex;
+	align-items: center;
+}

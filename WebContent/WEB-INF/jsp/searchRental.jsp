@@ -46,7 +46,7 @@
         </div>
         <div class="row">
           <div class="col-xs-2">
-            <div class="checkbox">
+            <div class="checkbox checkbox--height">
               <label>
                 <input type="checkbox" value="later" name="later"
                 <c:if test="${!empty later }">checked</c:if>>返却遅延
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="col-xs-2">
-            <div class="checkbox">
+            <div class="checkbox checkbox--height">
               <label>
                 <input type="checkbox" value="noReturn" name="noReturn"
                 <c:if test="${!empty noReturn }">checked</c:if>>未返却
