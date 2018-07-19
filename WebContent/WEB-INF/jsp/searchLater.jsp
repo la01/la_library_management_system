@@ -140,8 +140,8 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12">
-                    <form action="Later" method="post">
+                  <div class="col-xs-10">
+                    <form action="Print" method="post">
                       <input type="hidden" name="familyName" value="${later.familyName }">
                       <input type="hidden" name="name" value="${later.name }">
                       <c:forEach items="${later.bookList }" var="book" varStatus="status">
@@ -150,6 +150,12 @@
                         <input type="hidden" name="bookReturn${status.count }" value="${book.returnDate }">
                       </c:forEach>
                       <button class="btn btn-primary btn-block">督促状 印刷用ページ</button>
+                    </form>
+                  </div>
+                  <div class="col-xs-2">
+                    <form action="Later" method="post">
+                      <input type="hidden" name="rentalId" value="${later.rentalId }">
+                      <button class="btn btn-danger btn-block">削除</button>
                     </form>
                   </div>
                 </div>

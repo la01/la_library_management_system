@@ -73,6 +73,27 @@ public class PostgreSQLLaterDao extends DBManager{
 		return list;
 	}
 
+	public void delete(int rentalId) throws DataAccessException {
+		Connection conn = getConnection();
+		PreparedStatement stmt = null;
+		try {
+			String sql = "update rental set remind = true where rental_id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, rentalId);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DataAccessException("SQLの実行中にエラーが発生しました");
+		} finally {
+			try {
+				close(stmt, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DataAccessException("SQLの終了中にエラーが発生しました");
+			}
+		}
+	}
+
 	private List<LaterRental> createLaterRentalListFromResultSet(ResultSet rs) throws DataAccessException {
 		try {
 			List<LaterRental> list = new ArrayList<LaterRental>();
@@ -89,6 +110,7 @@ public class PostgreSQLLaterDao extends DBManager{
 						.orElse(null);
 				if(lr == null) {
 					lr = new LaterRental();
+					lr.setRentalId(rs.getInt("rental_id"));
 					lr.setId(userId);
 					lr.setFamilyName(rs.getString("user_family_name"));
 					lr.setName(rs.getString("user_name"));
