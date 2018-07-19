@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/MemberLogin")
+public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("mode", "職員");
-		request.setAttribute("action", "staff");
+		request.setAttribute("mode", "会員");
+		request.setAttribute("action", "member");
 		request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 	}
 
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 			String passwd = prop.getProperty("PASSWORD");
 
 			if(id.equals(inputId) && passwd.equals(inputPasswd)) {
-				request.getSession().setAttribute("login", 1);
+				request.getSession().setAttribute("memberLogin", 2);
 				request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
 			} else {
 				request.setAttribute("title", "ログインエラー");
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("Error").forward(request, response);
 		}
 
-		request.setAttribute("mode", "職員");
-		request.setAttribute("action", "staff");
+		request.setAttribute("mode", "会員");
+		request.setAttribute("action", "member");
 	}
 }

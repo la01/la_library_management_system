@@ -15,7 +15,7 @@ public class InputMemberServlet extends MemberServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoginCheck loginCheck = new LoginCheck();
-		if(!loginCheck.check(request)) {
+		if(!loginCheck.staffCheck(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");
@@ -31,7 +31,7 @@ public class InputMemberServlet extends MemberServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		LoginCheck loginCheck = new LoginCheck();
-		if(!loginCheck.check(request)) {
+		if(!loginCheck.staffCheck(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");

@@ -10,9 +10,13 @@
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
+
     <div class="container">
-      <h1>職員ログイン</h1>
+      <h1>${mode}ログイン</h1>
       <form action="Login" method="post" class="form-horizontal">
+       <input type="hidden" name="mode" value="${mode}">
+       <input type="hidden" name="action" value="${action}">
+
         <div class="form-group">
           <label class="col-sm-2 control-label" for="id">ID</label>
           <div class="col-sm-10">
