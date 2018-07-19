@@ -103,7 +103,7 @@
                     <label>郵便番号</label>
                   </div>
                   <div class="col-xs-10">
-                    <label>${later.tel }</label>
+                    <label>${later.postal }</label>
                   </div>
                 </div>
                 <div class="row">
@@ -142,7 +142,14 @@
                 <div class="row">
                   <div class="col-xs-12">
                     <form action="Later" method="post">
-                      <button class="btn btn-primary btn-block">印刷用ページに遷移</button>
+                      <input type="hidden" name="familyName" value="${later.familyName }">
+                      <input type="hidden" name="name" value="${later.name }">
+                      <c:forEach items="${later.bookList }" var="book" varStatus="status">
+                        <input type="hidden" name="bookName${status.count }" value="${book.name }">
+                        <input type="hidden" name="bookRental${status.count }" value="${book.rentalDate }">
+                        <input type="hidden" name="bookReturn${status.count }" value="${book.returnDate }">
+                      </c:forEach>
+                      <button class="btn btn-primary btn-block">督促状 印刷用ページ</button>
                     </form>
                   </div>
                 </div>
