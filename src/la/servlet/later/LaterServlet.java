@@ -65,7 +65,6 @@ public class LaterServlet extends RentalServlet {
 			request.setAttribute("name", request.getParameter("name"));
 			request.setAttribute("date",
 					new SimpleDateFormat("yyyy年MM月dd日").format(Calendar.getInstance().getTime()));
-			System.out.println("books:" + request.getParameter("books"));
 
 			List<LaterBook> list = new ArrayList<LaterBook>();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
