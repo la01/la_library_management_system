@@ -20,7 +20,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class="sidebar-icon">
                 <i class="fa fa-users"></i>
-              </span>会員 
+              </span>会員
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -36,7 +36,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class="sidebar-icon">
                 <i class="fas fa-book"></i>
-              </span>資料 
+              </span>資料
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -52,7 +52,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class="sidebar-icon">
                 <i class="fas fa-exchange-alt"></i>
-              </span>レンタル 
+              </span>レンタル
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -65,11 +65,9 @@
               <li>
                 <a href="SearchRental">履歴</a>
               </li>
-              <li>
-                <a href="Later">遅延対応</a>
-              </li>
             </ul>
           </li>
+          <li><a href="Later">遅延対応</a></li>
         </ul>
       </c:if>
       <c:if test="${empty login}">
@@ -78,7 +76,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class="sidebar-icon">
                 <i class="fas fa-book"></i>
-              </span>資料 
+              </span>資料
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

@@ -1,19 +1,31 @@
 package la.bean.later;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
-public class LaterRental implements Serializable{
+import la.bean.member.Member;
+
+public class LaterRental extends Member{
 
 	private int rentalId;
-	private int memberId;
-	private List<HashMap<Integer, String>> bookList;
-	private String familyName;
-	private String name;
-	private String zip;
-	private String address;
-	private String tel;
-	private String email;
+	private List<LaterBook> bookList;
 
+	public LaterRental() {
+		bookList = new ArrayList<LaterBook>();
+	}
+	public int getRentalId() {
+		return rentalId;
+	}
+	public void setRentalId(int rentalId) {
+		this.rentalId = rentalId;
+	}
+	public List<LaterBook> getBookList() {
+		return bookList;
+	}
+	public void setBookList(List<LaterBook> bookList) {
+		this.bookList = bookList;
+	}
+	public void addBook(LaterBook e) {
+		this.bookList.add(e);
+	}
 }
