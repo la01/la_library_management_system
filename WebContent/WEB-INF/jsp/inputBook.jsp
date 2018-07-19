@@ -40,7 +40,7 @@
                 <select class="form-control" name="categoryCode" <c:if test="${action == 'delete'}">readonly</c:if>>
                   <c:forEach var="category" items="${categoryList }" varStatus="status">
                     <option value="${category.categoryCode}"
-                      <c:if test="${category.categoryCode == categoryCode }">selected="selected"</c:if>
+                      <c:if test="${category.categoryCode == categoryCode || category.categoryName == categoryName}">selected="selected"</c:if>
                       <c:if test="${action == 'delete' && category.categoryCode != categoryCode}">disabled="disabled"</c:if>>
                       <c:out value="${category.categoryName }" />
                     </option>
