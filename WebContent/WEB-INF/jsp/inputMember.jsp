@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title>入力</title>
     <jsp:include page="../../jsp/include.jsp" flush="true" />
+    <script type="text/javascript" src="./js/inputMember.js"></script>
   </head>
   <body>
     <jsp:include page="../../jsp/template.jsp" flush="true" />
@@ -40,11 +41,11 @@
         <div class="row">
           <div class="col-xs-2">
             <label for="postal">郵便番号</label>
-            <input type="text" class="form-control" name="postal" value="${postal}" placeholder="0000000" autocomplete="off" pattern="[0-9]{7}" maxlength="7" title="半角数字7文字で入力してください。"required>
+            <input type="text"id="address_zip" class="form-control" name="postal" value="${postal}" placeholder="0000000" autocomplete="off" pattern="[0-9]{7}" maxlength="7" title="半角数字7文字で入力してください。"required>
           </div>
           <div class="col-xs-7">
             <label for="address">住所</label>
-            <input type="text" class="form-control" name="address" value="${address}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。"required>
+            <input type="text" id="address_state_town_street" class="form-control" name="address" value="${address}" autocomplete="off" maxlength="100" title="100文字以内で入力してください。"required>
           </div>
           <div class="col-xs-3">
             <label for="birthday">生年月日</label>
