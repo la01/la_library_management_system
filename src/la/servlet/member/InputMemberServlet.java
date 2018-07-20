@@ -15,13 +15,13 @@ public class InputMemberServlet extends MemberServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoginCheck loginCheck = new LoginCheck();
-		if(!loginCheck.check(request)) {
-			request.setAttribute("title", "ログインが必要なページです");
+		if(!loginCheck.staffCheck(request)) {
+			request.setAttribute("title", "職員ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");
 			return;
 		}
-		
+
 		request.setAttribute("mode", "登録");
 		request.setAttribute("action", "insert");
 		forward(request, response, "WEB-INF/jsp/inputMember.jsp");
@@ -29,9 +29,9 @@ public class InputMemberServlet extends MemberServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		LoginCheck loginCheck = new LoginCheck();
-		if(!loginCheck.check(request)) {
+		if(!loginCheck.staffCheck(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");
@@ -57,7 +57,7 @@ public class InputMemberServlet extends MemberServlet {
 		request.setAttribute("birthday", birthday);
 		request.setAttribute("mode", "変更");
 		request.setAttribute("action", "update");
-		
+
 		forward(request, response, "WEB-INF/jsp/inputMember.jsp");
 	}
 }

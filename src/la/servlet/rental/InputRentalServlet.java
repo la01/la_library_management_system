@@ -15,7 +15,7 @@ public class InputRentalServlet extends RentalServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoginCheck loginCheck = new LoginCheck();
-		if(!loginCheck.check(request)) {
+		if(!loginCheck.staffCheck(request)) {
 			request.setAttribute("title", "ログインが必要なページです");
 			request.setAttribute("body", "");
 			forward(request, response, "Error");

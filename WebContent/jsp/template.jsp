@@ -85,11 +85,34 @@
               </li>
             </ul>
           </li>
+          <c:if test="${!empty memberLogin }">
+          <li><a href="#">予約</a></li>
+          </c:if>
         </ul>
       </c:if>
+            <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <c:if test="${!empty memberLogin }">
+            <a href="#" data-toggle="dropdown">会員でログイン中</a>
+            <ul class="dropdown-menu dropdown-block">
+              <li>
+                <a href="Logout">Logout</a>
+              </li>
+            </ul>
+          </c:if>
+          <c:if test="${empty memberLogin}">
+            <a href="#" data-toggle="dropdown">会員はこちら</a>
+            <ul class="dropdown-menu dropdown-block">
+              <li>
+                <a href="MemberLogin">Login</a>
+              </li>
+            </ul>
+          </c:if>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <c:if test="${!empty login}">
+          <c:if test="${!empty login &&empty memberLogin}">
             <a href="#" data-toggle="dropdown">職員でログイン中</a>
             <ul class="dropdown-menu dropdown-block">
               <li>
