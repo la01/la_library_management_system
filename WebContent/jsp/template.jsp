@@ -96,7 +96,7 @@
             <a href="#" data-toggle="dropdown">会員でログイン中</a>
             <ul class="dropdown-menu dropdown-block">
               <li>
-                <a href="Logout">Logout</a>
+                <a href="MemberLogout">Logout</a>
               </li>
             </ul>
           </c:if>
