@@ -145,6 +145,9 @@
                 <th>出版社</th>
                 <th>貸出状況</th>
                 <th>出版日</th>
+                <c:if test="${empty login}">
+                  <th>開架場所</th>
+                </c:if>
                 <c:if test="${!empty login }">
                   <th>入荷日</th>
                   <th>処分日</th>
@@ -180,11 +183,20 @@
                   <td>
                     <c:out value="${book.publishedDay }" />
                   </td>
+                  <c:if test="${empty login}">
+                    <td>
+                      <form action="FloorMap" method="post" style="display: inline">
+                        <input type="hidden" name="categoryCode" value="${book.categoryCode }">
+                        <button class="btn btn-warning table__button--margin"
+                          <c:if test="${book.statusCode == 2}">disabled="disabled"</c:if>>表示</button>
+                      </form>
+                    </td>
+                  </c:if>
                   <c:if test="${!empty login }">
                     <td>
                       <c:out value="${book.addedDay }" />
                     </td>
-                    <td data-toggle="popover" data-container="body" title="廃棄理由" 
+                    <td data-toggle="popover" data-container="body" title="廃棄理由"
                     data-content="${book.note }" data-placement="left">
                       <c:out value="${book.removedDay }" />
                     </td>
