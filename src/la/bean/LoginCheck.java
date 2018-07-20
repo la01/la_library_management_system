@@ -18,7 +18,7 @@ public class LoginCheck {
 	// 会員
 	public boolean memberCheck(HttpServletRequest request) {
 		try {
-			int login = (int) request.getSession().getAttribute("login");
+			int login = (int) request.getSession().getAttribute("memberLogin");
 			return  login == 2 ? true : false;
 		} catch(Exception e) {
 			e.printStackTrace();

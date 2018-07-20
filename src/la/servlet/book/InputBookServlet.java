@@ -25,7 +25,7 @@ public class InputBookServlet extends BookServlet {
 		try {
 			LoginCheck loginCheck = new LoginCheck();
 			if(!loginCheck.staffCheck(request)) {
-				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("title", "職員ログインが必要なページです");
 				request.setAttribute("body", "");
 				forward(request, response, "Error");
 				return;

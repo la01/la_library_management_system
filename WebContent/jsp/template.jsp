@@ -87,11 +87,14 @@
               </li>
             </ul>
           </li>
+          <c:if test="${!empty memberLogin }">
+          <li><a href="#">予約</a></li>
+          </c:if>
         </ul>
       </c:if>
             <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <c:if test="${!empty memberLogin}">
+          <c:if test="${!empty memberLogin }">
             <a href="#" data-toggle="dropdown">会員でログイン中</a>
             <ul class="dropdown-menu dropdown-block">
               <li>
@@ -111,7 +114,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <c:if test="${!empty login}">
+          <c:if test="${!empty login &&empty memberLogin}">
             <a href="#" data-toggle="dropdown">職員でログイン中</a>
             <ul class="dropdown-menu dropdown-block">
               <li>

@@ -15,16 +15,16 @@ public class ConfirmMemberServlet extends MemberServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		try {
 			LoginCheck loginCheck = new LoginCheck();
 			if(!loginCheck.staffCheck(request)) {
-				request.setAttribute("title", "ログインが必要なページです");
+				request.setAttribute("title", "職員ログインが必要なページです");
 				request.setAttribute("body", "");
 				forward(request, response, "Error");
 				return;
 			}
-			
+
 			String mode = request.getParameter("mode");
 			String action = request.getParameter("action");
 			String memberId = request.getParameter("memberId");
@@ -58,7 +58,7 @@ public class ConfirmMemberServlet extends MemberServlet {
 			forward(request, response, "Error");
 			return;
 		}
-		
+
 		forward(request, response, "WEB-INF/jsp/confirmMember.jsp");
 	}
 }
